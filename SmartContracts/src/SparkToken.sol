@@ -17,10 +17,14 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 ///Interfaces, Libraries///
 ///////////////////////////
 
-contract SparkToken is ERC20, ERC20Burnable, ERC20Permit, Ownable {
+contract SparkToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
     constructor(address initialOwner)
-        ERC20("Spark Token", "ST")
-        ERC20Permit("Spark Token")
+        ERC20("SparkToken", "ST")
         Ownable(initialOwner)
+        ERC20Permit("SparkToken")
     {}
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
+    }
 }
