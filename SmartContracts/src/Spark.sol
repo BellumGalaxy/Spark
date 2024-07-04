@@ -13,6 +13,11 @@ import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol
 ////////////
 ///Errors///
 ////////////
+error Spark_InsuficientBalanceToWithdraw(uint256 amount, uint256 amountReceived, uint256 amountValidated);
+error Spark_ReceivedSponsorshipIsNotEnough(uint256 amount, uint256 sparkTokenBalance);
+error Spark_CallerIsNotTheAthlete(address caller, address athlete);
+error Spark_InvalidCampaing();
+error Spark_CampaingCapReached(uint256 targetAmount, uint256 receivedAmount);
 
 ///////////////////////////
 ///Interfaces, Libraries///
@@ -41,22 +46,32 @@ contract Spark {
         address sponsorWallet;
     }
 
-    ////////////////
-    ///IMMUTABLES///
-    ////////////////
-    SparkToken immutable i_sparkToken;
-    SparkVault immutable i_sparkVault;
+    struct Campaing{
+        uint256 targetAmount;
+        uint256 receivedAmount;
+        uint256 duration;
+        bytes reason;
+    }
 
     ///////////////
     ///CONSTANTS///
     ///////////////
     ///@notice Magic number removal
     uint256 constant PROTOCOL_FEE = 1000;
+    uint256 constant DRAWS_FEE = 1000;
+
+    ////////////////
+    ///IMMUTABLES///
+    ////////////////
+    SparkToken immutable i_sparkToken;
+    SparkVault immutable i_sparkVault;
+    IERC20 immutable i_USDC;
     
     /////////////////////
     ///State variables///
     /////////////////////
     uint256 s_protocolFeeAccrued;
+    uint256 s_monthlyDrawAmount;
     uint256 s_athleteId;
     uint256 s_sponsorId;
 
@@ -64,10 +79,11 @@ contract Spark {
     ///STORAGE///
     /////////////
     mapping(address giver => uint256 amount) public s_donationsRegister;
-    mapping(address athleteId => Athlete) public s_athletes;
+    mapping(address athleteAddress => Athlete) public s_athletes;
     mapping(address sponsorAddress => Sponsors) public s_sponsors;
     mapping(uint256 athleteId => address athleteWallet) public s_athleteIdentification;
     mapping(uint256 sponsorId => address sponsorWallet) public s_sponsorIdentification;
+    mapping(uint256 athleteId => Campaing) public s_campaings;
 
     ////////////
     ///Events///
@@ -78,6 +94,8 @@ contract Spark {
     event Spark_SponsorAthlete(uint256 athleteId, uint256 shares);
     event Spark_SparksObtained(uint256 amount);
     event Spark_AmountRedeemed(uint256 athleteId, uint256 amount);
+    event Spark_NewCampaignCreated(uint256 athleteId, string reason, uint256 duration, uint256 amount);
+    event Spark_CampaingAdopted(uint256 athleteId, uint256 amount);
 
     ///////////////
     ///Modifiers///
@@ -90,9 +108,10 @@ contract Spark {
     /////////////////
     ///constructor///
     /////////////////
-    constructor(){
+    constructor(address _usdc){
         i_sparkToken = new SparkToken(address(this));
-        i_sparkVault = new SparkVault();
+        i_sparkVault = new SparkVault(address(this), _usdc);
+        i_USDC = IERC20(i_USDC);
     }
 
     //////////////
@@ -167,9 +186,9 @@ contract Spark {
         athlete.sponsorsAmount = athlete.sponsorsAmount + _shares;
         sponsors.amountSponsored = sponsors.amountSponsored + _shares;
 
-        IERC20(i_sparkToken).safeTransferFrom(msg.sender, athlete.athleteWallet, _shares);
-
         emit Spark_SponsorAthlete(_athleteId, _shares);
+
+        IERC20(i_sparkToken).safeTransferFrom(msg.sender, athlete.athleteWallet, _shares);
     }
 
     //Pode comprar com X tokens. Precisamos do Data Feeds para converter para BRL. UPDATE: Data feeds só disponível em mainnet
@@ -182,8 +201,10 @@ contract Spark {
      */
     function obtainSparks(IERC20 _token, uint256 _amount) external {
         uint256 protocolFee = _amount/PROTOCOL_FEE;
+        uint256 monthlyDraws = _amount/DRAWS_FEE;
 
         s_protocolFeeAccrued = s_protocolFeeAccrued + protocolFee;
+        s_monthlyDrawAmount = s_monthlyDrawAmount + monthlyDraws;
 
         emit Spark_SparksObtained(_amount - protocolFee);
 
@@ -194,15 +215,42 @@ contract Spark {
     function redeemAmount(uint256 _athleteId, uint256 _amount) external {
         address athleteAddress = s_athleteIdentification[_athleteId];
         Athlete memory athlete = s_athletes[athleteAddress];
+        if(_amount + athlete.amountSpent > athlete.sponsorsAmount || _amount + athlete.amountSpent > athlete.validatedAmount) revert Spark_InsuficientBalanceToWithdraw(_amount, athlete.sponsorsAmount, athlete.validatedAmount);
+        if(_amount > i_sparkToken.balanceOf(msg.sender)) revert Spark_ReceivedSponsorshipIsNotEnough(_amount, i_sparkToken.balanceOf(msg.sender));
 
         athlete.amountSpent = athlete.amountSpent + _amount;
 
         IERC20(i_sparkToken).safeTransferFrom(msg.sender, address(this), _amount);
         i_sparkToken.burn(_amount);
 
-        i_sparkVault.redeem(athlete.athleteWallet, _amount);
-
         emit Spark_AmountRedeemed(_athleteId, _amount);
+
+        i_sparkVault.redeem(athlete.athleteWallet, _amount);
+    }
+
+    function createCampaign(uint256 _athleteId, uint256 _amount, uint256 _duration, string memory _reason) external {
+        if (s_athleteIdentification[_athleteId] != msg.sender) revert Spark_CallerIsNotTheAthlete(msg.sender, s_athleteIdentification[_athleteId]);
+
+        s_campaings[_athleteId] = Campaing ({
+            targetAmount: _amount,
+            receivedAmount: 0,
+            duration: block.timestamp + _duration,
+            reason: abi.encode(_reason)
+        });
+
+        emit Spark_NewCampaignCreated(_athleteId, _reason, _duration, _amount);
+    }
+
+    function adoptCampain(uint256 _athleteId, uint256 _amount) external {
+        Campaing storage campaing = s_campaings[_athleteId];
+        if(campaing.duration < block.timestamp) revert Spark_InvalidCampaing();
+        if(campaing.receivedAmount +_amount > campaing.targetAmount) revert Spark_CampaingCapReached(campaing.targetAmount, campaing.targetAmount - campaing.receivedAmount);
+
+        campaing.receivedAmount = campaing.receivedAmount + _amount;
+
+        emit Spark_CampaingAdopted(_athleteId, _amount);
+
+        i_USDC.safeTransferFrom(msg.sender, s_athleteIdentification[_athleteId], _amount);
     }
 
     ////////////

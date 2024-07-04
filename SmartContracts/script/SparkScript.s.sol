@@ -8,8 +8,8 @@ import {Spark} from "../src/Spark.sol";
 contract SparkScript is Script {
     function setUp() public {}
 
-    function run() public returns(Spark spark){
+    function run(address _usdc) public returns(Spark spark){
         vm.broadcast();
-        spark = new Spark();
+        spark = new Spark(_usdc);
     }
 }

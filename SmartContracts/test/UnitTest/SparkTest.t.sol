@@ -13,10 +13,12 @@ contract SparkTest is Test {
     Spark spark;
     SparkScript sparkDeploy;
 
+    address usdc;
+
     function setUp() public {
         sparkDeploy = new SparkScript();
 
-        spark = sparkDeploy.run();
+        spark = sparkDeploy.run(usdc);
     }
 
 }
