@@ -1,8 +1,19 @@
 import { useState } from "react";
 import "../layouts/NavBar.css";
-
+import SparkLogo from '../assets/logo-spark.png';
+import { ConnectButton } from "thirdweb/react";
+import { client } from "../utils/client";
+import { inAppWallet } from "thirdweb/wallets";
 
 const NavBar: React.FC = () => {
+    const wallets = [
+        inAppWallet({
+          auth: {
+            options: ["google", "email"],
+          },
+        }),
+    ];
+
   // adding the states
   const [isActive, setIsActive] = useState(false);
   //add the active class
@@ -17,7 +28,7 @@ const NavBar: React.FC = () => {
     <nav className="navbar">
       {/* logo */}
       <a href="https://" className="logo-wrap">
-        
+        <img src={SparkLogo} className="logo" />
       </a>
       <ul className={`navMenu ${isActive ? "active" : ""}`}>
         
@@ -38,9 +49,28 @@ const NavBar: React.FC = () => {
         </li>
         
         <li onClick={removeActive}>
-          <a href="https://" className="navLink">
-            <button className="btn-connect">Conecte</button>
-          </a>
+            <ConnectButton
+                connectButton={{
+                    label: "Connect",
+                    className: "btn-connect",
+                    style: {
+                        alignContent: "center",
+                        padding: ".6em",
+                        color:"#fff",
+                        background: "linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%)",
+                        borderRadius: "10px",
+                    },
+                }} 
+                client={client}
+                wallets={wallets}
+                theme={"dark"}
+                connectModal={{
+                    title: "Connect to Spark",
+                    welcomeScreen: { title: "Bem-vindo Spark" },
+                    size: "compact",
+                    showThirdwebBranding: false
+                }}
+            />
         </li>
       </ul>
       <div

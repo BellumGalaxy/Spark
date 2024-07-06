@@ -1,7 +1,8 @@
 import React from 'react';
+import '../layouts/Homepage.css';
 import NavBar from '../components/NavBar';
 
-const Homepage: React.FC = () => {
+const Homepage = () => {
   return (
     <div>
         <NavBar />
