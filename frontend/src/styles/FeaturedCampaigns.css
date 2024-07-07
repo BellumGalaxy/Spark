@@ -1,0 +1,27 @@
+.featured-campaigns {
+    margin-top     : 1em;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+    padding        : 1em;
+}
+
+.featured-campaigns .title {
+    font-family  : 'Paris2024', sans-serif;
+    color        : black;
+    font-size    : 28px;
+    margin-bottom: 1em;
+}
+
+.campaigns-list {
+    display              : grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap                  : 2em;
+}
+
+@media (min-width: 1024px) {
+    .campaigns-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

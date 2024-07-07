@@ -1,0 +1,66 @@
+.bignumbers-wrap {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: flex-start;
+    gap            : .2em;
+    color          : black;
+    padding        : 3em 1em;
+}
+
+.bignumbers-wrap h2 {
+    font-family   : 'Paris2024', sans-serif;
+    text-transform: uppercase;
+    text-align    : center;
+    font-size     : 26px;
+    line-height   : 1;
+}
+
+.bignumbers-wrap .subtitle {
+    text-align: center;
+}
+
+.bignumbers-content-wrap {
+    margin         : 1em auto;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-between;
+    gap            : 1em;
+}
+
+.bignumbers-content-wrap .bignumber-individual-wrap {
+    padding        : 1em;
+    border-radius  : 7px;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+    gap            : .1em;
+    width          : 300px;
+}
+
+.bignumbers-content-wrap .bignumber-individual-wrap .number {
+    color      : #ff7f08;
+    font-size  : 30px;
+    line-height: 1;
+    font-weight: medium;
+    text-align : center;
+}
+
+.bignumbers-content-wrap .bignumber-individual-wrap .description {
+    text-align : center;
+    font-weight: medium;
+    font-size  : 14px;
+}
+
+@media (min-width: 1024px) {
+    .bignumbers-wrap h2 {
+        font-size: 36px;
+    }
+
+    .bignumbers-content-wrap {
+        flex-direction: row;
+        gap           : 4em;
+    }
+}

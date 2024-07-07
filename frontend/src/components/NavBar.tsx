@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../layouts/NavBar.css";
+import "../styles/NavBar.css";
 import SparkLogo from '../assets/logo-spark.png';
 import { ConnectButton } from "thirdweb/react";
 import { client } from "../utils/client";
@@ -54,11 +54,16 @@ const NavBar: React.FC = () => {
                     label: "Connect",
                     className: "btn-connect",
                     style: {
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
                         alignContent: "center",
-                        padding: ".6em",
                         color:"#fff",
                         background: "linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%)",
-                        borderRadius: "10px",
+                        borderRadius: "8px",
+                        boxShadow: "4px 4px 28px -15px #000000d9",
+                        lineHeight: "1",
                     },
                 }} 
                 client={client}
