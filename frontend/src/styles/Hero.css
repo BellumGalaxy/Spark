@@ -65,3 +65,9 @@
     background: linear-gradient(200deg, #f17909 20%, #eea507 70%);
     box-shadow: 4px 4px 38px -10px #00000069;
 }
+
+@media (min-width: 1024px) {
+    .hero-wrap .hero-content-wrap {
+        max-width: 55rem;
+    }
+}

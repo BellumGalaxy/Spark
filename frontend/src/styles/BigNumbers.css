@@ -4,11 +4,12 @@
     align-items    : center;
     justify-content: flex-start;
     gap            : .2em;
-    color          : black;
+    color          : #555555;
     padding        : 3em 1em;
 }
 
 .bignumbers-wrap h2 {
+    color         : #555555;
     font-family   : 'Paris2024', sans-serif;
     text-transform: uppercase;
     text-align    : center;
@@ -17,6 +18,7 @@
 }
 
 .bignumbers-wrap .subtitle {
+    color     : #555555;
     text-align: center;
 }
 

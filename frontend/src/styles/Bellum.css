@@ -1,0 +1,94 @@
+.bellum-wrap {
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-start;
+    padding       : 4em 2em;
+    gap           : 1em;
+}
+
+.bellum-wrap h4 {
+    align-self             : center;
+    font-size              : 34px;
+    background             : #215D77;
+    background             : linear-gradient(to right, #246e8e 0%, #29A086 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bellum-wrap .bellum-logo {
+    align-self: center;
+    width     : 100px;
+}
+
+.bellum-wrap p {
+    color        : #777777;
+    text-align   : center;
+    line-height  : 1.6;
+    margin-bottom: 1em;
+}
+
+.links-wrap {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    gap           : 1em;
+    width         : 100%;
+}
+
+.links-wrap a {
+    cursor          : pointer;
+    display         : flex;
+    flex-direction  : row;
+    align-items     : center;
+    justify-content : flex-start;
+    gap             : .6em;
+    width           : 80%;
+    background-color: transparent;
+    border          : 2px solid #9b9b9b;
+    color           : #686868;
+    border-radius   : 10px;
+    padding         : 1em;
+    transition      : .2s;
+}
+
+.links-wrap a:hover {
+    background-color: #c0c0c0;
+}
+
+.links-wrap a img {
+    width: 20px;
+    width: 20px;
+}
+
+
+@media (min-width: 1024px) {
+    .bellum-wrap {
+        margin     : 8em auto;
+        align-items: center;
+        gap        : 2em;
+    }
+
+    .bellum-wrap .bellum-logo {
+        align-self: center;
+        width     : 200px;
+    }
+
+    .bellum-wrap h4 {
+        font-size: 54px;
+    }
+
+    .bellum-wrap p {
+        max-width  : 60vw;
+        font-size  : 28px;
+        line-height: 1.4;
+    }
+
+    .links-wrap {
+        max-width: 30vw;
+    }
+
+    .links-wrap a {
+        font-size: 18px;
+    }
+
+}

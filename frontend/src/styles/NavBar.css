@@ -77,6 +77,8 @@ a:hover {
     background: linear-gradient(200deg, #dd6f08 20%, #db990a 70%);
 }
 
+
+
 /* media queries */
 
 @media screen and (max-width: 780px) {

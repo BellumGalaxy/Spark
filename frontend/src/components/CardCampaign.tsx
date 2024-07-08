@@ -23,7 +23,7 @@ const CardCampaign: React.FC<CardCampaignProps> = ({ campaign }) => {
         <p className="campaign-card__description">{campaign.description}</p>
         <p className="campaign-card__goal">Objetivo: R${campaign.goal}</p>
         <div className='buttons-wrap'>
-            <button className="campaign-card__donate-button">Apoiar</button>
+            {/*<button className="campaign-card__donate-button">Apoiar</button>*/}
             <button className="campaign-card__details-button">Detalhes</button>
         </div>
       </div>

@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
         <div className='hero-content-wrap'>
             {/*<img src={OlympicRings} />*/}
             <h1>Transforme Sonhos em Realidade</h1>
-            <p>O futuro do esporte impulsionado com o apoio da comunidade.</p>
+            <p>O futuro do esporte impulsionado com o apoio da comunidade</p>
             <button>Comece Agora</button>
         </div>
     </section>
