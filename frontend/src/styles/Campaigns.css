@@ -1,4 +1,4 @@
-.featured-campaigns {
+.campaigns {
   margin: 1em auto;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   color: #555555;
 }
 
-.featured-campaigns .title {
+.campaigns .title {
   font-family: "Paris2024", sans-serif;
   color: #555555;
   font-size: 28px;

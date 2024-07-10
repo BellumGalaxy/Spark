@@ -27,7 +27,7 @@ const NavBar: React.FC = () => {
   return (
     <nav className="navbar">
       {/* logo */}
-      <a href="https://" className="logo-wrap">
+      <a href="/" className="logo-wrap">
         <img src={SparkLogo} className="logo" />
       </a>
       <ul className={`navMenu ${isActive ? "active" : ""}`}>
@@ -47,12 +47,12 @@ const NavBar: React.FC = () => {
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="https://" className="navLink">
+          <a href="/about" className="navLink">
             Sobre
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="https://" className="navLink">
+          <a href="/user" className="navLink">
             Conta
           </a>
         </li>

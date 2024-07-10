@@ -20,7 +20,10 @@ const Homepage: React.FC = () => {
   }, []);
   
   return (
-    <div>
+    <>
+      <NavBar />
+      <div className='homepage-wrap'>
+        
         <Hero />
         <BigNumbers />
         <FeaturedCampaigns />
@@ -30,6 +33,8 @@ const Homepage: React.FC = () => {
         <Bellum />
         <Footer />
     </div>
+    </>
+    
   )
 }
 
