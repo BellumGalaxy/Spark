@@ -39,6 +39,7 @@
 
 .campaign-card__description {
     font-size: 16px;
+    flex-grow: 1;
 }
 
 .campaign-card__goal {
@@ -89,6 +90,15 @@
 @media (min-width: 1024px) {
     .campaign-card {
         justify-content: flex-start;
+    }
+
+    .campaign-card__content {
+        height: 100%;
+    }
+
+    .campaign-card__description {
+        font-size: 16px;
+        flex-grow: 1;
     }
 
 }

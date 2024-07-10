@@ -33,7 +33,7 @@ const NavBar: React.FC = () => {
       <ul className={`navMenu ${isActive ? "active" : ""}`}>
         
         <li onClick={removeActive}>
-          <a href="https://" className="navLink">
+          <a href="/campaigns" className="navLink">
             Campanhas
           </a>
         </li>

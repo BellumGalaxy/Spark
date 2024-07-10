@@ -21,7 +21,6 @@ const Homepage: React.FC = () => {
   
   return (
     <div>
-        <NavBar />
         <Hero />
         <BigNumbers />
         <FeaturedCampaigns />
