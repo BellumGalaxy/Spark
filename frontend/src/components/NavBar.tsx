@@ -31,7 +31,11 @@ const NavBar: React.FC = () => {
         <img src={SparkLogo} className="logo" />
       </a>
       <ul className={`navMenu ${isActive ? "active" : ""}`}>
-        
+      <li onClick={removeActive}>
+          <a href="/" className="navLink">
+            Home
+          </a>
+        </li>
         <li onClick={removeActive}>
           <a href="/campaigns" className="navLink">
             Campanhas
