@@ -51,6 +51,7 @@
   text-align: left;
   font-size: 16px;
   color: #555;
+  flex-grow: 1;
 }
 
 .athlete-card__details-button {
@@ -68,7 +69,10 @@
 }
 
 @media (min-width: 1024px) {
-    .athlete-card {
-        width: 50%;
+  .athlete-card {
   }
-  
+
+  .athlete-card__content {
+    height: 100%;
+  }
+}

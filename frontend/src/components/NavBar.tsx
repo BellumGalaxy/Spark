@@ -42,12 +42,12 @@ const NavBar: React.FC = () => {
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="https://" className="navLink">
+          <a href="/athletes" className="navLink">
             Atletas
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="/about" className="navLink">
+          <a href="/sobre" className="navLink">
             Sobre
           </a>
         </li>

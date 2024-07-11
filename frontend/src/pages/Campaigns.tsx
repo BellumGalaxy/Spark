@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import CardCampaign from '../components/CardCampaign';
 import '../styles/Campaigns.css';
@@ -16,6 +16,8 @@ interface Campaign {
 }
 
 const Campaigns: React.FC = () => {
+  const [filter, setFilter] = useState('');
+
   const mockCampaigns: Campaign[] = [
     {
       title: 'Projeto Medalha de Ouro',
@@ -75,17 +77,29 @@ const Campaigns: React.FC = () => {
     }
   ];
 
+  const filteredCampaigns = mockCampaigns.filter((campaign) =>
+    campaign.title.toLowerCase().includes(filter.toLowerCase()) ||
+    campaign.athleteName.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
-    <div>
+    <div className='campaigns-wrap'>
       <NavBar />
       <div className="campaigns">
-      <h2 className='title'>Campanhas</h2>
-      <div className="campaigns-list">
-        {mockCampaigns.map((campaign, index) => (
-          <CardCampaign key={index} campaign={campaign} />
-        ))}
+        <h2 className='title'>Campanhas</h2>
+        <input
+          type="text"
+          placeholder="Filtrar por nome da campanha ou atleta"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="filter-input"
+        />
+        <div className="campaigns-list">
+          {filteredCampaigns.map((campaign, index) => (
+            <CardCampaign key={index} campaign={campaign} />
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   )
 }

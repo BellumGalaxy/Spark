@@ -1,4 +1,4 @@
-.campaigns {
+.athletes-page {
   margin: 1em auto;
   display: flex;
   flex-direction: column;
@@ -8,29 +8,17 @@
   color: #555555;
 }
 
-.campaigns .title {
+.athletes-page .title {
   font-family: "Paris2024", sans-serif;
   color: #555555;
   font-size: 28px;
   margin-bottom: 1em;
 }
 
-.campaigns-list {
+.athletes-list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 2em;
-}
-
-.more-campaigns-button {
-  padding: 0.6em 1em;
-  border: 1px solid #ff7f08;
-  color: #ff7f08;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  text-align: center;
 }
 
 .filter-input {
@@ -44,13 +32,13 @@
 }
 
 @media (min-width: 1024px) {
-  .campaigns-list {
+  .athletes-list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .campaigns-list {
+  .athletes-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
