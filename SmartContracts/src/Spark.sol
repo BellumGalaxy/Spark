@@ -10,6 +10,9 @@ import {SparkVault} from "./SparkVault.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
+import {VRFConsumerBaseV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
+import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
+
 ////////////
 ///Errors///
 ////////////
@@ -18,12 +21,13 @@ error Spark_ReceivedSponsorshipIsNotEnough(uint256 amount, uint256 sparkTokenBal
 error Spark_CallerIsNotTheAthlete(address caller, address athlete);
 error Spark_InvalidCampaing();
 error Spark_CampaingCapReached(uint256 targetAmount, uint256 receivedAmount);
+error Spark_RequestNotFound(uint256 requestId);
 
 ///////////////////////////
 ///Interfaces, Libraries///
 ///////////////////////////
 
-contract Spark {
+contract Spark is VRFConsumerBaseV2Plus {
     ///////////////////////
     ///Type declarations///
     ///////////////////////
@@ -53,12 +57,25 @@ contract Spark {
         bytes reason;
     }
 
+    struct RequestStatus {
+        uint256 randomWords;
+        uint256 selectedNumber;
+        bool fulfilled;
+        bool exists;
+    }
+
     ///////////////
     ///CONSTANTS///
     ///////////////
     ///@notice Magic number removal
     uint256 constant PROTOCOL_FEE = 1000;
     uint256 constant DRAWS_FEE = 1000;
+    ///@notice Chainlink Variables
+    uint256 private constant SUBSCRIPTION_ID = 32641048211472861203069745922496548680493389780543789840765072168299730666388;
+    bytes32 private constant KEY_HASH = 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
+    uint32 private constant CALLBACK_GAS_LIMIT = 100_000;
+    uint32 private constant NUM_WORDS = 2;
+    uint16 private constant REQUEST_CONFIRMATIONS = 3;
 
     ////////////////
     ///IMMUTABLES///
@@ -78,12 +95,15 @@ contract Spark {
     /////////////
     ///STORAGE///
     /////////////
+    address[] private s_luckyBenefactors;
+
     mapping(address giver => uint256 amount) public s_donationsRegister;
     mapping(address athleteAddress => Athlete) public s_athletes;
     mapping(address sponsorAddress => Sponsors) public s_sponsors;
     mapping(uint256 athleteId => address athleteWallet) public s_athleteIdentification;
     mapping(uint256 sponsorId => address sponsorWallet) public s_sponsorIdentification;
     mapping(uint256 athleteId => Campaing) public s_campaings;
+    mapping(uint256 requestId => RequestStatus) public s_requests;
 
     ////////////
     ///Events///
@@ -96,6 +116,9 @@ contract Spark {
     event Spark_AmountRedeemed(uint256 athleteId, uint256 amount);
     event Spark_NewCampaignCreated(uint256 athleteId, string reason, uint256 duration, uint256 amount);
     event Spark_CampaingAdopted(uint256 athleteId, uint256 amount);
+    event Spart_RequestSent(uint256 requestId, uint256 numWords);
+    event Spart_RequestFulfilled(uint256 requestId, uint256 randomWords, uint256 selectedNumber);
+    event Spark_BenefactorRewarded(address winnerAddress, uint256 amountToPay);
 
     ///////////////
     ///Modifiers///
@@ -108,7 +131,7 @@ contract Spark {
     /////////////////
     ///constructor///
     /////////////////
-    constructor(address _usdc){
+    constructor(address _usdc, address _vrfCoordinator) VRFConsumerBaseV2Plus(_vrfCoordinator) { //0x9ddfaca8183c41ad55329bdeed9f6a8d53168b1b
         i_sparkToken = new SparkToken(address(this));
         i_sparkVault = new SparkVault(address(this), _usdc);
         i_USDC = IERC20(i_USDC);
@@ -162,10 +185,12 @@ contract Spark {
 
         athlete.donationsReceived = athlete.donationsReceived + _amount;
         s_donationsRegister[msg.sender] = s_donationsRegister[msg.sender] + _amount;
+        s_luckyBenefactors.push(msg.sender);
+        s_monthlyDrawAmount = s_monthlyDrawAmount + ( _amount / DRAWS_FEE);
 
         emit Spark_SuccessFulDonation(_athleteId, _amount);
 
-        _token.transferFrom(msg.sender, athlete.athleteWallet, _amount);
+        _token.transferFrom(msg.sender, athlete.athleteWallet, (_amount - ( _amount / DRAWS_FEE)));
     }
 
     //IMPROVEMENTS
@@ -253,6 +278,54 @@ contract Spark {
         i_USDC.safeTransferFrom(msg.sender, s_athleteIdentification[_athleteId], _amount);
     }
 
+    //CALLED BY AUTOMATION
+    function requestRandomWords() external returns (uint256 _requestId) {
+        
+        _requestId = s_vrfCoordinator.requestRandomWords(
+            VRFV2PlusClient.RandomWordsRequest({
+                keyHash: KEY_HASH,
+                subId: SUBSCRIPTION_ID,
+                requestConfirmations: REQUEST_CONFIRMATIONS,
+                callbackGasLimit: CALLBACK_GAS_LIMIT,
+                numWords: NUM_WORDS,
+                extraArgs: VRFV2PlusClient._argsToBytes(
+                    VRFV2PlusClient.ExtraArgsV1({
+                        nativePayment: false
+                    })
+                )
+            })
+        );
+
+        s_requests[_requestId] = RequestStatus({
+            randomWords: 0,
+            selectedNumber: 0,
+            fulfilled: false,
+            exists: true
+        });
+
+        emit Spart_RequestSent(_requestId, NUM_WORDS);
+    }
+
+    function fulfillRandomWords(uint256 _requestId, uint256[] calldata _randomWords) internal override {
+        RequestStatus storage request = s_requests[_requestId];
+        if(request.exists == false) revert Spark_RequestNotFound(_requestId);
+
+        request.fulfilled = true;
+        request.randomWords = _randomWords[0];
+        request.selectedNumber = _randomWords[0] % s_luckyBenefactors.length;
+
+        emit Spart_RequestFulfilled(_requestId, _randomWords[0], request.selectedNumber);
+
+        _rewardBenefactors(request.selectedNumber);
+    }
+
+    function getRequestStatus(uint256 _requestId) external view returns (bool fulfilled, uint256 randomWords) {
+        if(s_requests[_requestId].exists == false) revert Spark_RequestNotFound(_requestId);
+
+        RequestStatus memory request = s_requests[_requestId];
+        return (request.fulfilled, request.randomWords);
+    }
+
     ////////////
     ///public///
     ////////////
@@ -264,6 +337,17 @@ contract Spark {
     /////////////
     ///private///
     /////////////
+    function _rewardBenefactors(uint256 selectedNumber) private {
+        address winnerAddress = s_luckyBenefactors[selectedNumber];
+        uint256 amountToPay = s_monthlyDrawAmount;
+
+        s_monthlyDrawAmount = 0;
+        delete s_luckyBenefactors;
+
+        emit Spark_BenefactorRewarded(winnerAddress, amountToPay);
+
+        i_USDC.safeTransfer(winnerAddress, amountToPay);
+    }
 
     /////////////////
     ///view & pure///
