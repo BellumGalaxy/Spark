@@ -67,3 +67,5 @@ yarn-error.log
 Thumbs.db
 ehthumbs.db
 /Spark/Spark/__init__.py
+Spark/**/__init__.py
+/Spark/athletes/migrations/__init__.py
