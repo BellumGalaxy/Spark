@@ -97,8 +97,8 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     ///@notice Chainlink VRF Variables
     uint256 private constant SUBSCRIPTION_ID = 32641048211472861203069745922496548680493389780543789840765072168299730666388;
     bytes32 private constant KEY_HASH = 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
-    uint32 private constant CALLBACK_GAS_LIMIT = 100_000;
-    uint32 private constant NUM_WORDS = 2;
+    uint32 private constant CALLBACK_GAS_LIMIT = 150_000;
+    uint32 private constant NUM_WORDS = 1;
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     ///@notice Chainlink Functions Variables
     uint64 private constant CLF_SUBSCRIPTION_ID = 3221;
