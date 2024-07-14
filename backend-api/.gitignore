@@ -6,6 +6,7 @@ venv
 *.pyd
 __pycache__/
 *.swp
+**/migrations/*
 
 # Django
 *.log
