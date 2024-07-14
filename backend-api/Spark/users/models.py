@@ -10,8 +10,9 @@ class CustomUser(AbstractUser):
         (ATHLETE, 'Atleta'),
         (DONOR, 'Doador'),
         (SPONSOR, 'Patrocinador'),
-    ]
-
+    ]   
+    wallet_id = models.CharField(max_length=255, null=True, blank=True, unique=True)
+    email = models.EmailField()
     bio = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=100, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
@@ -20,8 +21,13 @@ class CustomUser(AbstractUser):
         choices=USER_TYPE_CHOICES,
         default=ATHLETE,
     )
-
-    # Adicionando related_name para evitar conflitos
+    user_valited = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)  
+    street_address = models.CharField(max_length=255, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    state = models.CharField(max_length=100, null=True, blank=True)
+    country = models.CharField(max_length=100, null=True, blank=True)
+    postal_code = models.CharField(max_length=20, null=True, blank=True)
     groups = models.ManyToManyField(
         Group,
         related_name='customuser_set',  # Nome único
