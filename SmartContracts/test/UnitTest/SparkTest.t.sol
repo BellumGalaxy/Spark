@@ -15,11 +15,12 @@ contract SparkTest is Test {
 
     address usdc;
     address coordinator;
+    address clfRouter;
 
     function setUp() public {
         sparkDeploy = new SparkScript();
 
-        spark = sparkDeploy.run(usdc, coordinator);
+        spark = sparkDeploy.run(usdc, coordinator, clfRouter);
     }
 
 }
