@@ -9,9 +9,13 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import os
 
 from pathlib import Path
+from celery.schedules import crontab
+from dotenv import load_dotenv
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,10 +43,10 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APP = [
-
     'events',
     'users',
     'certificates',
+    'transactions',
 ]
 
 THIRD_APPS = [
@@ -137,10 +141,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+CELERY_BEAT_SCHEDULE = {
+    'check-certificates-every-day': {
+        'task': 'transactions.tasks.check_certificates',
+        'schedule': crontab(hour=0, minute=0),  # Executa todos os dias à meia-noite
+    },
+}
+
+
+AUTH_USER_MODEL = 'users.CustomUser'
