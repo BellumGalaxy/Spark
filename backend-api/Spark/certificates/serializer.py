@@ -4,4 +4,5 @@ from .models import Certificate
 class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
-        fields = ['id', 'athlete', 'title', 'issue_date', 'document']
+        fields = '__all__'
+        read_only_fields = ['athlete','id', 'issue_date']
