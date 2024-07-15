@@ -13,10 +13,6 @@ class UserListCreateView(generics.ListCreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
 
-    def perform_create(self, serializer):
-        user = self.request.user # Obtém o usuário autenticado
-        serializer.save(user=user)
-
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
