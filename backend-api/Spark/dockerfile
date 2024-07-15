@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8000
 
 # Define o comando padrão para executar quando o container iniciar
-CMD ["./entrypoint.sh"]
+CMD ["./deploy.sh"]
