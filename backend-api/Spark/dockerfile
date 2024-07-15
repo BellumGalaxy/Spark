@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copia os arquivos requirements.txt para o container
 COPY requirements.txt .
-RUN python3 -m ven venv
+RUN python3 -m venv venv
 # Instala as dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt
 
