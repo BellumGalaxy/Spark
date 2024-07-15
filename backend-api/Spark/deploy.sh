@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Aplica as migrações do Django
+venv/bin/activate
 python manage.py makemigrations
 python manage.py migrate
 
