@@ -18,6 +18,7 @@ services:
       - "8000:8000"
     # depends_on:
     #   - db
+    restart: always
     environment:
       - DATABASE_URL=postgres://myuser:mypassword@db:5432/mydatabase
 
