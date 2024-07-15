@@ -11,7 +11,7 @@ services:
 
   web:
     build: .
-    command: ./entrypoint.sh
+    command: ./deploy.sh
     volumes:
       - .:/app
     ports:
