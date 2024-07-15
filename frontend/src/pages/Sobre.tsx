@@ -3,13 +3,15 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import '../styles/Sobre.css';
 import Bellum from '../components/Bellum';
+import LogoSpark from '../assets/logo-spark.png';
 
 const Sobre: React.FC = () => {
   return (
     <div>
       <NavBar />
       <div className="sobre-page">
-        <h1 className="title">Sobre o Projeto</h1>
+        <img src={LogoSpark} alt="Spark logo" />
+        <h1 className="title">Sobre o Spark</h1>
         <div className="content">
           <section>
             <h2>Visão</h2>

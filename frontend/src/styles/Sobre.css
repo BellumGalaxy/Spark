@@ -10,6 +10,11 @@
   color: #555555;
 }
 
+.sobre-page img {
+  width: 250px;
+  margin-bottom: -4em;
+}
+
 .sobre-page .title {
   font-family: "Paris2024", sans-serif;
   color: #333333;
