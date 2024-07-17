@@ -76,7 +76,7 @@ class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CustomUserSerializer
     lookup_field = 'wallet_id'
 
-    permission_classes = [IsAuthenticated]  # Permissões necessárias
+    # permission_classes = [IsAuthenticated]  # Permissões necessárias
 
     def perform_create(self, serializer):
         user = self.request.user # Obtém o usuário autenticado
