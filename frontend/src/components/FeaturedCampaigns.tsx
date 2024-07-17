@@ -55,7 +55,7 @@ const FeaturedCampaigns: React.FC = () => {
           <CardCampaign key={index} campaign={campaign} />
         ))}
       </div>
-      <a className='more-campaigns-button'>Mais campanhas</a>
+      <a href='/campaigns' className='more-campaigns-button'>Mais campanhas</a>
     </div>
   );
 };

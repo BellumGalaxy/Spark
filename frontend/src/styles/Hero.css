@@ -24,8 +24,18 @@
 }
 
 .hero-wrap img {
-    width    : 100px;
-    /* filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)); */
+    width        : 100px;
+    margin-bottom: -2em;
+    /* filter    : drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)); */
+}
+
+.hero-title {
+    font-family: 'Paris2024', sans-serif;
+    text-align : center;
+    font-size  : 86px;
+    line-height: 1;
+    font-weight: 500;
+    color      : #f17909;
 }
 
 .hero-wrap p {

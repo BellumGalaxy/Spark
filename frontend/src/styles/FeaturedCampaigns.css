@@ -1,40 +1,40 @@
 .featured-campaigns {
-    margin-top     : 1em;
-    display        : flex;
-    flex-direction : column;
-    align-items    : center;
-    justify-content: center;
-    padding        : 1em;
-    color          : #555555;
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  color: #555555;
 }
 
 .featured-campaigns .title {
-    font-family  : 'Paris2024', sans-serif;
-    color        : #555555;
-    font-size    : 28px;
-    margin-bottom: 1em;
+  font-family: "Paris2024", sans-serif;
+  color: #555555;
+  font-size: 28px;
+  margin-bottom: 1em;
 }
 
 .campaigns-list {
-    display              : grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap                  : 2em;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2em;
 }
 
 .more-campaigns-button {
-    padding      : .6em 1em;
-    border       : 1px solid #ff7f08;
-    color        : #ff7f08;
-    border-radius: 4px;
-    cursor       : pointer;
-    font-size    : 14px;
-    font-weight  : 600;
-    transition   : background-color 0.3s ease;
-    text-align   : center;
+  padding: 0.6em 1em;
+  border: 1px solid #ff7f08;
+  color: #ff7f08;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-align: center;
 }
 
 @media (min-width: 1024px) {
-    .campaigns-list {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  .campaigns-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

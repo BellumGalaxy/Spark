@@ -1,0 +1,48 @@
+.athletes-page {
+  margin         : 1em auto;
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  padding        : 1em;
+  color          : #555555;
+}
+
+.athletes-page .title {
+  font-family  : "Paris2024", sans-serif;
+  color        : #555555;
+  font-size    : 28px;
+  margin-bottom: 1em;
+}
+
+.athletes-list {
+  display              : grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap                  : 2em;
+}
+
+.filter-input {
+  padding      : 0.5em;
+  margin-bottom: 2.5em;
+  font-size    : 16px;
+  border       : 1px solid #ccc;
+  border-radius: 4px;
+  width        : 80%;
+  max-width    : 400px;
+}
+
+.filter-input:focus {
+  outline-color: #ff7f087a;
+}
+
+@media (min-width: 1024px) {
+  .athletes-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .athletes-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -43,7 +43,7 @@ const FeaturedAthletes: React.FC = () => {
           <Athlete key={index} athlete={athlete} />
         ))}
       </div>
-      <a className='more-athletes-button'>Mais Atletas</a>
+      <a href='/athletes' className='more-athletes-button'>Mais Atletas</a>
     </div>
   );
 };
