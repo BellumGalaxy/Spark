@@ -1,0 +1,48 @@
+.partners {
+    text-align   : center;
+    padding      : 2em 1em;
+    border-radius: 8px;
+    margin       : 20px 0;
+}
+
+.partners .title {
+    font-family  : 'Paris2024', sans-serif;
+    font-size    : 28px;
+    margin-bottom: 20px;
+    color        : #333;
+}
+
+.partners__list {
+    display        : flex;
+    flex-wrap      : wrap;
+    gap            : 20px;
+    justify-content: center;
+}
+
+.partner-card {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    border-radius  : 8px;
+    padding        : 10px;
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+}
+
+.partner-card__logo {
+    width : 150px;
+    height: auto;
+}
+
+/* Media Query for Desktops */
+@media (min-width: 1024px) {
+    .partners h2 {
+        font-size: 32px;
+    }
+
+    .partners__list {
+        justify-content: space-around;
+    }
+}

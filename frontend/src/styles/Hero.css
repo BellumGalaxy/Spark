@@ -1,0 +1,83 @@
+.hero-wrap {
+    display            : flex;
+    flex-direction     : column;
+    align-items        : center;
+    justify-content    : flex-start;
+    height             : 100vh;
+    background-image   : url('../assets/background-abstract.png');
+    background-size    : cover;
+    background-position: center;
+    background-repeat  : no-repeat;
+    width              : 100%;
+}
+
+.hero-wrap .hero-content-wrap {
+    padding-top    : 10rem;
+    padding-left   : 2rem;
+    padding-right  : 2rem;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: flex-start;
+    gap            : 1em;
+    max-width      : 35rem;
+}
+
+.hero-wrap img {
+    width        : 100px;
+    margin-bottom: -2em;
+    /* filter    : drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)); */
+}
+
+.hero-title {
+    font-family: 'Paris2024', sans-serif;
+    text-align : center;
+    font-size  : 86px;
+    line-height: 1;
+    font-weight: 500;
+    color      : #f17909;
+}
+
+.hero-wrap p {
+    text-align    : center;
+    font-size     : 18px;
+    line-height   : 1.4;
+    font-weight   : 500;
+    color         : #2c2c2c;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+}
+
+.hero-wrap h1 {
+    font-family   : 'Paris2024', sans-serif;
+    text-align    : center;
+    font-size     : 36px;
+    line-height   : 1;
+    font-weight   : 500;
+    color         : #2c2c2c;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+}
+
+.hero-wrap button {
+    cursor        : pointer;
+    padding       : 1.2em 2.2em;
+    background    : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow    : 4px 4px 38px -10px #00000069;
+    color         : white;
+    border        : none;
+    border-radius : .75rem;
+    font-size     : 14px;
+    font-weight   : 800;
+    transition    : .2s;
+    text-transform: uppercase;
+}
+
+.hero-wrap button:hover {
+    background: linear-gradient(200deg, #f17909 20%, #eea507 70%);
+    box-shadow: 4px 4px 38px -10px #00000069;
+}
+
+@media (min-width: 1024px) {
+    .hero-wrap .hero-content-wrap {
+        max-width: 55rem;
+    }
+}

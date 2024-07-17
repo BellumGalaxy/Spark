@@ -1,0 +1,48 @@
+/* src/styles/Sobre.css */
+
+.sobre-page {
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  color: #555555;
+}
+
+.sobre-page img {
+  width: 250px;
+  margin-bottom: -4em;
+}
+
+.sobre-page .title {
+  font-family: "Paris2024", sans-serif;
+  color: #333333;
+  font-size: 32px;
+  margin-bottom: 1.5em;
+}
+
+.sobre-page .content {
+  text-align: center;
+  align-items: center;
+  max-width: 80%;
+  width: 100%;
+}
+
+.sobre-page section {
+  margin-bottom: 1.5em;
+}
+
+.sobre-page h2 {
+  font-size: 24px;
+  background: linear-gradient(to right, #ff7f08 0%, #f8ae0e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5em;
+}
+
+.sobre-page p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #777777;
+}
