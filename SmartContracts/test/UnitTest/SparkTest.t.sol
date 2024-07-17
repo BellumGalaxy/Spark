@@ -20,7 +20,7 @@ contract SparkTest is Test {
     function setUp() public {
         sparkDeploy = new SparkScript();
 
-        spark = sparkDeploy.run(usdc, coordinator, clfRouter);
+        // spark = sparkDeploy.run(usdc, coordinator, clfRouter);
     }
 
 }

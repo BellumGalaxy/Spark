@@ -26,6 +26,8 @@ error Spark_BenefactorAlreadyRegistered(address benefactorAddress);
 error Spark_InsuficientBalanceToWithdraw(uint256 amount, uint256 amountReceived, uint256 amountValidated);
 error Spark_ReceivedSponsorshipIsNotEnough(uint256 amount, uint256 sparkTokenBalance);
 error Spark_CallerIsNotTheAthlete(address caller, address athlete);
+error Spark_VerifyYourProfileFirst(bool isValidated);
+error Spark_AthleteNotValidated(bool isValidated);
 error Spark_InvalidCampaing();
 error Spark_CampaingCapReached(uint256 targetAmount, uint256 receivedAmount);
 error Spark_RequestNotFound(uint256 requestId);
@@ -104,7 +106,18 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     uint64 private constant CLF_SUBSCRIPTION_ID = 3221;
     uint32 private constant GAS_LIMIT = 300_000;
     bytes32 private constant DON_ID = 0x66756e2d657468657265756d2d7365706f6c69612d3100000000000000000000;
-    string private constant JS_CODE = "";
+    string private constant JS_CODE = 
+        "const userAddress = args[0];"
+        "const response = await Functions.makeHttpRequest({"
+        "url: `http://142.93.189.23:8000/swagger/${userAddress}`,"
+        "method: 'GET',"
+        "});"
+        "if (response.error) {"
+        "  throw Error(`Request failed message ${response.message}`);"
+        "}"
+        "const { data } = response;"
+        "return Functions.encodeUint256(data.isValidated);"
+    ;
 
     ////////////////
     ///IMMUTABLES///
@@ -208,9 +221,8 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
         emit Spark_AthleteRegistered(_athleteId);
 
-        bytes[] memory args = new bytes[](2);
-        args[0] = abi.encodePacked(_athleteId);
-        args[1] = abi.encodePacked(_walletToReceiveDonation);
+        bytes[] memory args = new bytes[](1);
+        args[0] = abi.encodePacked(_walletToReceiveDonation);
 
         _requestId = _sendRequest(args, _walletToReceiveDonation);
     }
@@ -229,8 +241,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
         emit Spark_SponsorRegistered(msg.sender);
 
-        bytes[] memory args = new bytes[](2);
-        args[0] = abi.encodePacked(_sponsorId);
+        bytes[] memory args = new bytes[](1);
         args[1] = abi.encodePacked(_sponsorWallet);
 
         _requestId = _sendRequest(args, _sponsorWallet);
@@ -238,6 +249,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
     function createCampaign(uint256 _athleteId, uint256 _amount, uint256 _duration, string memory _reason) external {
         if (s_athleteIdentification[_athleteId] != msg.sender) revert Spark_CallerIsNotTheAthlete(msg.sender, s_athleteIdentification[_athleteId]);
+        if (s_athletes[msg.sender].isValidated == false) revert Spark_VerifyYourProfileFirst(s_athletes[msg.sender].isValidated);
 
         s_campaings[_athleteId] = Campaing ({
             targetAmount: _amount,
@@ -272,6 +284,8 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     function donate(uint256 _athleteId, IERC20 _token, uint256 _amount) external {
         address athleteAddress = s_athleteIdentification[_athleteId];
         Athlete storage athlete = s_athletes[athleteAddress];
+        if (athlete.isValidated == false) revert Spark_AthleteNotValidated(s_athletes[msg.sender].isValidated);
+        if (s_benefactors[msg.sender].isValidated == false) revert Spark_VerifyYourProfileFirst(s_benefactors[msg.sender].isValidated);
 
         athlete.donationsReceived = athlete.donationsReceived + _amount;
         s_donationsRegister[msg.sender] = s_donationsRegister[msg.sender] + _amount;
@@ -318,6 +332,8 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         address athleteAddress = s_athleteIdentification[_athleteId];
         Athlete storage athlete = s_athletes[athleteAddress];
         Sponsors storage sponsors = s_sponsors[msg.sender];
+        if (athlete.isValidated == false) revert Spark_AthleteNotValidated(s_athletes[msg.sender].isValidated);
+        if (s_sponsors[msg.sender].isValidated == false) revert Spark_VerifyYourProfileFirst(s_sponsors[msg.sender].isValidated);
 
         athlete.sponsorsAmount = athlete.sponsorsAmount + _shares;
         sponsors.amountSponsored = sponsors.amountSponsored + _shares;
