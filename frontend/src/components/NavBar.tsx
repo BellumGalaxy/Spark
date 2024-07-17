@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../styles/NavBar.css";
 import SparkLogo from '../assets/logo-spark.png';
-import { ConnectButton } from "thirdweb/react";
-import { client } from "../utils/client";
+// import { ConnectButton } from "thirdweb/react";
+// import { client } from "../utils/client";
 import { inAppWallet } from "thirdweb/wallets";
 
 const NavBar: React.FC = () => {
@@ -38,7 +38,7 @@ const NavBar: React.FC = () => {
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="https://" className="navLink">
+          <a href='https://' className="navLink">
             Atletas
           </a>
         </li>
@@ -48,13 +48,13 @@ const NavBar: React.FC = () => {
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="https://" className="navLink">
+          <a href='/conta' className="navLink">
             Conta
           </a>
         </li>
         
         <li onClick={removeActive}>
-            <ConnectButton
+           {/* <ConnectButton
                 connectButton={{
                     label: "Connect",
                     className: "btn-connect",
@@ -79,9 +79,12 @@ const NavBar: React.FC = () => {
                     welcomeScreen: { title: "Bem-vindo Spark" },
                     size: "compact",
                     showThirdwebBranding: false
+                  
                 }}
+                 
             />
-        </li>
+            */} 
+        </li> 
       </ul>
       <div
         className={`hamburger ${isActive ? "active" : ""}`}
