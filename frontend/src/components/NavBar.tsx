@@ -1,18 +1,19 @@
 import { useState } from "react";
 import "../styles/NavBar.css";
-import SparkLogo from '../assets/logo-spark.png';
+import SparkLogo from "../assets/logo-spark.png";
 import { ConnectButton } from "thirdweb/react";
 import { client } from "../utils/client";
 import { inAppWallet } from "thirdweb/wallets";
+import { sepolia } from "thirdweb/chains";
 
 const NavBar: React.FC = () => {
-    const wallets = [
-        inAppWallet({
-          auth: {
-            options: ["google", "email"],
-          },
-        }),
-    ];
+  const wallets = [
+    inAppWallet({
+      auth: {
+        options: ["google", "email"],
+      },
+    }),
+  ];
 
   // adding the states
   const [isActive, setIsActive] = useState(false);
@@ -28,10 +29,10 @@ const NavBar: React.FC = () => {
     <nav className="navbar">
       {/* logo */}
       <a href="/" className="logo-wrap">
-        <img src={SparkLogo} className="logo" />
+        Spark
       </a>
       <ul className={`navMenu ${isActive ? "active" : ""}`}>
-      <li onClick={removeActive}>
+        <li onClick={removeActive}>
           <a href="/" className="navLink">
             Home
           </a>
@@ -56,35 +57,37 @@ const NavBar: React.FC = () => {
             Conta
           </a>
         </li>
-        
+
         <li onClick={removeActive}>
-            <ConnectButton
-                connectButton={{
-                    label: "Connect",
-                    className: "btn-connect",
-                    style: {
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        alignContent: "center",
-                        color:"#fff",
-                        background: "linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%)",
-                        borderRadius: "8px",
-                        boxShadow: "4px 4px 28px -15px #000000d9",
-                        lineHeight: "1",
-                    },
-                }} 
-                client={client}
-                wallets={wallets}
-                theme={"dark"}
-                connectModal={{
-                    title: "Connect to Spark",
-                    welcomeScreen: { title: "Bem-vindo Spark" },
-                    size: "compact",
-                    showThirdwebBranding: false
-                }}
-            />
+          <ConnectButton
+            connectButton={{
+              label: "Connect",
+              className: "btn-connect",
+              style: {
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                alignContent: "center",
+                color: "#fff",
+                background:
+                  "linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%)",
+                borderRadius: "8px",
+                boxShadow: "4px 4px 28px -15px #000000d9",
+                lineHeight: "1",
+              },
+            }}
+            chain={sepolia}
+            client={client}
+            wallets={wallets}
+            theme={"dark"}
+            connectModal={{
+              title: "Connect to Spark",
+              welcomeScreen: { title: "Bem-vindo Spark" },
+              size: "compact",
+              showThirdwebBranding: false,
+            }}
+          />
         </li>
       </ul>
       <div
@@ -97,6 +100,6 @@ const NavBar: React.FC = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default NavBar;

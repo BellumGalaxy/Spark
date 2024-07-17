@@ -1,46 +1,50 @@
 .campaigns {
-  margin: 1em auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin         : 1em auto;
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
   justify-content: center;
-  padding: 1em;
-  color: #555555;
+  padding        : 1em;
+  color          : #555555;
 }
 
 .campaigns .title {
-  font-family: "Paris2024", sans-serif;
-  color: #555555;
-  font-size: 28px;
+  font-family  : "Paris2024", sans-serif;
+  color        : #555555;
+  font-size    : 28px;
   margin-bottom: 1em;
 }
 
 .campaigns-list {
-  display: grid;
+  display              : grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 2em;
+  gap                  : 2em;
 }
 
 .more-campaigns-button {
-  padding: 0.6em 1em;
-  border: 1px solid #ff7f08;
-  color: #ff7f08;
+  padding      : 0.6em 1em;
+  border       : 1px solid #ff7f08;
+  color        : #ff7f08;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  text-align: center;
+  cursor       : pointer;
+  font-size    : 14px;
+  font-weight  : 600;
+  transition   : background-color 0.3s ease;
+  text-align   : center;
 }
 
 .filter-input {
-  padding: 0.5em;
-  margin-bottom: 2em;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  padding      : 1em;
+  margin-bottom: 2.5em;
+  font-size    : 16px;
+  border       : 1px solid #ccc;
   border-radius: 4px;
-  width: 80%;
-  max-width: 400px;
+  width        : 80%;
+  max-width    : 400px;
+}
+
+.filter-input:focus {
+  outline-color: #ff7f087a;
 }
 
 @media (min-width: 1024px) {
