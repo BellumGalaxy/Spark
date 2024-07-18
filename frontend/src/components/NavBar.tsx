@@ -53,12 +53,12 @@ const NavBar: React.FC = () => {
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="/user" className="navLink">
+          <a href="/conta" className="navLink">
             Conta
           </a>
         </li>
 
-        <li onClick={removeActive}>
+        {/* <li onClick={removeActive}>
           <ConnectButton
             connectButton={{
               label: "Connect",
@@ -88,7 +88,7 @@ const NavBar: React.FC = () => {
               showThirdwebBranding: false,
             }}
           />
-        </li>
+        </li> */}
       </ul>
       <div
         className={`hamburger ${isActive ? "active" : ""}`}

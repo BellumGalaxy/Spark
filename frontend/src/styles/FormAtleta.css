@@ -3,10 +3,14 @@
     flex-direction: column;
     margin-top: 20px;
     height: 90vh;
+    padding: 10px 35px;
 }
 
 .contentForm_Atleta label {
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 1px;
+    color: #000000;
 }
 
 .contentForm_Atleta input {

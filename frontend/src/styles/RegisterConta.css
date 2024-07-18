@@ -6,14 +6,14 @@
 .backRegister {
   display: flex;
   flex-direction: column;
-  background: url(../assets/background-abstract.png) center center / cover;
+  background: url(../assets/background-abstract.png);
   min-height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
 .contentRegister {
-  background-color: #f0f0f0;;
+  background-color: #f1f1f1;;
     width: 85%;
     height: 90vh;
     display: flex;
@@ -31,12 +31,12 @@
   margin-top: 55px;
   box-shadow: 4px 4px 38px -10px #00000069;
   border-radius: 10px;
-  height: 90vh;
-  width: 50%;
+  height: 88vh;
+  width: 65%;
   text-align: center;
   justify-content: center;
   font-size: 25px;
-  padding: 20px;
+  padding: 50px;
 }
 
 .titleTop_register h1 {
@@ -55,7 +55,8 @@
 .tabs {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 45px;
+  padding: 0px 60px;
 }
 
 .tab {
@@ -82,7 +83,7 @@
   }
   
   .contentTabs {
-    margin-top: 20px;
+    margin-top: 60px;
     width: 50%;
     padding: 20px;
   }
