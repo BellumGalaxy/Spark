@@ -18,7 +18,6 @@ import RafaelCostaProfile from "../assets/rafael-costa.jpg";
 import CamilaRochaProfile from "../assets/camila-rocha.jpg";
 import GustavoLimaProfile from "../assets/gustavo-lima.jpg";
 import BeatrizSouzaProfile from "../assets/beatriz-souza.jpg";
-import Owner from "../components/Owner";
 
 const Athletes: React.FC = () => {
   const [filter, setFilter] = useState("");
@@ -134,8 +133,6 @@ const Athletes: React.FC = () => {
           ))}
         </div>
       </div>
-
-      <Owner />
     </div>
   );
 };
