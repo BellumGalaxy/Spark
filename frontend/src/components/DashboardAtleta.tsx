@@ -33,10 +33,19 @@ const DashboardAtleta: React.FC = () => {
                         </div>
                         <div className="conversaoSpark">
                         <label><img src={SparkLogo}/></label>
-                        <input type="number" placeholder="Insira a quantidade"/>
-                        </div> 
+                        <input type="number" placeholder="Insira a quantidade"/>     
+                        </div>  
                         </div>
                         <button>Converter</button>
+                    </div>
+
+                    <div className="criarCampanha">
+                        <h1>Crie uma Campanha</h1>
+                        <input type="text" placeholder="Nome da Campanha"/>
+                        <input type="number" placeholder="Meta de Arrecadação"/>
+                        <label>Duração da Campanha</label>
+                        <input type="date" placeholder="Duração da campanha"/>
+                        <button>Criar Campanha</button>
                     </div>
                 </div>
                 <div className="campanhaAtleta">
@@ -47,6 +56,7 @@ const DashboardAtleta: React.FC = () => {
                         <th>Data de Início</th>
                         <th>Data de Término</th>
                         <th>Meta de Arrecadação</th>
+                        <th>Valor Arrecadado</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -55,6 +65,7 @@ const DashboardAtleta: React.FC = () => {
                             <td>20/06/2024</td>
                             <td>26/07/2024</td>
                             <td>150.000,00</td>
+                            <td>47.500,00</td>
                         </tr>
                         <tr>
                             <td>2025</td>
@@ -62,6 +73,7 @@ const DashboardAtleta: React.FC = () => {
                             <td>25/02/2024</td>
                             <td>30/02/2024</td>
                             <td>20.000,00</td>
+                            <td>2.300,00</td>
                         </tr>
                         <tr>
                             <td>208</td>
@@ -69,6 +81,7 @@ const DashboardAtleta: React.FC = () => {
                             <td>01/12/2024</td>
                             <td>15/12/2024</td>
                             <td>15.000,00</td>
+                            <td>14.900,00</td>
                         </tr>
                         <tr >
                             <td>945</td>
@@ -76,6 +89,7 @@ const DashboardAtleta: React.FC = () => {
                             <td>01/01/2025</td>
                             <td>10/01/2025</td>
                             <td>40.000,00</td>
+                            <td>22.000,00</td>
                         </tr>
                     </tbody>  
                     </table>             

@@ -9,7 +9,7 @@
     background: url('../assets/background-abstract.png');
     align-items: center;
     justify-content: center;
-    min-height: 180vh;
+    min-height: 120vh;
 }
 
 .cardDashboardAtleta {
@@ -18,7 +18,7 @@
     border-radius: 10px;
     background: #f0f0f0;
     width: 90%;
-    height: 170vh;
+    height: 115vh;
     box-shadow: 4px 4px 38px -10px #00000069;
 
 }
@@ -168,52 +168,6 @@
     cursor: pointer;
 }
 
-.criarCampanha {
-    display: flex;
-    flex-direction: column;
-    width: 98%;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    box-shadow: 4px 4px 38px -10px #00000069;
-    margin: 15px;
-    border-radius: 10px;
-}
-
-.criarCampanha h1 {
-    font-size: 35px;
-    font-weight: 900;
-    color: #f17909;
-    margin-bottom: 10px;
-}
-
-.criarCampanha input {
-    width: 20%;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: none;
-    box-shadow: 4px 4px 38px -10px #00000069;
-}
-
-.criarCampanha label {
-    font-size: 12px;
-    margin-bottom: 2px;
-}
-
-.criarCampanha button {
-    color: #ffffff;
-    padding: 10px;
-    width: 20%;
-    border: none;
-    border-radius: 5px;
-    font-weight: 800;
-    transition: .2s;
-    background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-    box-shadow: 4px 4px 38px -10px #00000069;
-    cursor: pointer;
-}
-
 .campanhaAtleta {
     height: 40%;
     margin: 20px;
@@ -250,7 +204,7 @@
 @media screen and (max-width: 780px) {
    
     .cardDashboardAtleta {
-        height: 170vh;
+        height: 105vh;
         
     }
 
@@ -314,26 +268,6 @@
         font-size: 12px;
         width: 70%;
     }
-
-    .criarCampanha {
-        margin: 10px;
-        width: 94%;
-    }
-
-    .criarCampanha h1 {
-        font-size: 15px;
-    }
-
-    .criarCampanha input {
-        width: 90%;
-        margin-bottom: 8px;
-    }
-
-    .criarCampanha label {
-        font-size: 12px;
-        margin-bottom: 1px;
-    }
-    
 
     .campanhaAtleta {
        margin: 0px 0px 10px 10px;

@@ -8,7 +8,7 @@ import DashboardAtleta from './components/DashboardAtleta';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sobre from './pages/Sobre';
 import DashboardPatrocinador from './components/DashboardPatrocinador';
-import DashboardDoador from './components/DashboardDoard';
+import DashboardDoador from './components/DashboardDoador';
 
 
 function App() {

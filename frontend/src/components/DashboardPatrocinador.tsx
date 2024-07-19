@@ -1,6 +1,7 @@
 import React from "react";
 import SparkLogo from "../assets/logo-spark.png";
 import UsdcLogo from "../assets/usdc-logo.png";
+import "../styles/DashboardPatrocinador.css";
 
 const DashboardPatrocinador: React.FC = () => {
 
