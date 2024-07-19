@@ -23,15 +23,15 @@ import {FunctionsRequest} from "@chainlink/contracts/src/v0.8/functions/v1_0_0/l
 ///Errors///
 ////////////
 error Spark_BenefactorAlreadyRegistered(address benefactorAddress);
+error Spark_AthleteAlreadyRegistered(address athleteAddress);
+error Spark_SponsorAlreadyRegistered(address sponsorAddress);
 error Spark_InsuficientBalanceToWithdraw(uint256 amount, uint256 amountReceived, uint256 amountValidated);
 error Spark_ReceivedSponsorshipIsNotEnough(uint256 amount, uint256 sparkTokenBalance);
-error Spark_CallerIsNotTheAthlete(address caller, address athlete);
 error Spark_VerifyYourProfileFirst(bool isValidated);
 error Spark_AthleteNotValidated(bool isValidated);
 error Spark_InvalidCampaing();
 error Spark_CampaingCapReached(uint256 targetAmount, uint256 receivedAmount);
 error Spark_RequestNotFound(uint256 requestId);
-error Spark_UnexpectedRequestID(bytes32 requestId);
 
 ///////////////////////////
 ///Interfaces, Libraries///
@@ -49,6 +49,12 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     ///////////////////////
     using SafeERC20 for IERC20;
     using FunctionsRequest for FunctionsRequest.Request;
+
+    enum UserType {
+        Athlete,
+        Benefactor,
+        Sponsor
+    }
 
     struct Benefactor{
         uint256 dateOfRegister;
@@ -90,12 +96,18 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         bool exists;
     }
 
+    struct CLFRequest {
+        address user;
+        UserType userType;
+    }
+
     ///////////////
     ///CONSTANTS///
     ///////////////
     ///@notice Magic number removal
     uint256 constant PROTOCOL_FEE = 1000;
     uint256 constant DRAWS_FEE = 1000;
+    uint256 constant ALLOWED = 1;
     ///@notice Chainlink VRF Variables
     uint256 private constant SUBSCRIPTION_ID = 32641048211472861203069745922496548680493389780543789840765072168299730666388;
     bytes32 private constant KEY_HASH = 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
@@ -109,7 +121,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     string private constant JS_CODE = 
         "const userAddress = args[0];"
         "const response = await Functions.makeHttpRequest({"
-        "url: `http://142.93.189.23:8000/swagger/${userAddress}`,"
+        "url: `http://142.93.189.23:8000/api/users/user/${userAddress}>/`,"
         "method: 'GET',"
         "});"
         "if (response.error) {"
@@ -147,14 +159,14 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     mapping(uint256 sponsorId => address sponsorWallet) public s_sponsorIdentification;
     mapping(uint256 athleteId => Campaing) public s_campaings;
     mapping(uint256 requestId => RequestStatus) public s_requests;
-    mapping(bytes32 requestId => address user) public s_clfRequest;
+    mapping(bytes32 requestId => CLFRequest) public s_clfRequest;
 
     ////////////
     ///Events///
     ////////////
     event Spark_BenefactorRegistered(address benefactorAddress);
     event Spark_AthleteRegistered(uint256 athleteId);
-    event Spark_SponsorRegistered(address sponsor);
+    event Spark_SponsorRegistered(uint256 sponsorId);
     event Spark_SuccessFulDonation(uint256 athleteId, uint256 amount);
     event Spark_SponsorAthlete(uint256 athleteId, uint256 shares);
     event Spark_SparksObtained(uint256 amount);
@@ -165,6 +177,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     event Spart_RequestFulfilled(uint256 requestId, uint256 randomWords, uint256 selectedNumber);
     event Spark_BenefactorRewarded(address winnerAddress, uint256 amountToPay);
     event Spark_Response(bytes32 requestId, bytes response, bytes err);
+    event Spark_RequestFailed(bytes32 requestId);
 
     ///////////////
     ///Modifiers///
@@ -201,13 +214,19 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         bytes[] memory args = new bytes[](1);
         args[0] = abi.encodePacked(msg.sender);
 
-        _requestId = _sendRequest(args, msg.sender);
+        _requestId = _sendRequest(args);
+        s_clfRequest[_requestId] = CLFRequest({
+            user: msg.sender,
+            userType: UserType.Benefactor
+        });
     }
 
-    function athleteRegister(address _walletToReceiveDonation) external returns(uint256 _athleteId, bytes32 _requestId){
+    function athleteRegister() external returns(uint256 _athleteId, bytes32 _requestId){
+        if(s_athletes[msg.sender].dateOfRegister != 0) revert Spark_AthleteAlreadyRegistered(msg.sender);
+        
         _athleteId = ++s_athleteId;
 
-        s_athleteIdentification[_athleteId] = _walletToReceiveDonation;
+        s_athleteIdentification[_athleteId] = msg.sender;
         s_athletes[msg.sender] = Athlete({
             dateOfRegister: block.timestamp,
             donationsReceived: 0,
@@ -215,40 +234,48 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
             validatedAmount: 0,
             amountSpent: 0,
             sparkFactor: 1,
-            athleteWallet: _walletToReceiveDonation,
+            athleteWallet: msg.sender,
             isValidated: false
         });
 
         emit Spark_AthleteRegistered(_athleteId);
 
         bytes[] memory args = new bytes[](1);
-        args[0] = abi.encodePacked(_walletToReceiveDonation);
+        args[0] = abi.encodePacked(msg.sender);
 
-        _requestId = _sendRequest(args, _walletToReceiveDonation);
+        _requestId = _sendRequest(args);
+        s_clfRequest[_requestId] = CLFRequest({
+            user: msg.sender,
+            userType: UserType.Athlete
+        });
     }
 
-    function sponsorRegister(address _sponsorWallet) external returns(uint256 _sponsorId, bytes32 _requestId){
+    function sponsorRegister() external returns(uint256 _sponsorId, bytes32 _requestId){
+        if(s_sponsors[msg.sender].dateOfRegister != 0) revert Spark_SponsorAlreadyRegistered(msg.sender);
         _sponsorId = ++s_sponsorId;
 
-        s_sponsorIdentification[_sponsorId] = _sponsorWallet;        
+        s_sponsorIdentification[_sponsorId] = msg.sender;        
         s_sponsors[msg.sender] = Sponsors({
             dateOfRegister: block.timestamp,
             amountSponsored: 0,
             sparkFactor: 1,
-            sponsorWallet: _sponsorWallet,
+            sponsorWallet: msg.sender,
             isValidated: false
         });
 
-        emit Spark_SponsorRegistered(msg.sender);
+        emit Spark_SponsorRegistered(s_sponsorId);
 
         bytes[] memory args = new bytes[](1);
-        args[1] = abi.encodePacked(_sponsorWallet);
+        args[0] = abi.encodePacked(msg.sender);
 
-        _requestId = _sendRequest(args, _sponsorWallet);
+        _requestId = _sendRequest(args);
+        s_clfRequest[_requestId] = CLFRequest({
+            user: msg.sender,
+            userType: UserType.Sponsor
+        });
     }
 
     function createCampaign(uint256 _athleteId, uint256 _amount, uint256 _duration, string memory _reason) external {
-        if (s_athleteIdentification[_athleteId] != msg.sender) revert Spark_CallerIsNotTheAthlete(msg.sender, s_athleteIdentification[_athleteId]);
         if (s_athletes[msg.sender].isValidated == false) revert Spark_VerifyYourProfileFirst(s_athletes[msg.sender].isValidated);
 
         s_campaings[_athleteId] = Campaing ({
@@ -391,7 +418,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
      * @notice Send a simple request
      * @param _bytesArgs Array of bytes arguments, represented as hex strings
     */
-    function _sendRequest(bytes[] memory _bytesArgs, address _user) internal returns (bytes32 _requestId) {
+    function _sendRequest(bytes[] memory _bytesArgs) internal returns (bytes32 _requestId) {
         FunctionsRequest.Request memory req;
         req.initializeRequestForInlineJavaScript(JS_CODE);
         if (_bytesArgs.length > 0) req.setBytesArgs(_bytesArgs);
@@ -402,8 +429,6 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
             GAS_LIMIT,
             DON_ID
         );
-
-        s_clfRequest[_requestId] =  _user;
     }
 
     /**
@@ -414,7 +439,23 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
      * Either response or error parameter will be set, but never both
      */
     function fulfillRequest(bytes32 _requestId, bytes memory _response, bytes memory _err) internal override {
-        if (s_clfRequest[_requestId] == address(0))  revert Spark_UnexpectedRequestID(_requestId);
+        if (_err.length > ALLOWED){
+            emit Spark_RequestFailed(_requestId);
+        }
+        
+        bool isValidated = abi.decode(_response, (bool));
+
+        if(isValidated == true){
+            CLFRequest memory request = s_clfRequest[_requestId];
+
+            if(request.userType == UserType.Athlete){
+                s_athletes[request.user].isValidated = true;
+            } else if (request.userType == UserType.Benefactor){
+                s_benefactors[request.user].isValidated = true;
+            } else if (request.userType == UserType.Sponsor){
+                s_sponsors[request.user].isValidated = true;
+            }
+        }
 
         emit Spark_Response(_requestId, _response, _err);
     }
@@ -457,6 +498,10 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     /////////////////
     ///view & pure///
     /////////////////
+    function getBenefactorInfo(address _benefactorAddress) external view returns(Benefactor memory _benefactor){
+       _benefactor = s_benefactors[_benefactorAddress];
+    }
+
     function getAthleteInfos(uint256 _athleteId) external view returns(Athlete memory athlete){
         address athleteAddress = s_athleteIdentification[_athleteId];
 
@@ -468,10 +513,20 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         sponsors = s_sponsors[sponsorAddress];
     }
 
+    function getCampaignInfos(uint256 _athleteId) external view returns(Campaing memory campaing){
+        campaing = s_campaings[_athleteId];
+    }
+
+
     function getRequestStatus(uint256 _requestId) external view returns (bool fulfilled, uint256 randomWords) {
         if(s_requests[_requestId].exists == false) revert Spark_RequestNotFound(_requestId);
 
         RequestStatus memory request = s_requests[_requestId];
         return (request.fulfilled, request.randomWords);
+    }
+
+    ////////// Delete After Testing ////////////
+    function manuallyFulfillRequest(bytes32 _requestId, bytes memory _response, bytes memory _err) external {
+        fulfillRequest(_requestId, _response, _err);
     }
 }
