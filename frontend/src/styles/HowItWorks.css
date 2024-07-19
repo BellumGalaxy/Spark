@@ -67,5 +67,6 @@
 
     .how-it-works-wrap p {
         flex-direction: column;
+        font-size     : 28px;
     }
 }
