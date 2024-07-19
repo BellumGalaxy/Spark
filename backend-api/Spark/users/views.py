@@ -69,7 +69,7 @@ class ValidateUserSignatureView(generics.CreateAPIView):
         }
 
         response = requests.request("POST", url, json=payload, headers=headers)
-        return response.status_code != 200
+        return response.status_code == 200
     
 class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()
