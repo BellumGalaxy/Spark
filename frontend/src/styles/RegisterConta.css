@@ -6,7 +6,7 @@
 .backRegister {
   display        : flex;
   flex-direction : column;
-  background     : url(../assets/background-abstract.png) center center / cover;
+  background     : url(../assets/background-abstract.png);
   min-height     : 100vh;
   align-items    : center;
   justify-content: center;
