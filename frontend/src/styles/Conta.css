@@ -23,6 +23,7 @@
 .titleConta {
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -36,8 +37,8 @@
 
 .textInput_conta {
     padding: 13px;
-    margin: 5px 5px;
-    width: 90%;
+    margin: 5px 0px;
+    width: 100%;
     border: none;
     font-size: 12px;
     border-radius: 5px;
@@ -45,8 +46,8 @@
 
 .passwordInput_conta {
     padding: 13px;
-    margin: 5px 5px;
-    width: 90%;
+    margin: 5px 0px;
+    width: 100%;
     border: none;
     font-size: 12px;
     border-radius: 5px;

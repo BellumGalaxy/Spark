@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.backDashboard_Atleta {
+    display: flex;
+    flex-direction: column;
+    background: url('../assets/background-abstract.png');
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.cardDashboardAtleta {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background: #f0f0f0;
+    width: 90%;
+    height: 90vh;
+    box-shadow: 4px 4px 38px -10px #00000069;
+
+}
+
+.titleDash {
+    height: 190px;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: start;
+    box-shadow: 4px 4px 38px -10px #00000069;
+    padding: 20px 50px;
+}
+
+.titleDash h1 {
+    font-weight: 900;
+    color: #f17909;
+    font-size: 60px;
+}
+
+.titleDash p { 
+    font-size: 25px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
+.dadosAtleta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    height: 30%;
+}
+
+.dadosAtleta .saldoAtleta {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 38px -10px #00000069;
+    width: 70%;
+}
+
+.saldoAtleta h1 {
+    font-size: 35px;
+    font-weight: 900;
+    color: #f17909;
+    margin-left: 20px;
+}
+
+.saldoAtleta .saldoAtletaSpark {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.saldoAtleta .saldoAtletaSpark img {
+    width: 130px;
+    height: 130px;
+    padding-top: 0px;
+}
+
+.saldoAtleta .saldoAtletaSpark p {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.dadosAtleta .conversao {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 20px;
+    align-items: start;
+    justify-content: start;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 38px -10px #00000069;
+}
+
+.conversao {
+    margin-left: 20px;
+}
+
+.conversao h1 {
+    font-size: 35px;
+    font-weight: 900;
+    color: #f17909;
+    margin-bottom: 10px;
+
+}
+
+.conversao input {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.conversao .conversaoInput {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-left: 50px;
+    width: 100%;
+}
+
+.conversaoUsdc {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.conversaoUsdc img {
+    width: 35px;
+    height: 35px;
+    margin: 0px 15px 0px 20px
+}
+
+.conversaoSpark {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.conversaoSpark img {
+    width: 70px;
+    height: 70px;
+}
+
+.conversao button {
+    color: #ffffff;
+    padding: 10px;
+    margin-left: 35px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    font-weight: 800;
+    transition: .2s;
+    background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow: 4px 4px 38px -10px #00000069;
+    cursor: pointer;
+}
+
+.campanhaAtleta {
+    height: 40%;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 38px -10px #00000069;
+    padding: 30px;
+}
+
+.campanhaAtleta table {
+    width: 100%;
+}
+
+.campanhaAtleta table thead,th {
+    background: #f17909;
+    color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 15px -10px #00000069;
+}
+
+.campanhaAtleta table tbody,tr,td {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 12px;
+    margin: 5px;
+    text-align: center;
+}
+
+.campanhaAtleta table tbody tr:nth-child(odd) {
+    box-shadow: 4px 4px 30px -10px #00000069;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 780px) {
+    
+    .backDashboard_Atleta {
+        height: 110vh;
+    }
+   
+    .cardDashboardAtleta {
+        height: 100vh;
+        
+    }
+
+    .titleDash {
+        padding: 5px 20px;
+        height: 14%;
+        margin: 10px ;
+    }
+
+    .titleDash h1{
+        font-size: 30px;
+    }
+
+    .titleDash p {
+        font-size: 12px;
+    }
+
+    .dadosAtleta { 
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    .dadosAtleta .saldoAtleta {
+        margin: 0px 10px;
+        align-items: center;
+        justify-content: center;
+        height: 30%;
+        width: 94%;
+    }
+
+    .dadosAtleta .conversao {
+        margin: 0px 10px ;
+        padding: 8px 25px;
+        align-items: center;
+        justify-content: center;
+        width: 94%;
+    }
+
+    .dadosAtleta .saldoAtleta h1 {
+        font-size: 15px;
+    }
+
+    .dadosAtleta .saldoAtletaSpark img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .dadosAtleta .saldoAtletaSpark p {
+        font-size: 15px;
+    }
+
+    .dadosAtleta .conversao h1 {
+        font-size: 15px;
+    }
+
+    .dadosAtleta .conversaoInput {
+        padding: 0px;
+        margin: 0px 50px 0px 0px;
+    } 
+
+    .dadosAtleta button {
+        margin: 10;
+        padding: 2;
+    }
+
+    .campanhaAtleta {
+       margin: 55px 0px 10px 10px;
+       padding: 10px 5px;
+       width: 94%;
+      
+    }
+
+    .campanhaAtleta table {
+        margin: 10px 0px;
+        padding: 0px;
+    }
+
+    .campanhaAtleta table thead,th {
+        font-size: 8px;
+        padding: 5px;
+    }
+
+    .campanhaAtleta table tbody,tr,td {
+        font-size: 7px;
+    }
+
+}

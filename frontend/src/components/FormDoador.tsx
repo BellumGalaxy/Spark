@@ -53,8 +53,8 @@ const FormDoador: React.FC = () => {
           <label>Email</label>     
           <input type="text" placeholder='Insira seu Email' value={email} onChange={handleEmailChange} />
 
-          <label>Uma segunda Wallet</label>
-          <input type="text" placeholder='Insira uma Segunda Wallet' />
+          <label>Link do GOV.br</label>
+          <input type="text" placeholder='Insira o Link' />
 
           <label>Telefone</label>         
           <input type="text" placeholder='Insira seu Telefone' value={phone} onChange={handlePhoneChange} />
