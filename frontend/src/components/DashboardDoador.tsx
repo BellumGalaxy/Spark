@@ -18,7 +18,7 @@ const DashboardDoador: React.FC = () => {
             <div className="saldoAtleta">
               <h1>Seu Saldo</h1>
               <div className="saldoAtletaSpark">
-                <img src={SparkLogo} alt="Spark Logo" />
+                <img src={SparkLogo} />
                 <p>60.800,00</p>
               </div>
             </div>
@@ -27,13 +27,13 @@ const DashboardDoador: React.FC = () => {
               <div className="conversaoInput">
                 <div className="conversaoUsdc">
                   <label>
-                    <img src={UsdcLogo} alt="USDC Logo" />
+                    <img src={UsdcLogo} />
                   </label>
                   <input type="number" placeholder="Insira a quantidade" />
                 </div>
                 <div className="conversaoSpark">
                   <label>
-                    <img src={SparkLogo} alt="Spark Logo" />
+                    <img src={SparkLogo} />
                   </label>
                   <input type="number" placeholder="Insira a quantidade" />
                 </div>
@@ -44,12 +44,10 @@ const DashboardDoador: React.FC = () => {
           <div className="campanhaAtleta">
             <table>
               <thead>
-                <tr>
-                  <th>ID da Doação</th>
-                  <th>Nome do Atleta</th>
-                  <th>Valor da Doação</th>
-                  <th>Status para Abatimento</th>
-                </tr>
+                <th>ID da Doação</th>
+                <th>Nome do Atleta</th>
+                <th>Valor da Doação</th>
+                <th>Status para Abatimento</th>
               </thead>
               <tbody>
                 <tr>
