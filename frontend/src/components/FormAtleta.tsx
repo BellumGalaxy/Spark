@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../styles/FormAtleta.css";
 import { useActiveAccount } from "thirdweb/react";
+import { useNavigate } from "react-router-dom";
 
 const FormAtleta: React.FC = () => {
   const activeAccount = useActiveAccount();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
@@ -61,7 +63,8 @@ const FormAtleta: React.FC = () => {
         state: null,
         country: null,
         postal_code: null,
-        wallet_id: activeAccount?.address,
+        //wallet_id: activeAccount?.address,
+        wallet_id: null,
         link_gov: linkGov,
       };
 
@@ -85,6 +88,7 @@ const FormAtleta: React.FC = () => {
 
         const data = await response.json();
         console.log("Cadastro realizado com sucesso:", data);
+        navigate("/dashboard-athlete");
       } catch (error) {
         console.error("Erro ao realizar cadastro:", error);
       }

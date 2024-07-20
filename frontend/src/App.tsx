@@ -2,13 +2,12 @@ import "./App.css";
 import Athletes from "./pages/Athletes";
 import Campaigns from "./pages/Campaigns";
 import Homepage from "./pages/Homepage";
-import Conta from "./components/Conta";
 import RegisterConta from "./components/RegisterConta";
-import DashboardAtleta from "./components/DashboardAtleta";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sobre from "./pages/Sobre";
+import DashboardAtleta from "./components/DashboardAtleta";
 import DashboardPatrocinador from "./components/DashboardPatrocinador";
-import DashboardDoador from "./components/DashboardDoard";
+import DashboardDoador from "./components/DashboardDoador";
 
 function App() {
   return (
@@ -20,6 +19,12 @@ function App() {
           <Route path="/athletes" element={<Athletes />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/conta" element={<RegisterConta />} />
+          <Route path="/dashboard-athlete" element={<DashboardAtleta />} />
+          <Route path="/dashboard-donor" element={<DashboardDoador />} />
+          <Route
+            path="/dashboard-sponsor"
+            element={<DashboardPatrocinador />}
+          />
         </Routes>
       </BrowserRouter>
     </>

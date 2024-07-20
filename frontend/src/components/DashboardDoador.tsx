@@ -3,14 +3,14 @@ import SparkLogo from "../assets/logo-spark.png";
 import UsdcLogo from "../assets/usdc-logo.png";
 import NavBar from "./NavBar";
 
-const DashboardPatrocinador: React.FC = () => {
+const DashboardDoador: React.FC = () => {
   return (
     <>
       <NavBar />
       <div className="backDashboard_Atleta">
         <div className="cardDashboardAtleta">
           <div className="titleDash">
-            <h1>Olá Patrocinador</h1>
+            <h1>Olá Doador</h1>
             <p>Seja bem-vindo(a) a sua Dashboard!</p>
           </div>
 
@@ -19,7 +19,7 @@ const DashboardPatrocinador: React.FC = () => {
               <h1>Seu Saldo</h1>
               <div className="saldoAtletaSpark">
                 <img src={SparkLogo} alt="Spark Logo" />
-                <p>120.200,30</p>
+                <p>60.800,00</p>
               </div>
             </div>
             <div className="conversao">
@@ -85,4 +85,4 @@ const DashboardPatrocinador: React.FC = () => {
   );
 };
 
-export default DashboardPatrocinador;
+export default DashboardDoador;
