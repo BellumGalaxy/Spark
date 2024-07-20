@@ -108,6 +108,8 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     uint256 constant PROTOCOL_FEE = 1000;
     uint256 constant DRAWS_FEE = 1000;
     uint256 constant ALLOWED = 1;
+    uint256 constant USDC_DECIMALS = 10**6;
+    uint256 constant STANDART_DECIMALS = 10**18;
     ///@notice Chainlink VRF Variables
     uint256 private constant SUBSCRIPTION_ID = 32641048211472861203069745922496548680493389780543789840765072168299730666388;
     bytes32 private constant KEY_HASH = 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
@@ -134,8 +136,8 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     ////////////////
     ///IMMUTABLES///
     ////////////////
-    SparkToken immutable i_sparkToken;
-    SparkVault immutable i_sparkVault;
+    SparkToken public immutable i_sparkToken;
+    SparkVault public immutable i_sparkVault;
     IERC20 immutable i_USDC;
     
     /////////////////////
@@ -167,7 +169,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     event Spark_BenefactorRegistered(address benefactorAddress);
     event Spark_AthleteRegistered(uint256 athleteId);
     event Spark_SponsorRegistered(uint256 sponsorId);
-    event Spark_SuccessFulDonation(uint256 athleteId, uint256 amount);
+    event Spark_SuccessFulDonation(address athleteWallet, uint256 amount, address benefactor);
     event Spark_SponsorAthlete(uint256 athleteId, uint256 shares);
     event Spark_SparksObtained(uint256 amount);
     event Spark_AmountRedeemed(uint256 athleteId, uint256 amount);
@@ -193,7 +195,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     constructor(address _usdc, address _vrfCoordinator, address _router) VRFConsumerBaseV2Plus(_vrfCoordinator) FunctionsClient(_router){ //VRF: 0x9ddfaca8183c41ad55329bdeed9f6a8d53168b1b CLF: 0xb83E47C2bC239B3bf370bc41e1459A34b41238D0
         i_sparkToken = new SparkToken(address(this));
         i_sparkVault = new SparkVault(address(this), _usdc);
-        i_USDC = IERC20(i_USDC);
+        i_USDC = IERC20(_usdc);
     }
 
     //////////////
@@ -268,7 +270,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         bytes[] memory args = new bytes[](1);
         args[0] = abi.encodePacked(msg.sender);
 
-        _requestId = _sendRequest(args);
+        _requestId/* = _sendRequest(args)*/;
         s_clfRequest[_requestId] = CLFRequest({
             user: msg.sender,
             userType: UserType.Sponsor
@@ -303,12 +305,11 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     /**
      * @notice Function to donate to Athletes
      * @param _athleteId the identification for each athelte
-     * @param _token the token to transfer
      * @param _amount the amount to transfer
      * @dev The token received will be swapped into USDC and transferred to the Athlete.
      * @dev User can donate using any Uniswap-tradable token
      */
-    function donate(uint256 _athleteId, IERC20 _token, uint256 _amount) external {
+    function donate(uint256 _athleteId, uint256 _amount) external {
         address athleteAddress = s_athleteIdentification[_athleteId];
         Athlete storage athlete = s_athletes[athleteAddress];
         if (athlete.isValidated == false) revert Spark_AthleteNotValidated(s_athletes[msg.sender].isValidated);
@@ -319,20 +320,17 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         s_luckyBenefactors.push(msg.sender);
         s_monthlyDrawAmount = s_monthlyDrawAmount + ( _amount / DRAWS_FEE);
 
-        emit Spark_SuccessFulDonation(_athleteId, _amount);
+        emit Spark_SuccessFulDonation(athleteAddress, _amount, msg.sender);
 
-        _token.transferFrom(msg.sender, athlete.athleteWallet, (_amount - ( _amount / DRAWS_FEE)));
+        i_USDC.transferFrom(msg.sender, athlete.athleteWallet, (_amount - ( _amount / DRAWS_FEE)));
     }
 
-    //Pode comprar com X tokens. Precisamos do Data Feeds para converter para BRL. UPDATE: Data feeds só disponível em mainnet
-    //Ou paga em BRL e converte para USD-Something
     /**
      * @notice Function for Sponsors to acquire Sparks
-     * @param _token the token to send
      * @param _amount the amount to send
      * @dev Sponsor needs to acquire Sparks in order to Sponsor Athletes
      */
-    function obtainSparks(IERC20 _token, uint256 _amount) external {
+    function obtainSparks(uint256 _amount) external {
         uint256 protocolFee = _amount/PROTOCOL_FEE;
         uint256 monthlyDraws = _amount/DRAWS_FEE;
 
@@ -341,8 +339,9 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
         emit Spark_SparksObtained(_amount - protocolFee);
 
-        _token.safeTransferFrom(msg.sender, address(this), _amount);        
-        i_sparkToken.mint(msg.sender, _amount - protocolFee);
+        i_USDC.safeTransferFrom(msg.sender, address(this), protocolFee);
+        i_USDC.safeTransferFrom(msg.sender, address(i_sparkVault), _amount - protocolFee);
+        i_sparkToken.mint(msg.sender, ((_amount * STANDART_DECIMALS) / USDC_DECIMALS) - ((protocolFee * STANDART_DECIMALS) / USDC_DECIMALS));
     }
 
     //IMPROVEMENTS
@@ -388,6 +387,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
     //CALLED BY AUTOMATION
     function requestRandomWords() external returns (uint256 _requestId) {
+        //if (msg.sender != _vrfCoordinator) revert Spark_CallerNotAllowed();
         
         _requestId = s_vrfCoordinator.requestRandomWords(
             VRFV2PlusClient.RandomWordsRequest({

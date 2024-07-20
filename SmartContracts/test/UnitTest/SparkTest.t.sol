@@ -148,4 +148,151 @@ contract SparkTest is Test {
         assertEq(campaing.receivedAmount, 0);
         assertEq(campaing.duration, block.timestamp + duration);
     }
+
+    ///================ Adopt Campaing
+    error Spark_CampaingCapReached(uint256,uint256);
+    error Spark_InvalidCampaing();
+    event Spark_CampaingAdopted(uint256, uint256);
+    function test_adoptCampaing() public {
+        uint256 athleteId = 1;
+        uint256 targetAmount = 10*10**6;
+        uint256 duration = 1 days;
+        string memory reason = "Comprar Equipamentos Novos";
+
+        vm.prank(Atleta);
+        vm.expectEmit();
+        emit Spark_AthleteRegistered(athleteId);
+        (, bytes32 _requestId) = spark.athleteRegister();
+
+        //==== Manually update the request
+        spark.manuallyFulfillRequest(_requestId, abi.encode(true), new bytes(0));
+        
+        vm.prank(Atleta);
+        vm.expectEmit();
+        emit Spark_NewCampaignCreated(athleteId, reason, duration, targetAmount);
+        spark.createCampaign(athleteId, targetAmount, duration, reason);
+
+        vm.prank(Barba);
+        vm.expectRevert(abi.encodeWithSelector(Spark_CampaingCapReached.selector, targetAmount, targetAmount));
+        spark.adoptCampain(athleteId, 100*10**6);
+
+        vm.startPrank(Barba);
+        usdc.approve(address(spark), targetAmount);
+
+        vm.expectEmit();
+        emit Spark_CampaingAdopted(athleteId, targetAmount);
+        spark.adoptCampain(athleteId, targetAmount);
+        vm.stopPrank();
+
+        vm.warp(block.timestamp + 2 days);
+        
+        vm.prank(Barba);
+        vm.expectRevert(abi.encodeWithSelector(Spark_InvalidCampaing.selector));
+        spark.adoptCampain(athleteId, targetAmount);
+        vm.stopPrank();
+    }
+
+    ///================ Donate
+    error Spark_AthleteNotValidated(bool);
+    event Spark_SuccessFulDonation(address, uint256, address);
+    function test_donate() public {
+        uint256 targetAmount = 10*10**6;
+
+        vm.prank(Atleta);
+        (uint256 athleteId, bytes32 _requestId) = spark.athleteRegister();
+
+        vm.warp(block.timestamp + 2 hours);
+        
+        vm.prank(Doador);
+        (bytes32 requestId) = spark.benefactorRegister();
+
+        vm.prank(Doador);
+        vm.expectRevert(abi.encodeWithSelector(Spark_AthleteNotValidated.selector, false));
+        spark.donate(athleteId, targetAmount);
+
+        //==== Manually update the request
+        spark.manuallyFulfillRequest(_requestId, abi.encode(true), new bytes(0));
+
+        vm.prank(Doador);
+        vm.expectRevert(abi.encodeWithSelector(Spark_VerifyYourProfileFirst.selector, false));
+        spark.donate(athleteId, targetAmount);
+
+        //==== Manually update the request
+        spark.manuallyFulfillRequest(requestId, abi.encode(true), new bytes(0));
+
+        vm.startPrank(Doador);
+        usdc.approve(address(spark), targetAmount);
+        vm.expectEmit();
+        emit Spark_SuccessFulDonation(Atleta, targetAmount, Doador);
+        spark.donate(athleteId, targetAmount);
+    }
+
+    ///================ Swaping for Spark
+    event Spark_SparksObtained(uint256);
+    function test_obtainSparks() public {
+        IERC20 sparks = spark.i_sparkToken();
+        assertEq(sparks.balanceOf(Barba), 0);
+
+        vm.startPrank(Barba);
+        usdc.approve(address(spark), 100*10**6);
+        vm.expectEmit();
+        emit Spark_SparksObtained(100*10**6 - (100*10**6 / 1000));
+        spark.obtainSparks(100*10**6);
+        
+        assertEq(sparks.balanceOf(Barba), 999*10**17);
+    }
+
+    ///================ Sponsor
+    event Spark_SponsorAthlete(uint256 athleteId, uint256);
+    function test_sponsorAthlete() public {
+        IERC20 sparks = spark.i_sparkToken();
+
+        assertEq(sparks.balanceOf(Atleta), 0);
+        assertEq(sparks.balanceOf(Patrocinador), 0);
+
+        vm.prank(Atleta);
+        (uint256 _athleteId, bytes32 _requestId) = spark.athleteRegister();
+
+        vm.prank(Patrocinador);
+        (, bytes32 requestId) = spark.sponsorRegister();
+
+        assertEq(usdc.balanceOf(address(spark.i_sparkVault())), 0);
+
+        vm.startPrank(Patrocinador);
+        usdc.approve(address(spark), 10*10**6);
+        spark.obtainSparks(10*10**6);
+        vm.stopPrank();
+        
+        assertEq(sparks.balanceOf(Patrocinador), 999*10**16);
+        assertEq(usdc.balanceOf(address(spark.i_sparkVault())), 10*10**6 - (10*10**6 / 1000));
+
+        vm.prank(Patrocinador);
+        vm.expectRevert(abi.encodeWithSelector(Spark_AthleteNotValidated.selector, false));
+        spark.sponsor(_athleteId, 10*10**18);
+
+        //==== Manually update the request
+        spark.manuallyFulfillRequest(_requestId, abi.encode(true), new bytes(0));
+        
+        vm.prank(Patrocinador);
+        vm.expectRevert(abi.encodeWithSelector(Spark_VerifyYourProfileFirst.selector, false));
+        spark.sponsor(_athleteId, 10*10**18);
+
+        //==== Manually update the request
+        spark.manuallyFulfillRequest(requestId, abi.encode(true), new bytes(0));
+
+        vm.startPrank(Patrocinador);
+        sparks.approve(address(spark), 999*10**16);
+        vm.expectEmit();
+        emit Spark_SponsorAthlete(_athleteId, 999*10**16);
+        spark.sponsor(_athleteId, 999*10**16);
+        vm.stopPrank();
+
+        assertEq(sparks.balanceOf(Atleta), 999*10**16);
+
+        // vm.startPrank(Atleta);
+        // sparks.approve(address(spark), 999*10**16);
+        // vm.expectEmit();
+        // emit Spark_AmountRedeemed(_athleteId, 999*10**16);
+        // spark.redeemAmount(_athleteId, 999*10**16);
+    }
 }
