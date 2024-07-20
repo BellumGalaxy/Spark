@@ -1,6 +1,7 @@
 * {
-    margin : 0;
-    padding: 0;
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
 }
 
 .backDashboardAtleta {
@@ -211,7 +212,8 @@
 
 
 table {
-    width: 100%;
+    width          : 100%;
+    border-collapse: collapse;
 }
 
 .campanhaAtleta table thead,
