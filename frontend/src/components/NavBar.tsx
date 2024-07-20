@@ -5,6 +5,7 @@ import { client } from "../utils/client";
 import { inAppWallet } from "thirdweb/wallets";
 import { sepolia } from "thirdweb/chains";
 import { useActiveWallet } from "thirdweb/react";
+import SparkLogo from "../assets/logo-spark.png";
 
 const NavBar: React.FC = () => {
   const [isActive, setIsActive] = useState(false);
@@ -22,7 +23,7 @@ const NavBar: React.FC = () => {
     <nav className="navbar">
       {/* logo */}
       <a href="/" className="logo-wrap">
-        Spark
+        <img className="logo" src={SparkLogo} alt="logo" />
       </a>
       <ul className={`navMenu ${isActive ? "active" : ""}`}>
         <li onClick={removeActive}>

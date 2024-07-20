@@ -20,18 +20,10 @@
 }
 
 .titleConta {
-<<<<<<< HEAD
     display        : flex;
     flex-direction : column;
     width          : 100%;
     align-items    : center;
-=======
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-    width: 100%;
-    align-items: center;
->>>>>>> frontendCayo
     justify-content: center;
     font-size      : 25px;
 }
@@ -43,36 +35,20 @@
 }
 
 .textInput_conta {
-<<<<<<< HEAD
     padding      : 13px;
     margin       : 5px 5px;
     width        : 90%;
     border       : none;
     font-size    : 12px;
-=======
-    padding: 13px;
-    margin: 5px 0px;
-    width: 100%;
-    border: none;
-    font-size: 12px;
->>>>>>> frontendCayo
     border-radius: 5px;
 }
 
 .passwordInput_conta {
-<<<<<<< HEAD
     padding      : 13px;
     margin       : 5px 5px;
     width        : 90%;
     border       : none;
     font-size    : 12px;
-=======
-    padding: 13px;
-    margin: 5px 0px;
-    width: 100%;
-    border: none;
-    font-size: 12px;
->>>>>>> frontendCayo
     border-radius: 5px;
 }
 
