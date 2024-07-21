@@ -31,13 +31,13 @@ Junte-se à nossa comunidade no [Discord](https://discord.com/invite/H2UpdzbbRJ)
 
 ### Índice
 
-1. [Introdução]()
+1. [Introdução](https://github.com/BellumGalaxy/Spark?tab=readme-ov-file#1-introdu%C3%A7%C3%A3o)
    
-2. [Nossa Solução]()
+2. [Nossa Solução](https://github.com/BellumGalaxy/Spark?tab=readme-ov-file#2-nossa-solu%C3%A7%C3%A3o)
 
-3. [Como Funciona]()
+3. [Como Funciona](https://github.com/BellumGalaxy/Spark?tab=readme-ov-file#3-como-funciona)
    
-4. [Soluções Chainlink]()
+4. [Soluções Chainlink](https://github.com/BellumGalaxy/Spark?tab=readme-ov-file#4-solu%C3%A7%C3%B5es-chainlink)
 
    4.1. Chainlink Functions
 
@@ -45,9 +45,9 @@ Junte-se à nossa comunidade no [Discord](https://discord.com/invite/H2UpdzbbRJ)
 
    4.3. Automation
 
-5. [Próximos Passos]()
+5. [Próximos Passos](https://github.com/BellumGalaxy/Spark?tab=readme-ov-file#5-pr%C3%B3ximos-passos)
 
-6. [Conheça o nosso time]()
+6. [Conheça o nosso time](https://github.com/BellumGalaxy/Spark?tab=readme-ov-file#6-conhe%C3%A7a-o-nosso-time)
 
 </br>
 
