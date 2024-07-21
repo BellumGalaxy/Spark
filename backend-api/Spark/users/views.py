@@ -77,10 +77,16 @@ class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'wallet_id'
 
     # permission_classes = [IsAuthenticated]  # Permissões necessárias
+    def get_object(self):
+        # Obtém o valor do parâmetro da URL
+        wallet_id = self.kwargs[self.lookup_field].lower()
+        # Realiza a consulta no banco de dados usando o wallet_id em letras minúsculas
+        return generics.get_object_or_404(self.get_queryset(), wallet_id=wallet_id)
 
     def perform_create(self, serializer):
-        user = self.request.user # Obtém o usuário autenticado
+        user = self.request.user  # Obtém o usuário autenticado
         serializer.save(user=user)
+
 
 
 class CustomAuthToken(ObtainAuthToken):
