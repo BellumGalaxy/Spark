@@ -131,13 +131,13 @@ const FormAtleta: React.FC = () => {
             onChange={handleEmailChange}
           />
 
-          <label>Link Gov.br</label>
+          {/* <label>Link Gov.br</label>
           <input
             type="text"
             placeholder="Insira o link gov.br"
             value={linkGov}
             onChange={(e) => setLinkGov(e.target.value)}
-          />
+          /> */}
 
           <label>Telefone</label>
           <input

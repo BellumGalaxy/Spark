@@ -115,13 +115,13 @@ const FormDoador: React.FC = () => {
             onChange={handleEmailChange}
           />
 
-          <label>Insira o Link do GOV.br</label>
+          {/* <label>Insira o Link do GOV.br</label>
           <input
             type="text"
             placeholder="Insira o Link"
             value={linkGov}
             onChange={(e) => setLinkGov(e.target.value)}
-          />
+          /> */}
 
           <label>Telefone</label>
           <input
