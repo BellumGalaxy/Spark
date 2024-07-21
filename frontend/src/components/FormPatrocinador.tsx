@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { contract } from "../utils/thirdweb";
 
 const FormPatrocinador: React.FC = () => {
-  const navigate = useNavigate();
   const activeAccount = useActiveAccount();
   const account = activeAccount?.address;
 
@@ -21,7 +20,7 @@ const FormPatrocinador: React.FC = () => {
   const [cnpj, setCnpj] = useState<string>("");
   const [isValidCnpj, setIsValidCnpj] = useState<boolean>(false);
   const [companyName, setCompanyName] = useState<string>("");
-  const [linkGov, setLinkGov] = useState<string>("");
+  // const [linkGov, setLinkGov] = useState<string>("");
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const phoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
@@ -88,8 +87,7 @@ const FormPatrocinador: React.FC = () => {
         country: null,
         postal_code: null,
         wallet_id: account,
-        // wallet_id: null,
-        link_gov: linkGov,
+        link_gov: null,
       };
 
       try {

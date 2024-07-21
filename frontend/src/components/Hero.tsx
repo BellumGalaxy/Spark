@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Hero.css";
-import SparkLogo from "../assets/logo-spark.png";
 
 const Hero: React.FC = () => {
   return (

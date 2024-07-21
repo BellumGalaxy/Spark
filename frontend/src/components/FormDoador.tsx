@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { contract } from "../utils/thirdweb";
 
 const FormDoador: React.FC = () => {
-  const navigate = useNavigate();
   const activeAccount = useActiveAccount();
   const account = activeAccount?.address;
 
@@ -20,7 +19,7 @@ const FormDoador: React.FC = () => {
   const [phone, setPhone] = useState<string>("");
   const [isValidPhone, setIsValidPhone] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
-  const [linkGov, setLinkGov] = useState<string>("");
+  // const [linkGov, setLinkGov] = useState<string>("");
   const [birthDate, setBirthDate] = useState<string>("");
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -70,8 +69,7 @@ const FormDoador: React.FC = () => {
         country: null,
         postal_code: null,
         wallet_id: account,
-        // wallet_id: null,
-        link_gov: linkGov,
+        link_gov: null,
       };
 
       try {

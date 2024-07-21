@@ -5,10 +5,8 @@ import "./styles/fonts.css";
 import "./index.css";
 import { ThirdwebProvider } from "thirdweb/react";
 import {
-  createThirdwebClient,
   defineChain,
   getContract,
-  resolveMethod,
 } from "thirdweb";
 import { client } from "./utils/thirdweb.ts";
 

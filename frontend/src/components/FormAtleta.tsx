@@ -8,7 +8,6 @@ import { prepareContractCall } from "thirdweb";
 import { useActiveAccount } from "thirdweb/react";
 
 const FormAtleta: React.FC = () => {
-  const navigate = useNavigate();
   const { mutate: sendTransaction } = useSendTransaction();
   const activeAccount = useActiveAccount();
   const account = activeAccount?.address;
@@ -20,7 +19,7 @@ const FormAtleta: React.FC = () => {
   const [phone, setPhone] = useState<string>("");
   const [isValidPhone, setIsValidPhone] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
-  const [linkGov, setLinkGov] = useState<string>("");
+  // const [linkGov, setLinkGov] = useState<string>("");
   const [birthDate, setBirthDate] = useState<string>("");
   const [sport, setSport] = useState<string>("");
   const [category, setCategory] = useState<string>("");
@@ -72,8 +71,7 @@ const FormAtleta: React.FC = () => {
         country: null,
         postal_code: null,
         wallet_id: account,
-        // wallet_id: null,
-        link_gov: linkGov,
+        link_gov: null,
       };
 
       try {

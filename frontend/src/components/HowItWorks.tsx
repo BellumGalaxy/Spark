@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/HowItWorks.css';
 import MedalIcon from '../assets/medal-solid.svg';
-import CheckIcon from '../assets/check-solid.svg';
 import ShieldIcon from '../assets/shield-icon.svg';
 import HandMoneyIcon from '../assets/hand-holding-dollar-solid.svg';
 import TargetIcon from '../assets/bullseye-solid.svg';
