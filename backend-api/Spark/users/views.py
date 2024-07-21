@@ -8,6 +8,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 import requests
+import re
 
 
 class UserListCreateView(generics.ListCreateAPIView):
@@ -82,9 +83,8 @@ class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
         # Obtém o valor do parâmetro da URL e decodifica
         raw_wallet_id = self.kwargs[self.lookup_field]
         # Decodifica o wallet_id
-        decoded_wallet_id = unquote(raw_wallet_id)
         # Remove caracteres indesejados (por exemplo, >)
-        cleaned_wallet_id = re.sub(r'[>%]', '', decoded_wallet_id)
+        cleaned_wallet_id = re.sub(r'[>%]', '', raw_wallet_id)
         # Converte para minúsculas
         normalized_wallet_id = cleaned_wallet_id.lower()
         # Realiza a consulta no banco de dados usando o wallet_id em comparação insensível a maiúsculas e minúsculas
