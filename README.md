@@ -60,9 +60,13 @@ O montante recebido através de patrocínio passará por validação para o saqu
 ### Chainlink Functions
 
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L216-L223
+
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L246-L252
+
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L273-L277
+
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L417-L432
+
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L441-L461
 
 </br>
@@ -70,6 +74,7 @@ https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15
 ### Verifiable Random Function
 
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L389-L412
+
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L470-L481
 
 </br>
