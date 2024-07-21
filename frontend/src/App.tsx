@@ -1,13 +1,13 @@
 import "./App.css";
-import Athletes from "./pages/Athletes";
-import Campaigns from "./pages/Campaigns";
-import Homepage from "./pages/Homepage";
-import RegisterConta from "./components/RegisterConta";
+import Athletes from "./pages/Athletes.tsx";
+import Campaigns from "./pages/Campaigns.tsx";
+import Homepage from "./pages/Homepage.tsx";
+import RegisterConta from "./components/RegisterConta.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Sobre from "./pages/Sobre";
-import DashboardAtleta from "./components/DashboardAtleta";
-import DashboardPatrocinador from "./components/DashboardPatrocinador";
-import DashboardDoador from "./components/DashboardDoador";
+import Sobre from "./pages/Sobre.tsx";
+import DashboardAtleta from "./components/DashboardAtleta.tsx";
+import DashboardPatrocinador from "./components/DashboardPatrocinador.tsx";
+import DashboardDoador from "./components/DashboardDoador.tsx";
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/campaigns" element={<Campaigns />} />
-          <Route path="/athletes" element={<Athletes />} />
+          <Route path="/campanhas" element={<Campaigns />} />
+          <Route path="/atletas" element={<Athletes />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/conta" element={<RegisterConta />} />
           <Route path="/dashboard-athlete" element={<DashboardAtleta />} />
