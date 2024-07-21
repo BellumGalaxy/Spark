@@ -32,6 +32,9 @@ error Spark_AthleteNotValidated(bool isValidated);
 error Spark_InvalidCampaing();
 error Spark_CampaingCapReached(uint256 targetAmount, uint256 receivedAmount);
 error Spark_RequestNotFound(uint256 requestId);
+error Spark_CallerNotAllowed();
+error Spark_AlreadyUpdated();
+error Spark_NotEnoughFunds();
 
 ///////////////////////////
 ///Interfaces, Libraries///
@@ -113,7 +116,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     ///@notice Chainlink VRF Variables
     uint256 private constant SUBSCRIPTION_ID = 32641048211472861203069745922496548680493389780543789840765072168299730666388;
     bytes32 private constant KEY_HASH = 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
-    uint32 private constant CALLBACK_GAS_LIMIT = 150_000;
+    uint32 private constant CALLBACK_GAS_LIMIT = 350_000;
     uint32 private constant NUM_WORDS = 1;
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     ///@notice Chainlink Functions Variables
@@ -147,6 +150,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     uint256 s_monthlyDrawAmount;
     uint256 s_athleteId;
     uint256 s_sponsorId;
+    address s_automationsForwarder;
 
     /////////////
     ///STORAGE///
@@ -270,7 +274,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         bytes[] memory args = new bytes[](1);
         args[0] = abi.encodePacked(msg.sender);
 
-        _requestId/* = _sendRequest(args)*/;
+        _requestId = _sendRequest(args);
         s_clfRequest[_requestId] = CLFRequest({
             user: msg.sender,
             userType: UserType.Sponsor
@@ -387,7 +391,8 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
     //CALLED BY AUTOMATION
     function requestRandomWords() external returns (uint256 _requestId) {
-        //if (msg.sender != _vrfCoordinator) revert Spark_CallerNotAllowed();
+        if (msg.sender != s_automationsForwarder) revert Spark_CallerNotAllowed();
+        if (s_monthlyDrawAmount < 10 * USDC_DECIMALS) revert Spark_NotEnoughFunds();
         
         _requestId = s_vrfCoordinator.requestRandomWords(
             VRFV2PlusClient.RandomWordsRequest({
@@ -412,6 +417,31 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         });
 
         emit Spart_RequestSent(_requestId, NUM_WORDS);
+    }
+
+    function setForwarder(address _forwarder) external {
+        if(s_automationsForwarder != address(0)) revert Spark_AlreadyUpdated();
+        s_automationsForwarder = _forwarder;
+    }
+
+    ////////////
+    ///public///
+    ////////////
+
+    //////////////
+    ///internal///
+    //////////////
+    function fulfillRandomWords(uint256 _requestId, uint256[] calldata _randomWords) internal override {
+        RequestStatus storage request = s_requests[_requestId];
+        if(request.exists == false) revert Spark_RequestNotFound(_requestId);
+
+        request.fulfilled = true;
+        request.randomWords = _randomWords[0];
+        request.selectedNumber = _randomWords[0] % s_luckyBenefactors.length;
+
+        emit Spart_RequestFulfilled(_requestId, _randomWords[0], request.selectedNumber);
+
+        _rewardBenefactors(request.selectedNumber);
     }
 
     /**
@@ -458,26 +488,6 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         }
 
         emit Spark_Response(_requestId, _response, _err);
-    }
-
-    ////////////
-    ///public///
-    ////////////
-
-    //////////////
-    ///internal///
-    //////////////
-    function fulfillRandomWords(uint256 _requestId, uint256[] calldata _randomWords) internal override {
-        RequestStatus storage request = s_requests[_requestId];
-        if(request.exists == false) revert Spark_RequestNotFound(_requestId);
-
-        request.fulfilled = true;
-        request.randomWords = _randomWords[0];
-        request.selectedNumber = _randomWords[0] % s_luckyBenefactors.length;
-
-        emit Spart_RequestFulfilled(_requestId, _randomWords[0], request.selectedNumber);
-
-        _rewardBenefactors(request.selectedNumber);
     }
 
     /////////////
