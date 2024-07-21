@@ -79,14 +79,20 @@ class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     # permission_classes = [IsAuthenticated]  # Permissões necessárias
     def get_object(self):
-        # Obtém o valor do parâmetro da URL e converte para minúsculas
-        wallet_id = self.kwargs[self.lookup_field].lower()
-        cleaned_wallet_id = wallet_id.replace('>', '')
+        # Obtém o valor do parâmetro da URL e decodifica
+        raw_wallet_id = self.kwargs[self.lookup_field]
+        # Decodifica o wallet_id
+        decoded_wallet_id = unquote(raw_wallet_id)
+        # Remove caracteres indesejados (por exemplo, >)
+        cleaned_wallet_id = re.sub(r'[>%]', '', decoded_wallet_id)
         # Converte para minúsculas
-        #cleaned_wallet_id = cleaned_wallet_id.lower()
+        normalized_wallet_id = cleaned_wallet_id.lower()
         # Realiza a consulta no banco de dados usando o wallet_id em comparação insensível a maiúsculas e minúsculas
-        return get_object_or_404(self.get_queryset().filter(wallet_id__iexact=cleaned_wallet_id))
-
+        try:
+            user = self.get_queryset().get(wallet_id__iexact=normalized_wallet_id)
+            return user
+        except CustomUser.DoesNotExist:
+            raise Response("No CustomUser matches the given query.", status=404)
     def perform_create(self, serializer):
         user = self.request.user  # Obtém o usuário autenticado
         serializer.save(user=user)
