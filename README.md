@@ -31,11 +31,11 @@ Junte-se à nossa comunidade no [Discord](https://discord.com/invite/H2UpdzbbRJ)
 
 ## Sobre
 
-Integrando Web2 e Web3, Spark permite que qualquer PF ou PJ realize doações ou passe a patrocinar atletas cadastrados em nossa plataforma. Entretanto, para realizar doações ou recebê-las, é necessário validar sua identidade off-chain usando o validador do Gov.br. Uma vez validado, a sua identidade on-chain poderá ser criada.
+Integrando Web2 e Web3, Spark permite que qualquer pessoa físca ou jurídica realize doações ou passe a patrocinar atletas cadastrados em nossa plataforma. Entretanto, para fins fiscais, para realizar doações ou recebê-las, é necessário validar sua identidade off-chain usando o validador do oficial do governo por meio do [Gov.br](https://www.gov.br/pt-br). Uma vez validado, a sua identidade on-chain poderá ser criada.
 
-Para garantir que ambas identidades estão atreladas, utilizamos o Chainlink Functions para realizar a verificação. Após verificação o usuário estará ápto a utilizar a plataforma.
+Para garantir que ambas identidades estão atreladas, utilizamos o [Chainlink Functions](https://docs.chain.link/chainlink-functions) para realizar a verificação. Após verificação o usuário estará apto a utilizar a plataforma.
 
-Com o intuito de fomentar a participação da comunidade, uma taxa em BPS é recolhida. O valor recolhido é direcionado à um 'fundo'. Uma vez no mês, um sorteio será realizado utilizando Automations e VRF para distribuir o valor arrecadado para um dos doadores.
+Com o intuito de fomentar a participação da comunidade, uma taxa em BPS (pontos base) é recolhida. O valor recolhido é direcionado à um 'fundo'. Uma vez no mês, um sorteio será realizado utilizando [Chainlink Automation](https://docs.chain.link/chainlink-automation) e o [Chainlink VRF](https://docs.chain.link/vrf) como forma de obter um número aleatório justo e verificável de forma automatizada para distribuir o valor arrecadado para um dos doadores que for premiado.
 
 </br>
 
@@ -91,3 +91,15 @@ Time Based:
 - Inclusão de doações e patrocínio cross-chain.
 - Inclusão de novos Tokens para doações e compra de Sparks.
 - Sistema de verificação de Notas para liberação do valor recebido de acordos de patrocínio.
+
+</br>
+
+## Conheça o nosso time
+|Nome   | Título | Linkedin | X/Twitter | GitHub |     
+|-------|-----------|----------|-----------|--------|
+| Barba | Blockchain Developer & Security Researcher | [Link](https://www.linkedin.com/in/i3arba/) | [Link](x.com/i3arba) | [Link](https://github.com/i3arba) |
+| Raffa | Data Scientist & Blockchain Analyst | [Link](https://www.linkedin.com/in/raffaela-loffredo/) | [Link](https://twitter.com/loffredods) | [Link](https://github.com/raffaloffredo) |
+| Gabriel | Crawler, Python, Node.js, C# Developer | [Link](https://www.linkedin.com/in/gabriel-muniz-schneider/) | - | [Link](https://github.com/dejazz) |
+| Cayo | Frontend Developer | [Link](https://www.linkedin.com/in/cayo-morais-070b721b9/) | - | [Link](https://github.com/CayoTarcisio) |
+| Gabriel | Full Stack Developer & Software Engineer | [Link](https://www.linkedin.com/in/gabrieltome/) | [Link](https://x.com/GabrielThomeDev) | [Link](https://github.com/thomasdev5832) |
+
