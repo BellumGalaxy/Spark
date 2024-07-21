@@ -83,6 +83,8 @@ https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15
 
 Time Based: 
 
+</br>
+
 ## Próximos Passos
 
 - Desenvolver algoritmo para ranqueamento de atletas de modo que a exposição que esse atleta traga para seus patrocinadores seja recompensada proporcionalmente.
