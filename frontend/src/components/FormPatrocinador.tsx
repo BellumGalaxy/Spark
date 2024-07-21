@@ -3,7 +3,6 @@ import "../styles/FormPatrocinador.css";
 import { TransactionButton } from "thirdweb/react";
 import { prepareContractCall } from "thirdweb";
 import { useActiveAccount } from "thirdweb/react";
-import { useNavigate } from "react-router-dom";
 import { contract } from "../utils/thirdweb";
 
 const FormPatrocinador: React.FC = () => {

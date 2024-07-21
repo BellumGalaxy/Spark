@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import "../styles/FormAtleta.css";
-import { useSendTransaction } from "thirdweb/react";
-import { useNavigate } from "react-router-dom";
 import { contract } from "../utils/thirdweb";
 import { TransactionButton } from "thirdweb/react";
 import { prepareContractCall } from "thirdweb";
 import { useActiveAccount } from "thirdweb/react";
 
 const FormAtleta: React.FC = () => {
-  const { mutate: sendTransaction } = useSendTransaction();
   const activeAccount = useActiveAccount();
   const account = activeAccount?.address;
 
