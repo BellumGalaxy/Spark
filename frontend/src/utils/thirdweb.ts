@@ -1,4 +1,5 @@
-import { createThirdwebClient, getContract, defineChain } from "thirdweb";
+import { createThirdwebClient, getContract } from "thirdweb";
+import { defineChain } from "thirdweb/chains";
 
 // Replace this with your client ID string
 // refer to https://portal.thirdweb.com/typescript/v5/client on how to get a client ID

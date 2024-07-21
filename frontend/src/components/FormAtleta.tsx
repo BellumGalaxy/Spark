@@ -4,11 +4,15 @@ import { useSendTransaction } from "thirdweb/react";
 import { useNavigate } from "react-router-dom";
 import { contract } from "../utils/thirdweb"; // Certifique-se de que este caminho esteja correto
 import { prepareContractCall } from "thirdweb";
+import { useActiveAccount } from "thirdweb/react";
+import { TransactionButton } from "thirdweb/react";
 
 const FormAtleta: React.FC = () => {
   const navigate = useNavigate();
   const { mutate: sendTransaction } = useSendTransaction();
 
+  const [isRegisteredSuccessfully, setIsRegisteredSuccessfully] =
+    useState(false);
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
   const [phone, setPhone] = useState<string>("");
@@ -89,22 +93,11 @@ const FormAtleta: React.FC = () => {
         }
 
         const data = await response.json();
-
-        // call smart contract
-        const transaction = prepareContractCall({
-          contract,
-          method:
-            "function athleteRegister() returns (uint256 _athleteId, bytes32 _requestId)",
-          params: [],
-        });
-
-        await sendTransaction(transaction);
-
-        console.log("Transaction: ", transaction);
         console.log("Cadastro realizado com sucesso:", data);
-        navigate("/dashboard-athlete");
+        setIsRegisteredSuccessfully(true); // Atualiza o estado após sucesso no cadastro
       } catch (error) {
         console.error("Erro ao realizar cadastro:", error);
+        setIsRegisteredSuccessfully(false); // Garante que o estado é resetado em caso de erro
       }
     } else {
       console.log("Por favor, insira um email e telefone válidos.");
@@ -174,6 +167,31 @@ const FormAtleta: React.FC = () => {
           <button type="submit" disabled={!isValidEmail || !isValidPhone}>
             Enviar
           </button>
+          <TransactionButton
+            disabled={!isRegisteredSuccessfully}
+            transaction={() => {
+              // Create a transaction object and return it
+              const tx = prepareContractCall({
+                contract,
+                method:
+                  "function athleteRegister() returns (uint256 _athleteId, bytes32 _requestId)",
+                params: [],
+              });
+              return tx;
+            }}
+            onTransactionSent={(result) => {
+              console.log("Transaction submitted", result.transactionHash);
+            }}
+            onTransactionConfirmed={(receipt) => {
+              console.log("Transaction confirmed", receipt.transactionHash);
+              navigate("/dashboard-athlete");
+            }}
+            onError={(error) => {
+              console.error("Transaction error", error);
+            }}
+          >
+            Confirm Transaction
+          </TransactionButton>
         </form>
       </div>
     </section>

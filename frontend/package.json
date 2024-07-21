@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@thirdweb-dev/sdk": "^4.0.99",
     "aos": "^2.3.4",
     "ethers": "^6.13.1",
     "react": "^18.3.1",
