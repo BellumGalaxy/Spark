@@ -1,4 +1,13 @@
-# Spark
+# <p align="center"> Spark
+
+</p>
+
+<p align="center"> Blockchain Rio Hackathon
+</p>
+
+<p align="center">
+  <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi5AqEnj4RnB3s5ShGd3-Vo2yEY8Iy1Erv1tqaW1yM3kViW-SCATQ3CDoWFT0kYV3kGwBLbnl70XZYBjuvEwjO7E-MqoigGzKAhQrAURHYOHTLiTcpWJ47QUCBh6SpuEK3URLRJoiIufCkBbO-VTY75BnGWJduwZwN_lbVW3Vfjyd8LYifLN2bMFt4IvNw=s16000" width = 500>
+</p>
 
 ## Sobre
 
