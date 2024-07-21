@@ -133,7 +133,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         "  throw Error(`Request failed message ${response.message}`);"
         "}"
         "const { data } = response;"
-        "return Functions.encodeUint256(data.isValidated);"
+        "return Functions.encodeUint256(data.user_validated);"
     ;
 
     ////////////////

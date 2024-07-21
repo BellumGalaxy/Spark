@@ -13,6 +13,7 @@
 
 - Veja o vídeo sobre o projeto disponível [aqui]()
 - Live demo [website]()
+- Smart Contracts [Sepolia Scan](https://sepolia.etherscan.io/address/0x438a935cee6f677779ad407c0562e2010c3c3ae3)
 
 </br>
 
