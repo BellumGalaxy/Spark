@@ -20,7 +20,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         # Converte o valor booleano para inteiro (True -> 1, False -> 0)
-        representation['user_validated'] = int(instance.user_validated)
+        representation['user_validated'] = 1
         return representation    
 class ValidateUserSignatureRequestSerializer(serializers.Serializer):
     signature = serializers.CharField(required=True)
