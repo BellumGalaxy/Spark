@@ -21,7 +21,7 @@ class CustomUser(AbstractUser):
         choices=USER_TYPE_CHOICES,
         default=ATHLETE,
     )
-    user_validated = models.BooleanField(default=False)
+    user_validated = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)  
     street_address = models.CharField(max_length=255, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True)
