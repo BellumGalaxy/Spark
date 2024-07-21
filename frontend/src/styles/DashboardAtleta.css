@@ -1,0 +1,347 @@
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+.backDashboardAtleta {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    padding-bottom: 10em;
+}
+
+.cardDashboardAtleta {
+    display       : flex;
+    flex-direction: column;
+    border-radius : 10px;
+    width         : 90%;
+    max-width     : 1200px;
+}
+
+.titleDash {
+    height       : 190px;
+    border-radius: 10px;
+    margin       : 20px;
+    text-align   : start;
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    padding      : 20px 50px;
+}
+
+.titleDash h1 {
+    font-weight: 900;
+    color      : #f17909;
+    font-size  : 60px;
+}
+
+.titleDash p {
+    font-size     : 25px;
+    padding-bottom: 10px;
+    font-weight   : 500;
+}
+
+.dadosAtleta {
+    display       : flex;
+    flex-direction: column;
+    gap           : 10px;
+}
+
+.dadosAtleta .saldoAtleta {
+    display        : flex;
+    flex-direction : column;
+    align-items    : start;
+    justify-content: start;
+    margin-left    : 15px;
+    padding        : 20px;
+    border-radius  : 10px;
+    box-shadow     : 4px 4px 38px -10px #00000069;
+    width          : 98%;
+}
+
+.saldoAtleta h1 {
+    font-size  : 35px;
+    font-weight: 900;
+    color      : #f17909;
+    margin-left: 20px;
+}
+
+.saldoAtleta .saldoAtletaSpark {
+    display        : flex;
+    flex-direction : row;
+    width          : 100%;
+    height         : 100%;
+    align-items    : center;
+    justify-content: center;
+}
+
+.saldoAtleta .saldoAtletaSpark img {
+    width      : 130px;
+    height     : 130px;
+    padding-top: 0px;
+}
+
+.saldoAtleta .saldoAtletaSpark p {
+    font-size  : 50px;
+    font-weight: 700;
+}
+
+.dadosAtleta .conversao {
+    display        : flex;
+    flex-direction : column;
+    width          : 98%;
+    padding        : 20px;
+    align-items    : center;
+    justify-content: center;
+    margin-right   : 20px;
+    border-radius  : 10px;
+    box-shadow     : 4px 4px 38px -10px #00000069;
+}
+
+.conversao {
+    margin-left: 15px;
+}
+
+.conversao h1 {
+    font-size    : 35px;
+    font-weight  : 900;
+    color        : #f17909;
+    margin-bottom: 10px;
+
+}
+
+.conversao input {
+    padding      : 10px 20px;
+    border-radius: 5px;
+    border       : none;
+    box-shadow   : 4px 4px 38px -10px #00000069;
+}
+
+.conversao .conversaoInput {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+    width          : 100%;
+}
+
+.conversaoUsdc {
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+    justify-content: center;
+}
+
+.conversaoUsdc img {
+    width : 35px;
+    height: 35px;
+    margin: 0px 15px 0px 20px
+}
+
+.conversaoSpark {
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+    justify-content: center;
+}
+
+.conversaoSpark img {
+    width : 70px;
+    height: 70px;
+}
+
+.conversao button {
+    color        : #ffffff;
+    padding      : 10px;
+    margin-left  : 35px;
+    width        : 20%;
+    border       : none;
+    border-radius: 5px;
+    font-weight  : 800;
+    transition   : .2s;
+    background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    cursor       : pointer;
+}
+
+.criarCampanha {
+    display        : flex;
+    flex-direction : column;
+    width          : 98%;
+    align-items    : center;
+    justify-content: center;
+    padding        : 30px;
+    box-shadow     : 4px 4px 38px -10px #00000069;
+    margin         : 15px;
+    border-radius  : 10px;
+}
+
+.criarCampanha h1 {
+    font-size    : 35px;
+    font-weight  : 900;
+    color        : #f17909;
+    margin-bottom: 10px;
+}
+
+.criarCampanha input {
+    width        : 20%;
+    padding      : 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border       : none;
+    box-shadow   : 4px 4px 38px -10px #00000069;
+}
+
+.criarCampanha label {
+    font-size    : 12px;
+    margin-bottom: 2px;
+}
+
+.criarCampanha button {
+    color        : #ffffff;
+    padding      : 10px;
+    width        : 20%;
+    border       : none;
+    border-radius: 5px;
+    font-weight  : 800;
+    transition   : .2s;
+    background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    cursor       : pointer;
+}
+
+
+
+table {
+    width          : 100%;
+    border-collapse: collapse;
+}
+
+.campanhaAtleta table thead,
+th {
+    background   : #f17909;
+    color        : #f0f0f0;
+    padding      : 10px;
+    border-radius: 5px;
+    box-shadow   : 4px 4px 15px -10px #00000069;
+}
+
+.campanhaAtleta table tbody,
+tr,
+td {
+    background-color: #f0f0f0;
+    font-size       : 20px;
+    font-weight     : 600;
+    padding         : 12px;
+    margin          : 5px;
+    text-align      : center;
+}
+
+@media screen and (max-width: 780px) {
+
+    .cardDashboardAtleta {}
+
+    .titleDash {
+        padding: 5px 20px;
+        height : 14%;
+        margin : 10px;
+    }
+
+    .titleDash h1 {
+        font-size: 30px;
+    }
+
+    .titleDash p {
+        font-size: 12px;
+    }
+
+    .dadosAtleta {
+        flex-direction: column;
+        padding       : 0;
+        margin        : 0;
+    }
+
+    .dadosAtleta .saldoAtleta {
+        margin         : 0px 10px;
+        align-items    : center;
+        justify-content: center;
+        height         : 30%;
+        width          : 94%;
+    }
+
+    .dadosAtleta .conversao {
+        margin         : 0px 10px;
+        padding        : 8px 25px;
+        align-items    : center;
+        justify-content: center;
+        width          : 94%;
+    }
+
+    .dadosAtleta .saldoAtleta h1 {
+        font-size: 15px;
+    }
+
+    .dadosAtleta .saldoAtletaSpark img {
+        width : 30px;
+        height: 30px;
+    }
+
+    .dadosAtleta .saldoAtletaSpark p {
+        font-size: 15px;
+    }
+
+    .dadosAtleta .conversao h1 {
+        padding  : 10px;
+        font-size: 15px;
+    }
+
+    .dadosAtleta button {
+        margin   : 5px;
+        padding  : 10px;
+        font-size: 12px;
+        width    : 70%;
+    }
+
+    .criarCampanha {
+        margin: 10px;
+        width : 94%;
+    }
+
+    .criarCampanha h1 {
+        font-size: 15px;
+    }
+
+    .criarCampanha input {
+        width        : 90%;
+        margin-bottom: 8px;
+    }
+
+    .criarCampanha label {
+        font-size    : 12px;
+        margin-bottom: 1px;
+    }
+
+
+    .campanhaAtleta {
+        margin : 0px 0px 10px 10px;
+        padding: 10px 5px;
+        width  : 94%;
+    }
+
+    .campanhaAtleta table {
+        margin : 0px 0px;
+        padding: 0px;
+    }
+
+    .campanhaAtleta table thead,
+    th {
+        font-size: 5px;
+        padding  : 3px;
+    }
+
+    .campanhaAtleta table tbody,
+    tr,
+    td {
+        font-size: 5px;
+    }
+
+}

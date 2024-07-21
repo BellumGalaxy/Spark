@@ -19,7 +19,6 @@ import CamilaRochaProfile from "../assets/camila-rocha.jpg";
 import GustavoLimaProfile from "../assets/gustavo-lima.jpg";
 import BeatrizSouzaProfile from "../assets/beatriz-souza.jpg";
 
-
 const Athletes: React.FC = () => {
   const [filter, setFilter] = useState("");
 
@@ -134,8 +133,6 @@ const Athletes: React.FC = () => {
           ))}
         </div>
       </div>
-
-
     </div>
   );
 };

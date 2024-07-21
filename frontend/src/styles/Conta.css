@@ -1,85 +1,85 @@
 .bg_conta {
-    display: flex;
-    flex-direction: column;
-    background: url(../assets/background-abstract.png);
-    height: 100vh;
-    align-items: center;
+    display        : flex;
+    flex-direction : column;
+    background     : url(../assets/background-abstract.png);
+    height         : 100vh;
+    align-items    : center;
     justify-content: center;
 }
 
 .card_conta {
-    background-color: #f0f0f0;;
-    width: 320px;
-    height: 360px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    padding: 0px 10px 55px;
-    border-radius: 8px;
-    box-shadow: 4px 4px 38px -10px #00000069;
+    background-color: #f0f0f0;
+    width           : 320px;
+    display         : flex;
+    flex-direction  : column;
+    align-items     : start;
+    justify-content : start;
+    padding         : 0px 10px 55px;
+    border-radius   : 8px;
+    box-shadow      : 4px 4px 38px -10px #00000069;
 }
 
 .titleConta {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
+    display        : flex;
+    flex-direction : column;
+    width          : 100%;
+    align-items    : center;
     justify-content: center;
-    font-size: 25px;
+    font-size      : 25px;
 }
 
 .titleConta h1 {
+    font-family: 'Paris2024', sans-serif;
     font-weight: 900;
-    color: #f17909;
+    color      : #f17909;
 }
 
 .textInput_conta {
-    padding: 13px;
-    margin: 5px 5px;
-    width: 90%;
-    border: none;
-    font-size: 12px;
+    padding      : 13px;
+    margin       : 5px 5px;
+    width        : 90%;
+    border       : none;
+    font-size    : 12px;
     border-radius: 5px;
 }
 
 .passwordInput_conta {
-    padding: 13px;
-    margin: 5px 5px;
-    width: 90%;
-    border: none;
-    font-size: 12px;
+    padding      : 13px;
+    margin       : 5px 5px;
+    width        : 90%;
+    border       : none;
+    font-size    : 12px;
     border-radius: 5px;
 }
 
 .rememberConta {
-    padding: 1px;
-    margin: 1px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
+    padding        : 1px;
+    margin         : 1px;
+    display        : flex;
+    flex-direction : column;
+    width          : 100%;
+    align-items    : center;
     justify-content: center;
-    cursor: pointer;
+    cursor         : pointer;
 }
 
-.rememberConta a{
-    font-size: 10px;
+.rememberConta a {
+    font-size    : 10px;
     margin-bottom: 5px;
 }
 
 .buttonConta {
-    margin:10px 0px;
-    color: #ffffff;
-    padding: 12px;
-    width: 100%;
-    border: none;
+    margin       : 10px 0px;
+    color        : #ffffff;
+    padding      : 12px;
+    width        : 100%;
+    border       : none;
     border-radius: 5px;
-    font-weight: 800;
-    transition: .2s;
-    background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-    box-shadow: 4px 4px 38px -10px #00000069;
-    cursor: pointer;
+    font-weight  : 800;
+    transition   : .2s;
+    background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    cursor       : pointer;
 }
 
 .buttonConta:hover {
@@ -88,24 +88,24 @@
 }
 
 .marginButton {
-    width: 100%;
+    width     : 100%;
     margin-top: 5px;
-    border: none;
+    border    : none;
     border-top: 1px solid rgb(216, 216, 216);
 }
 
 .buttonRegister {
-    margin:15px 0px -8px;
-    color: #ffffff;
-    padding: 12px;
-    width: 100%;
-    border: none;
+    margin       : 15px 0px -8px;
+    color        : #ffffff;
+    padding      : 12px;
+    width        : 100%;
+    border       : none;
     border-radius: 5px;
-    font-weight: 800;
-    transition: .2s;
-    background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-    box-shadow: 4px 4px 38px -10px #00000069;
-    cursor: pointer;
+    font-weight  : 800;
+    transition   : .2s;
+    background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    cursor       : pointer;
 }
 
 .buttonRegister:hover {

@@ -1,35 +1,29 @@
 import { useState } from "react";
 import "../styles/NavBar.css";
-import SparkLogo from "../assets/logo-spark.png";
 import { ConnectButton } from "thirdweb/react";
-import { client } from "../utils/client";
+import { client } from "../utils/thirdweb";
 import { inAppWallet } from "thirdweb/wallets";
 import { sepolia } from "thirdweb/chains";
+import { useActiveWallet } from "thirdweb/react";
+import SparkLogo from "../assets/logo-spark.png";
 
 const NavBar: React.FC = () => {
-  const wallets = [
-    inAppWallet({
-      auth: {
-        options: ["google", "email"],
-      },
-    }),
-  ];
-
-  // adding the states
   const [isActive, setIsActive] = useState(false);
-  //add the active class
+  const activeWallet = useActiveWallet();
+
   const toggleActiveClass = () => {
     setIsActive(!isActive);
   };
-  //clean up function to remove the active class
+
   const removeActive = () => {
     setIsActive(false);
   };
+
   return (
     <nav className="navbar">
       {/* logo */}
       <a href="/" className="logo-wrap">
-        Spark
+        <img className="logo" src={SparkLogo} alt="logo" />
       </a>
       <ul className={`navMenu ${isActive ? "active" : ""}`}>
         <li onClick={removeActive}>
@@ -52,13 +46,15 @@ const NavBar: React.FC = () => {
             Sobre
           </a>
         </li>
-        <li onClick={removeActive}>
-          <a href="/conta" className="navLink">
-            Conta
-          </a>
-        </li>
+        {activeWallet && (
+          <li onClick={removeActive}>
+            <a href="/conta" className="navLink">
+              Conta
+            </a>
+          </li>
+        )}
 
-        {/* <li onClick={removeActive}>
+        <li onClick={removeActive}>
           <ConnectButton
             connectButton={{
               label: "Connect",
@@ -79,7 +75,7 @@ const NavBar: React.FC = () => {
             }}
             chain={sepolia}
             client={client}
-            wallets={wallets}
+            wallets={[inAppWallet({ auth: { options: ["google", "email"] } })]}
             theme={"dark"}
             connectModal={{
               title: "Connect to Spark",
@@ -88,7 +84,7 @@ const NavBar: React.FC = () => {
               showThirdwebBranding: false,
             }}
           />
-        </li> */}
+        </li>
       </ul>
       <div
         className={`hamburger ${isActive ? "active" : ""}`}
