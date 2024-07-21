@@ -10,12 +10,14 @@
 </p>
 
 ### Links
+
 - Veja o vídeo sobre o projeto disponível [aqui]()
 - Live demo [website]()
 
 </br>
 
 ### Sobre a Bellum Galaxy
+
 Somos uma comunidade educacional, científica e tecnológica, quebrando barreiras e desmistificando a tecnologia. Nossa missão é capacitar indivíduos para o crescimento pessoal e coletivo. Para isso proporcionamos oportunidades de aprendizado e desenvolvimento na nossa comunidade, onde as contribuições alimentam a inovação e impulsionam mudanças positivas..
 
 </br>
@@ -23,6 +25,7 @@ Somos uma comunidade educacional, científica e tecnológica, quebrando barreira
 <p align="center">
   <img width="16%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDzC6qHOPXlQGVwQsz9J8IyLkIzbGDPkz08C7dzO06VeKkmluZJ0ollUVgwwvjteBLIPRn0BsZxJGr8S4Tfov7s5Oc8M8nxsTHa4VxamXvW5KGhXfbnVrkL5kESHmag0URch49nz0BTjGL3GbtqMXO0ULYhJbUSQfi2hmSNinyyUVmZyw_ZWBCpdRh5_Q/s16000/Logo-BG-1-semfundo.png">
 </p>
+
 </br>
 
 Junte-se à nossa comunidade no [Discord](https://discord.com/invite/H2UpdzbbRJ) e, juntos, moldemos o futuro com a tecnologia blockchain.
@@ -56,6 +59,40 @@ Junte-se à nossa comunidade no [Discord](https://discord.com/invite/H2UpdzbbRJ)
 </br>
 
 ## 1. Introdução
+
+Ser Brasileiro é ser um torcedor incondicional nato. Nascemos jogando futebol com traves de chinelos, sonhando em ser um ídolo da nação como Pelé, Guga, Gustavo Borges, Marta, Oscar Schmidt, Hortência, Daiane dos Santos, entre tantos outros. Somos uma nação rica em cultura e isso se transmite na quantidade de esportes que somos bons, muito bons.
+
+Entretanto, nossos atletas enfrentam enormes desafios para representar nossa paixão e talento. Uma das maiores dificuldades e que faz a maior diferença é conseguir um patrocínio. Isso porque é um sistema altamente burocrático, com pouco investimento, falta de transparência e excesso de intermediários.
+
+</br>
+
+<p align="center">
+  <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgAvSN7aaa0_g_Q8V28f4Lm4IzJh605TiBYfKQYZXRS5tO_bQKA4znlseKJGzIXg_kXzLIJ5DsxvouR2e8HYy3b-q1xkThByz970w051teZ9jBv6opuB1d4pwIrSKHGKNi4BA7LCN6pdkl9Lc4d117ykZeA1XhAXnfdM3cAIiWyWXz2aehVv5e4V6WC0Rw=s16000" width = 500>
+</p>
+<p align="center">
+  Fonte: https://midianinja.org/opiniao/42-dos-atletas-brasileiros-em-toquio-nao-tem-patrocinio/
+</p>
+
+</br>
+
+Além disso, nesse período, segundo [reportagem](https://interativos.ge.globo.com/olimpiadas/materia/dna-do-time-brasil) 19% vivia com menos de R$ 2 mil reais de auxílio, 7% com menos de R$ 1 mil reais. Para conseguir participar dos jogos olímpicos, 13% fizeram 'vaquinha' e 15% são motoristas de aplicativo, não vivendo exclusivamente do esporte que praticam.
+
+</br>
+
+<p align="center">
+  <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgynLM0OsNlEr8lgdB-8whvE6dSfsxicOvRnDnGHdb18xSvESLo-ySVqyz0SZUOvcao5dYvhqVYKlPv6P8HuiiYhilweE4QR_mvecefqI9AxZGO4xqoJFaTCxteSXF8bhqqG4vR37ccwrsK0wawSbg-ZFZPMhxtr4t9rcS8BL198ArIjkGjLtAyGbjWEJ8=s16000" width = 500>
+</p>
+<p align="center">
+  Fonte: https://x.com/DiegaoM25/status/1811105565776695661
+</p>
+
+</br>
+
+Para mudar esse cenário criamos a Spark: uma chama de tecnologia para atletas olímpicos e paraolímpicos!
+
+Com a união da blockchain com os serviços da Chainlink criamos um processo mais simples, ágil e barato para conectar empresas e pessoas que podem contribuir de forma direta para o atleta de sua escolha em um processo totalmente transparente e confiável. Dessa forma, empresas ganham visibilidade positiva e pessoas podem se sentir parte de algo muito maior!
+
+Queremos um Brasil onde nossos atletas possam se preocupar apenas em alcançar seu máximo potencial representando nosso país e alimentando sonhos das próximas gerações de atletas. Isso gera um círculo poderoso para transformar nossa país em uma sociedade melhor.
 
 </br>
 
@@ -134,3 +171,10 @@ Time Based:
 | Cayo | Frontend Developer | [Link](https://www.linkedin.com/in/cayo-morais-070b721b9/) | - | [Link](https://github.com/CayoTarcisio) |
 | Gabriel | Full Stack Developer & Software Engineer | [Link](https://www.linkedin.com/in/gabrieltome/) | [Link](https://x.com/GabrielThomeDev) | [Link](https://github.com/thomasdev5832) |
 
+</br>
+
+---
+
+</br>
+
+### <p align="center"> Junte-se à Spark e faça parte dessa transformação do futuro do esporte no nosso país!
