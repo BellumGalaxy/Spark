@@ -29,7 +29,37 @@ Junte-se à nossa comunidade no [Discord](https://discord.com/invite/H2UpdzbbRJ)
 
 </br>
 
-## Sobre
+### Índice
+
+1. [Introdução]()
+   
+2. [Nossa Solução]()
+
+3. [Como Funciona]()
+   
+4. [Soluções Chainlink]()
+
+   4.1. Chainlink Functions
+
+   4.2. Verifiable Random Function (VRF)
+
+   4.3. Automation
+
+5. [Próximos Passos]()
+
+6. [Conheça o nosso time]()
+
+</br>
+
+---
+
+</br>
+
+## 1. Introdução
+
+</br>
+
+## 2. Nossa Solução
 
 Integrando Web2 e Web3, Spark permite que qualquer pessoa físca ou jurídica realize doações ou passe a patrocinar atletas cadastrados em nossa plataforma. Entretanto, para fins fiscais, para realizar doações ou recebê-las, é necessário validar sua identidade off-chain usando o validador do oficial do governo por meio do [Gov.br](https://www.gov.br/pt-br). Uma vez validado, a sua identidade on-chain poderá ser criada.
 
@@ -39,7 +69,7 @@ Com o intuito de fomentar a participação da comunidade, uma taxa em BPS (ponto
 
 </br>
 
-## Como Funciona
+## 3. Como Funciona
 
 Nosso sistema funciona a partir da atuação de três atores principais: Atletas, Doadores e Patrocinadores.
 
@@ -55,9 +85,9 @@ O montante recebido através de patrocínio passará por validação para o saqu
 
 </br>
 
-## Soluções Chainlink
+## 4. Soluções Chainlink
 
-### Chainlink Functions
+### 4.1. Chainlink Functions
 
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L216-L223
 
@@ -71,7 +101,7 @@ https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15
 
 </br>
 
-### Verifiable Random Function
+### 4.2. Verifiable Random Function (VRF)
 
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L389-L412
 
@@ -79,13 +109,13 @@ https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15
 
 </br>
 
-### Automation
+### 4.3. Automation
 
 Time Based: 
 
 </br>
 
-## Próximos Passos
+## 5. Próximos Passos
 
 - Desenvolver algoritmo para ranqueamento de atletas de modo que a exposição que esse atleta traga para seus patrocinadores seja recompensada proporcionalmente.
 - Inclusão de doações e patrocínio cross-chain.
@@ -94,7 +124,8 @@ Time Based:
 
 </br>
 
-## Conheça o nosso time
+## 6. Conheça o nosso time
+
 |Nome   | Título | Linkedin | X/Twitter | GitHub |     
 |-------|-----------|----------|-----------|--------|
 | Barba | Blockchain Developer & Security Researcher | [Link](https://www.linkedin.com/in/i3arba/) | [Link](x.com/i3arba) | [Link](https://github.com/i3arba) |
