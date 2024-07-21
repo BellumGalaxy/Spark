@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import "../styles/FormPatrocinador.css";
+import { TransactionButton } from "thirdweb/react";
+import { prepareContractCall } from "thirdweb";
 import { useActiveAccount } from "thirdweb/react";
 import { useNavigate } from "react-router-dom";
+import { contract } from "../utils/thirdweb";
 
 const FormPatrocinador: React.FC = () => {
-  const activeAccount = useActiveAccount();
   const navigate = useNavigate();
+  const activeAccount = useActiveAccount();
+  const account = activeAccount?.address;
+
+  const [isRegisteredSuccessfully, setIsRegisteredSuccessfully] =
+    useState(false);
 
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
@@ -80,8 +87,8 @@ const FormPatrocinador: React.FC = () => {
         state: null,
         country: null,
         postal_code: null,
-        //wallet_id: activeAccount?.address,
-        wallet_id: null,
+        wallet_id: account,
+        // wallet_id: null,
         link_gov: linkGov,
       };
 
@@ -126,8 +133,8 @@ const FormPatrocinador: React.FC = () => {
 
         // const validateData = await validateResponse.json();
         // console.log("Validação realizada com sucesso:", validateData);
-
-        navigate("/dashboard-sponsor");
+        setIsRegisteredSuccessfully(true);
+        // navigate("/dashboard-sponsor");
       } catch (error) {
         console.error("Erro ao realizar cadastro:", error);
       }
@@ -186,6 +193,31 @@ const FormPatrocinador: React.FC = () => {
           >
             Enviar
           </button>
+
+          <TransactionButton
+            disabled={!isRegisteredSuccessfully}
+            transaction={() => {
+              // Create a transaction object and return it
+              const tx = prepareContractCall({
+                contract,
+                method:
+                  "function sponsorRegister() external returns(uint256 _sponsorId, bytes32 _requestId)",
+                params: [],
+              });
+              return tx;
+            }}
+            onTransactionSent={(result) => {
+              console.log("Transaction submitted", result.transactionHash);
+            }}
+            onTransactionConfirmed={(receipt) => {
+              console.log("Transaction confirmed", receipt.transactionHash);
+            }}
+            onError={(error) => {
+              console.error("Transaction error", error);
+            }}
+          >
+            Confirm Transaction
+          </TransactionButton>
         </div>
       </form>
     </section>

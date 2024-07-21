@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import "../styles/FormAtleta.css";
 import { useSendTransaction } from "thirdweb/react";
 import { useNavigate } from "react-router-dom";
-import { contract } from "../utils/thirdweb"; // Certifique-se de que este caminho esteja correto
+import { contract } from "../utils/thirdweb";
+import { TransactionButton } from "thirdweb/react";
 import { prepareContractCall } from "thirdweb";
 import { useActiveAccount } from "thirdweb/react";
-import { TransactionButton } from "thirdweb/react";
 
 const FormAtleta: React.FC = () => {
   const navigate = useNavigate();
   const { mutate: sendTransaction } = useSendTransaction();
+  const activeAccount = useActiveAccount();
+  const account = activeAccount?.address;
 
   const [isRegisteredSuccessfully, setIsRegisteredSuccessfully] =
     useState(false);
@@ -69,8 +71,8 @@ const FormAtleta: React.FC = () => {
         state: null,
         country: null,
         postal_code: null,
-        //wallet_id: activeAccount?.address,
-        wallet_id: null,
+        wallet_id: account,
+        // wallet_id: null,
         link_gov: linkGov,
       };
 
@@ -95,6 +97,7 @@ const FormAtleta: React.FC = () => {
         const data = await response.json();
         console.log("Cadastro realizado com sucesso:", data);
         setIsRegisteredSuccessfully(true); // Atualiza o estado após sucesso no cadastro
+        // navigate("/dashboard-athlete");
       } catch (error) {
         console.error("Erro ao realizar cadastro:", error);
         setIsRegisteredSuccessfully(false); // Garante que o estado é resetado em caso de erro
@@ -167,6 +170,7 @@ const FormAtleta: React.FC = () => {
           <button type="submit" disabled={!isValidEmail || !isValidPhone}>
             Enviar
           </button>
+
           <TransactionButton
             disabled={!isRegisteredSuccessfully}
             transaction={() => {
@@ -184,7 +188,6 @@ const FormAtleta: React.FC = () => {
             }}
             onTransactionConfirmed={(receipt) => {
               console.log("Transaction confirmed", receipt.transactionHash);
-              navigate("/dashboard-athlete");
             }}
             onError={(error) => {
               console.error("Transaction error", error);

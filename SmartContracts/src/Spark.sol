@@ -126,7 +126,7 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
     string private constant JS_CODE = 
         "const userAddress = args[0];"
         "const response = await Functions.makeHttpRequest({"
-        "url: `http://142.93.189.23:8000/api/users/user/${userAddress}>/`,"
+        "url: `http://142.93.189.23:8000/api/users/user/${userAddress}/`,"
         "method: 'GET',"
         "});"
         "if (response.error) {"
@@ -217,10 +217,10 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
         emit Spark_BenefactorRegistered(msg.sender);
 
-        bytes[] memory args = new bytes[](1);
-        args[0] = abi.encodePacked(msg.sender);
+        string[] memory args = new string[](1);
+        args[0] = _addressToString(msg.sender);
 
-        _requestId = _sendRequest(args);
+        _requestId = _sendRequest(args, UserType.Benefactor);
         s_clfRequest[_requestId] = CLFRequest({
             user: msg.sender,
             userType: UserType.Benefactor
@@ -246,10 +246,10 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
         emit Spark_AthleteRegistered(_athleteId);
 
-        bytes[] memory args = new bytes[](1);
-        args[0] = abi.encodePacked(msg.sender);
+        string[] memory args = new string[](1);
+        args[0] = _addressToString(msg.sender);
 
-        _requestId = _sendRequest(args);
+        _requestId = _sendRequest(args, UserType.Athlete);
         s_clfRequest[_requestId] = CLFRequest({
             user: msg.sender,
             userType: UserType.Athlete
@@ -271,10 +271,10 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
         emit Spark_SponsorRegistered(s_sponsorId);
 
-        bytes[] memory args = new bytes[](1);
-        args[0] = abi.encodePacked(msg.sender);
+        string[] memory args = new string[](1);
+        args[0] = _addressToString(msg.sender);
 
-        _requestId = _sendRequest(args);
+        _requestId = _sendRequest(args, UserType.Sponsor);
         s_clfRequest[_requestId] = CLFRequest({
             user: msg.sender,
             userType: UserType.Sponsor
@@ -446,12 +446,12 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
 
     /**
      * @notice Send a simple request
-     * @param _bytesArgs Array of bytes arguments, represented as hex strings
+     * @param _args Array of bytes arguments, represented as hex strings
     */
-    function _sendRequest(bytes[] memory _bytesArgs) internal returns (bytes32 _requestId) {
+    function _sendRequest(string[] memory _args, UserType _type) internal returns (bytes32 _requestId) {
         FunctionsRequest.Request memory req;
         req.initializeRequestForInlineJavaScript(JS_CODE);
-        if (_bytesArgs.length > 0) req.setBytesArgs(_bytesArgs);
+        if (_args.length > 0) req.setArgs(_args);
 
         _requestId = _sendRequest(
             req.encodeCBOR(),
@@ -459,6 +459,11 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
             GAS_LIMIT,
             DON_ID
         );
+
+        s_clfRequest[_requestId] = CLFRequest ({
+            user: msg.sender,
+            userType: _type
+        });
     }
 
     /**
@@ -473,9 +478,9 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
             emit Spark_RequestFailed(_requestId);
         }
         
-        bool isValidated = abi.decode(_response, (bool));
+        uint256 isValidated = abi.decode(_response, (uint256));
 
-        if(isValidated == true){
+        if(isValidated == ALLOWED){
             CLFRequest memory request = s_clfRequest[_requestId];
 
             if(request.userType == UserType.Athlete){
@@ -503,6 +508,20 @@ contract Spark is VRFConsumerBaseV2Plus, FunctionsClient {
         emit Spark_BenefactorRewarded(winnerAddress, amountToPay);
 
         i_USDC.safeTransfer(winnerAddress, amountToPay);
+    }
+
+    function _addressToString(address _addr) private pure returns (string memory) {
+        bytes32 value = bytes32(uint256(uint160(_addr)));
+        bytes memory alphabet = "0123456789abcdef";
+
+        bytes memory str = new bytes(42);
+        str[0] = '0';
+        str[1] = 'x';
+        for (uint256 i = 0; i < 20; i++) {
+            str[2+i*2] = alphabet[uint8(value[i + 12] >> 4)];
+            str[3+i*2] = alphabet[uint8(value[i + 12] & 0x0f)];
+        }
+        return string(str);
     }
 
     /////////////////
