@@ -9,6 +9,26 @@
   <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi5AqEnj4RnB3s5ShGd3-Vo2yEY8Iy1Erv1tqaW1yM3kViW-SCATQ3CDoWFT0kYV3kGwBLbnl70XZYBjuvEwjO7E-MqoigGzKAhQrAURHYOHTLiTcpWJ47QUCBh6SpuEK3URLRJoiIufCkBbO-VTY75BnGWJduwZwN_lbVW3Vfjyd8LYifLN2bMFt4IvNw=s16000" width = 500>
 </p>
 
+### Links
+- Veja o vídeo sobre o projeto disponível [aqui]()
+- Live demo [website]()
+
+</br>
+
+### Sobre a Bellum Galaxy
+Somos uma comunidade educacional, científica e tecnológica, quebrando barreiras e desmistificando a tecnologia. Nossa missão é capacitar indivíduos para o crescimento pessoal e coletivo. Para isso proporcionamos oportunidades de aprendizado e desenvolvimento na nossa comunidade, onde as contribuições alimentam a inovação e impulsionam mudanças positivas..
+
+</br>
+
+<p align="center">
+  <img width="16%" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDzC6qHOPXlQGVwQsz9J8IyLkIzbGDPkz08C7dzO06VeKkmluZJ0ollUVgwwvjteBLIPRn0BsZxJGr8S4Tfov7s5Oc8M8nxsTHa4VxamXvW5KGhXfbnVrkL5kESHmag0URch49nz0BTjGL3GbtqMXO0ULYhJbUSQfi2hmSNinyyUVmZyw_ZWBCpdRh5_Q/s16000/Logo-BG-1-semfundo.png">
+</p>
+</br>
+
+Junte-se à nossa comunidade no [Discord](https://discord.com/invite/H2UpdzbbRJ) e, juntos, moldemos o futuro com a tecnologia blockchain.
+
+</br>
+
 ## Sobre
 
 Integrando Web2 e Web3, Spark permite que qualquer PF ou PJ realize doações ou passe a patrocinar atletas cadastrados em nossa plataforma. Entretanto, para realizar doações ou recebê-las, é necessário validar sua identidade off-chain usando o validador do Gov.br. Uma vez validado, a sua identidade on-chain poderá ser criada.
@@ -16,6 +36,8 @@ Integrando Web2 e Web3, Spark permite que qualquer PF ou PJ realize doações ou
 Para garantir que ambas identidades estão atreladas, utilizamos o Chainlink Functions para realizar a verificação. Após verificação o usuário estará ápto a utilizar a plataforma.
 
 Com o intuito de fomentar a participação da comunidade, uma taxa em BPS é recolhida. O valor recolhido é direcionado à um 'fundo'. Uma vez no mês, um sorteio será realizado utilizando Automations e VRF para distribuir o valor arrecadado para um dos doadores.
+
+</br>
 
 ## Como Funciona
 
@@ -31,6 +53,8 @@ Sparks é o token do protocolo que dá liberdade para os patrocinadores para acu
 
 O montante recebido através de patrocínio passará por validação para o saque. Ou seja, o atleta precisará prestar contas aos seus apoiadores para realizar o saque.
 
+</br>
+
 ## Soluções Chainlink
 
 ### Chainlink Functions
@@ -41,10 +65,14 @@ https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L417-L432
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L441-L461
 
+</br>
+
 ### Verifiable Random Function
 
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L389-L412
 https://github.com/BellumGalaxy/Spark/blob/b79f6beebd9056dbca07fd231fd358269da15cd2/SmartContracts/src/Spark.sol#L470-L481
+
+</br>
 
 ### Automation
 
