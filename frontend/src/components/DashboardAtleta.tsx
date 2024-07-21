@@ -24,7 +24,9 @@ const DashboardAtleta: React.FC = () => {
                         </div>
                     </div>
                     <div className="conversao">
+                        <div className="tituloConversao">
                         <h1>Faça aqui sua Conversão</h1>
+                        </div>
                         <div className="conversaoInput">
                         
                         <div className="conversaoUsdc">
@@ -36,16 +38,22 @@ const DashboardAtleta: React.FC = () => {
                         <input type="number" placeholder="Insira a quantidade"/>     
                         </div>  
                         </div>
+                        <div className="botaoConverter">
                         <button>Converter</button>
+                        </div>
                     </div>
 
                     <div className="criarCampanha">
+                        <div className="titleCampanha">
                         <h1>Crie uma Campanha</h1>
+                        </div>
+                        <div className="contentCampanha">
                         <input type="text" placeholder="Nome da Campanha"/>
                         <input type="number" placeholder="Meta de Arrecadação"/>
                         <label>Duração da Campanha</label>
                         <input type="date" placeholder="Duração da campanha"/>
                         <button>Criar Campanha</button>
+                        </div>
                     </div>
                 </div>
                 <div className="campanhaAtleta">

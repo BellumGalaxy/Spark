@@ -17,7 +17,7 @@ function App() {
     <>
      <BrowserRouter>
         <Routes>
-            <Route path="/" element={<DashboardDoador />} />
+            <Route path="/" element={<DashboardPatrocinador />} />
             <Route path="/campaigns" element={<Campaigns />} />
             <Route path="/athletes" element={<Athletes />} />
             <Route path="/sobre"element={<Sobre />} />

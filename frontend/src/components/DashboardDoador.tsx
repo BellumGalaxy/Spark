@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/DashboardDoador.css";
 import SparkLogo from "../assets/logo-spark.png";
 import UsdcLogo from "../assets/usdc-logo.png";
 
@@ -19,11 +20,13 @@ const DashboardDoador: React.FC = () => {
                     <h1>Seu Saldo</h1>
                         <div className="saldoAtletaSpark">
                     <img src={SparkLogo}/>
-                    <p>60.800,00</p>
+                    <p>19.200,30</p>
                         </div>
                     </div>
                     <div className="conversao">
+                        <div className="tituloConversao">
                         <h1>Faça aqui sua Conversão</h1>
+                        </div>
                         <div className="conversaoInput">
                         
                         <div className="conversaoUsdc">
@@ -32,14 +35,17 @@ const DashboardDoador: React.FC = () => {
                         </div>
                         <div className="conversaoSpark">
                         <label><img src={SparkLogo}/></label>
-                        <input type="number" placeholder="Insira a quantidade"/>
-                        </div> 
+                        <input type="number" placeholder="Insira a quantidade"/>     
+                        </div>  
                         </div>
+                        <div className="botaoConverter">
                         <button>Converter</button>
+                        </div>
                     </div>
+
                 </div>
                 <div className="campanhaAtleta">
-                    <table>
+                <table>
                     <thead>
                         <th>ID da Doação</th>
                         <th>Nome do Atleta</th>
@@ -72,7 +78,7 @@ const DashboardDoador: React.FC = () => {
                             <td>Abatimento Realizado</td>
                         </tr>
                     </tbody>  
-                    </table>             
+                    </table>                  
                 </div>
 
             </div>

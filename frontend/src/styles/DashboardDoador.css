@@ -9,7 +9,7 @@
     background: url('../assets/background-abstract.png');
     align-items: center;
     justify-content: center;
-    min-height: 120vh;
+    min-height: 130vh;
 }
 
 .cardDashboardAtleta {
@@ -18,18 +18,17 @@
     border-radius: 10px;
     background: #f0f0f0;
     width: 90%;
-    height: 115vh;
+    height: 120vh;
     box-shadow: 4px 4px 38px -10px #00000069;
 
 }
 
 .titleDash {
-    height: 190px;
     border-radius: 10px;
-    margin: 20px;
+    margin: 10px;
     text-align: start;
     box-shadow: 4px 4px 38px -10px #00000069;
-    padding: 20px 50px;
+    padding: 10px 50px;
 }
 
 .titleDash h1 {
@@ -45,36 +44,35 @@
 }
 
 .dadosAtleta {
+    width: 99%;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 65%;
+    flex-direction: row;
+    gap: 5px;
+    margin: 0px 10px 10px;
+    height: 30%;
 }
 
 .dadosAtleta .saldoAtleta {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: start;
-    margin-left: 15px;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 4px 4px 38px -10px #00000069;
-    width: 98%;
+    width: 50%;
 }
 
 .saldoAtleta h1 {
     font-size: 35px;
     font-weight: 900;
     color: #f17909;
-    margin-left: 20px;
 }
 
 .saldoAtleta .saldoAtletaSpark {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 100%;
+    padding: 20px;
     align-items: center;
     justify-content: center;
 }
@@ -82,7 +80,6 @@
 .saldoAtleta .saldoAtletaSpark img {
     width: 130px;
     height: 130px;
-    padding-top: 0px;
 }
 
 .saldoAtleta .saldoAtletaSpark p {
@@ -93,25 +90,26 @@
 .dadosAtleta .conversao {
     display: flex;
     flex-direction: column;
-    width: 98%;
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
+    width: 50%;
+    align-items: start;
+    justify-content: start;
     border-radius: 10px;
     box-shadow: 4px 4px 38px -10px #00000069;
-}
-
-.conversao {
-    margin-left: 15px;
 }
 
 .conversao h1 {
     font-size: 35px;
     font-weight: 900;
     color: #f17909;
-    margin-bottom: 10px;
+}
 
+.conversao .tituloConversao {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .conversao input {
@@ -123,10 +121,12 @@
 
 .conversao .conversaoInput {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    height: 45%;
+    margin-left: 50px;
+    width: 80%;
 }
 
 .conversaoUsdc {
@@ -154,11 +154,18 @@
     height: 70px;
 }
 
-.conversao button {
+.conversao .botaoConverter {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+    width: 100%;
+}
+
+.conversao .botaoConverter button {
     color: #ffffff;
-    padding: 10px;
-    margin-left: 35px;
-    width: 20%;
+    padding: 15px;
+    margin-left: 30px;
+    width: 50%;
     border: none;
     border-radius: 5px;
     font-weight: 800;
@@ -169,8 +176,6 @@
 }
 
 .campanhaAtleta {
-    height: 40%;
-    margin: 20px;
     border-radius: 10px;
     box-shadow: 4px 4px 38px -10px #00000069;
     padding: 30px;
@@ -202,78 +207,139 @@
 }
 
 @media screen and (max-width: 780px) {
-   
+
+    .backDashboard_Atleta {
+        height: 130vh;
+    }
+
     .cardDashboardAtleta {
-        height: 105vh;
-        
+        height: 125vh;
+        width: 90%;
     }
 
     .titleDash {
-        padding: 5px 20px;
-        height: 14%;
-        margin: 10px ;
+        height: 10%;
+        margin: 10px;
+        padding: 10px;
     }
 
-    .titleDash h1{
-        font-size: 30px;
+    .titleDash h1 {
+        font-size: 25px;
     }
 
     .titleDash p {
-        font-size: 12px;
+        font-size: 15px;
     }
 
-    .dadosAtleta { 
+    .dadosAtleta {
         flex-direction: column;
-        padding: 0;
-        margin: 0;
+        height: 40%;
+        margin: 0px;
+        margin-bottom: 10px;
     }
 
     .dadosAtleta .saldoAtleta {
+        align-items: center;
+        justify-content: start;
+        width: 94%;
         margin: 0px 10px;
-        align-items: center;
-        justify-content: center;
-        height: 30%;
-        width: 94%;
-    }
-
-    .dadosAtleta .conversao {
-        margin: 0px 10px ;
-        padding: 8px 25px;
-        align-items: center;
-        justify-content: center;
-        width: 94%;
+        padding: 5px;
     }
 
     .dadosAtleta .saldoAtleta h1 {
-        font-size: 15px;
+        font-size: 22px;
     }
 
-    .dadosAtleta .saldoAtletaSpark img {
-        width: 30px;
-        height: 30px;
+    .saldoAtleta .saldoAtletaSpark {
+        margin: 0px;
+        padding: 0px;
     }
 
-    .dadosAtleta .saldoAtletaSpark p {
-        font-size: 15px;
+    .saldoAtleta .saldoAtletaSpark img {
+        width: 60px;
+        height: 60px;
     }
 
-    .dadosAtleta .conversao h1 {
+    .saldoAtleta .saldoAtletaSpark p { 
+        font-size: 30px;
+    }
+
+    .dadosAtleta .conversao {
+        width: 94%;
+        margin: 0px 10px;
         padding: 10px;
+    }
+
+    .conversao .tituloConversao {
+        width: 100%;
+        align-items: center;
+        margin: 0px 0px 15px 0px;
+        padding: 0px;
+    }
+
+    .conversao .tituloConversao h1 {
+        font-size: 22px;
+    }
+
+    .conversao .conversaoInput {
+        width: 92%;
+        height: 110px;
+        margin: 0px;
+        padding: 0px;
+        flex-direction: column;
+    }
+
+    .conversao .botaoConverter {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .conversao .botaoConverter button {
+        width: 80%;
         font-size: 15px;
-    }
-
-    .dadosAtleta button {
-        margin: 5px;
+        margin: 0px;
         padding: 10px;
-        font-size: 12px;
-        width: 70%;
     }
 
-    .campanhaAtleta {
-       margin: 0px 0px 10px 10px;
-       padding: 10px 5px;
-       width: 94%;
-      
+    .dadosAtleta .criarCampanha {
+        width: 94%;
+        margin: 0px 10px;
+        padding: 0px;
+    }
+
+    .criarCampanha .titleCampanha {
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .criarCampanha .titleCampanha h1 {
+        font-size: 25px;
+    }
+
+    .criarCampanha .contentCampanha {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .criarCampanha .contentCampanha input {
+        width: 90%;
+    }
+
+    .criarCampanha .contentCampanha button {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .cardDashboardAtleta .campanhaAtleta {
+        height: 50%;
+        width: 94%;
+        margin: 0px 0px 10px 10px;
+        padding: 0px;
     }
 
     .campanhaAtleta table {
@@ -289,5 +355,6 @@
     .campanhaAtleta table tbody,tr,td {
         font-size: 5px;
     }
+
 
 }
