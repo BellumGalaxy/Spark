@@ -1,4 +1,5 @@
 from rest_framework import generics, status
+from django.shortcuts import get_object_or_404
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.response import Response
 from .models import CustomUser
@@ -78,10 +79,10 @@ class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     # permission_classes = [IsAuthenticated]  # Permissões necessárias
     def get_object(self):
-        # Obtém o valor do parâmetro da URL
+        # Obtém o valor do parâmetro da URL e converte para minúsculas
         wallet_id = self.kwargs[self.lookup_field].lower()
-        # Realiza a consulta no banco de dados usando o wallet_id em letras minúsculas
-        return generics.get_object_or_404(self.get_queryset(), wallet_id=wallet_id)
+        # Realiza a consulta no banco de dados usando o wallet_id em comparação insensível a maiúsculas e minúsculas
+        return get_object_or_404(self.get_queryset().filter(wallet_id__iexact=wallet_id))
 
     def perform_create(self, serializer):
         user = self.request.user  # Obtém o usuário autenticado
