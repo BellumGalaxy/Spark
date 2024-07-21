@@ -81,11 +81,11 @@ class CustomUserDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_object(self):
         # Obtém o valor do parâmetro da URL e converte para minúsculas
         wallet_id = self.kwargs[self.lookup_field].lower()
-        #cleaned_wallet_id = wallet_id.replace('>', '')
+        cleaned_wallet_id = wallet_id.replace('>', '')
         # Converte para minúsculas
         #cleaned_wallet_id = cleaned_wallet_id.lower()
         # Realiza a consulta no banco de dados usando o wallet_id em comparação insensível a maiúsculas e minúsculas
-        return get_object_or_404(self.get_queryset().filter(wallet_id__iexact=wallet_id))
+        return get_object_or_404(self.get_queryset().filter(wallet_id__iexact=cleaned_wallet_id))
 
     def perform_create(self, serializer):
         user = self.request.user  # Obtém o usuário autenticado
