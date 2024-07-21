@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../styles/FormAtleta.css";
-import { useActiveAccount } from "thirdweb/react";
+import { useSendTransaction } from "thirdweb/react";
 import { useNavigate } from "react-router-dom";
+import { contract } from "../utils/thirdweb"; // Certifique-se de que este caminho esteja correto
+import { prepareContractCall } from "thirdweb";
 
 const FormAtleta: React.FC = () => {
-  const activeAccount = useActiveAccount();
   const navigate = useNavigate();
+  const { mutate: sendTransaction } = useSendTransaction();
 
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(false);
@@ -87,6 +89,18 @@ const FormAtleta: React.FC = () => {
         }
 
         const data = await response.json();
+
+        // call smart contract
+        const transaction = prepareContractCall({
+          contract,
+          method:
+            "function athleteRegister() returns (uint256 _athleteId, bytes32 _requestId)",
+          params: [],
+        });
+
+        await sendTransaction(transaction);
+
+        console.log("Transaction: ", transaction);
         console.log("Cadastro realizado com sucesso:", data);
         navigate("/dashboard-athlete");
       } catch (error) {

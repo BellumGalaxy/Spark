@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/NavBar.css";
 import { ConnectButton } from "thirdweb/react";
-import { client } from "../utils/client";
+import { client } from "../utils/thirdweb";
 import { inAppWallet } from "thirdweb/wallets";
 import { sepolia } from "thirdweb/chains";
 import { useActiveWallet } from "thirdweb/react";
