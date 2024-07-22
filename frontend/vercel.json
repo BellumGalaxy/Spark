@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/campanhas", "destination": "/index.html" },
+    { "source": "/atletas", "destination": "/index.html" },
+    { "source": "/sobre", "destination": "/index.html" },
+    { "source": "/conta", "destination": "/index.html" },
+    { "source": "/dashboard-athlete", "destination": "/index.html" },
+    { "source": "/dashboard-donor", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
