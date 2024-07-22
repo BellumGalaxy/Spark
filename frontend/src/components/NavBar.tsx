@@ -32,12 +32,12 @@ const NavBar: React.FC = () => {
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="/campaigns" className="navLink">
+          <a href="/campanhas" className="navLink">
             Campanhas
           </a>
         </li>
         <li onClick={removeActive}>
-          <a href="/athletes" className="navLink">
+          <a href="/atletas" className="navLink">
             Atletas
           </a>
         </li>
