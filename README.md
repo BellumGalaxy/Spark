@@ -11,7 +11,7 @@
 
 ### Links
 
-- Veja o vídeo sobre o projeto disponível [aqui]()
+- Veja o vídeo sobre o projeto disponível [aqui](https://www.youtube.com/watch?v=eWEETWlsZwk)
 - Live demo [website](https://spark-bg.vercel.app)
 - Smart Contracts [Sepolia Scan](https://sepolia.etherscan.io/address/0x438a935cee6f677779ad407c0562e2010c3c3ae3)
 
