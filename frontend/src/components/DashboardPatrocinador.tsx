@@ -8,17 +8,17 @@ const DashboardPatrocinador: React.FC = () => {
   return (
     <>
       <NavBar />
-      <div className="backDashboard_Atleta">
-        <div className="cardDashboardAtleta">
+      <div className="backDashboard_Patrocinador">
+        <div className="cardDashboardPatrocinador">
           <div className="titleDash">
             <h1>Olá Patrocinador</h1>
             <p>Seja bem-vindo(a) a sua Dashboard!</p>
           </div>
 
-          <div className="dadosAtleta">
-            <div className="saldoAtleta">
+          <div className="dadosPatrocinador">
+            <div className="saldoPatrocinador">
               <h1>Seu Saldo</h1>
-              <div className="saldoAtletaSpark">
+              <div className="saldoPatrocinadorSpark">
                 <img src={SparkLogo} alt="Spark Logo" />
                 <p>120.200,30</p>
               </div>
@@ -42,7 +42,7 @@ const DashboardPatrocinador: React.FC = () => {
               <button>Converter</button>
             </div>
           </div>
-          <div className="campanhaAtleta">
+          <div className="campanhaPatrocinador">
             <table>
               <thead>
                 <tr>

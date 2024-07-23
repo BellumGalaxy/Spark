@@ -2,22 +2,23 @@ import React from "react";
 import SparkLogo from "../assets/logo-spark.png";
 import UsdcLogo from "../assets/usdc-logo.png";
 import NavBar from "./NavBar";
+import "../styles/DashboardDoador.css";
 
 const DashboardDoador: React.FC = () => {
   return (
     <>
       <NavBar />
-      <div className="backDashboard_Atleta">
-        <div className="cardDashboardAtleta">
+      <div className="backDashboard_Doador">
+        <div className="cardDashboardDoador">
           <div className="titleDash">
             <h1>Olá Doador</h1>
             <p>Seja bem-vindo(a) a sua Dashboard!</p>
           </div>
 
-          <div className="dadosAtleta">
-            <div className="saldoAtleta">
+          <div className="dadosDoador">
+            <div className="saldoDoador">
               <h1>Seu Saldo</h1>
-              <div className="saldoAtletaSpark">
+              <div className="saldoDoadorSpark">
                 <img src={SparkLogo} />
                 <p>60.800,00</p>
               </div>
@@ -41,7 +42,7 @@ const DashboardDoador: React.FC = () => {
               <button>Converter</button>
             </div>
           </div>
-          <div className="campanhaAtleta">
+          <div className="campanhaDoador">
             <table>
               <thead>
                 <th>ID da Doação</th>

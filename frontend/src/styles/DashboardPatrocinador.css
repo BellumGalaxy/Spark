@@ -1,220 +1,209 @@
 * {
-    margin: 0;
+    margin : 0;
     padding: 0;
 }
 
-.backDashboard_Atleta {
-    display: flex;
-    flex-direction: column;
-    background: url('../assets/background-abstract.png');
-    align-items: center;
+.backDashboard_Patrocinador {
+    display        : flex;
+    flex-direction : column;
+    background     : url('../assets/background-abstract.png');
+    align-items    : center;
     justify-content: center;
-    min-height: 120vh;
+    min-height     : 120vh;
 }
 
-.cardDashboardAtleta {
-    display: flex;
+.cardDashboardPatrocinador {
+    display       : flex;
     flex-direction: column;
-    border-radius: 10px;
-    background: #f0f0f0;
-    width: 90%;
-    height: 115vh;
-    box-shadow: 4px 4px 38px -10px #00000069;
+    align-items   : center;
+    border-radius : 10px;
+    background    : #f0f0f0;
+    width         : 90%;
+    height        : 115vh;
+    box-shadow    : 4px 4px 38px -10px #00000069;
 
 }
 
 .titleDash {
-    height: 190px;
     border-radius: 10px;
-    margin: 20px;
-    text-align: start;
-    box-shadow: 4px 4px 38px -10px #00000069;
-    padding: 20px 50px;
+    margin       : 20px;
+    text-align   : start;
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    padding      : 20px 40px;
 }
 
 .titleDash h1 {
-    font-weight: 900;
-    color: #f17909;
-    font-size: 60px;
+    font-weight: 700;
+    color      : #f17909;
+    font-size  : 30px;
 }
 
-.titleDash p { 
-    font-size: 25px;
+.titleDash p {
+    font-size     : 22px;
     padding-bottom: 10px;
-    font-weight: 500;
+    font-weight   : 500;
 }
 
-.dadosAtleta {
-    display: flex;
+.dadosPatrocinador {
+    display       : flex;
     flex-direction: column;
-    gap: 10px;
-    height: 65%;
+    gap           : 10px;
+    height        : 65%;
 }
 
-.dadosAtleta .saldoAtleta {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+.dadosPatrocinador .saldoPatrocinador {
+    display        : flex;
+    flex-direction : column;
+    align-items    : start;
     justify-content: start;
-    margin-left: 15px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 38px -10px #00000069;
-    width: 98%;
+    padding        : 20px;
+    border-radius  : 10px;
+    box-shadow     : 4px 4px 38px -10px #00000069;
+    width          : 98%;
 }
 
-.saldoAtleta h1 {
-    font-size: 35px;
-    font-weight: 900;
-    color: #f17909;
-    margin-left: 20px;
+.saldoPatrocinador h1 {
+    font-size  : 20px;
+    font-weight: 700;
+    color      : #f17909;
 }
 
-.saldoAtleta .saldoAtletaSpark {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    align-items: center;
+.saldoPatrocinador .saldoPatrocinadorSpark {
+    display        : flex;
+    flex-direction : row;
+    width          : 100%;
+    height         : 100%;
+    align-items    : center;
     justify-content: center;
 }
 
-.saldoAtleta .saldoAtletaSpark img {
-    width: 130px;
-    height: 130px;
+.saldoPatrocinador .saldoPatrocinadorSpark img {
+    width      : 130px;
+    height     : 130px;
     padding-top: 0px;
 }
 
-.saldoAtleta .saldoAtletaSpark p {
-    font-size: 50px;
+.saldoPatrocinador .saldoPatrocinadorSpark p {
+    font-size  : 50px;
     font-weight: 700;
 }
 
-.dadosAtleta .conversao {
-    display: flex;
-    flex-direction: column;
-    width: 98%;
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 38px -10px #00000069;
-}
-
-.conversao {
-    margin-left: 15px;
+.dadosPatrocinador .conversao {
+    display        : flex;
+    flex-direction : column;
+    width          : 98%;
+    padding        : 20px;
+    align-items    : flex-start;
+    justify-content: flex-start;
+    margin-right   : 20px;
+    border-radius  : 10px;
+    box-shadow     : 4px 4px 38px -10px #00000069;
 }
 
 .conversao h1 {
-    font-size: 35px;
-    font-weight: 900;
-    color: #f17909;
-    margin-bottom: 10px;
-
+    font-size    : 20px;
+    font-weight  : 700;
+    color        : #f17909;
+    margin-bottom: 20px;
 }
 
 .conversao input {
-    padding: 10px 20px;
+    padding      : 10px 20px;
     border-radius: 5px;
-    border: none;
-    box-shadow: 4px 4px 38px -10px #00000069;
+    border       : none;
+    box-shadow   : 4px 4px 38px -10px #00000069;
 }
 
 .conversao .conversaoInput {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
     justify-content: center;
-    width: 100%;
+    width          : 100%;
 }
 
 .conversaoUsdc {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
     justify-content: center;
 }
 
 .conversaoUsdc img {
-    width: 35px;
+    width : 35px;
     height: 35px;
     margin: 0px 15px 0px 20px
 }
 
 .conversaoSpark {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
     justify-content: center;
 }
 
 .conversaoSpark img {
-    width: 70px;
+    width : 70px;
     height: 70px;
 }
 
 .conversao button {
-    color: #ffffff;
-    padding: 10px;
-    margin-left: 35px;
-    width: 20%;
-    border: none;
+    color        : #ffffff;
+    padding      : 10px;
+    width        : 80%;
+    border       : none;
     border-radius: 5px;
-    font-weight: 800;
-    transition: .2s;
-    background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-    box-shadow: 4px 4px 38px -10px #00000069;
-    cursor: pointer;
+    font-weight  : 600;
+    transition   : .2s;
+    background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    cursor       : pointer;
 }
 
-.campanhaAtleta {
-    height: 40%;
-    margin: 20px;
+.campanhaPatrocinador {
+    height       : fit-content;
+    margin       : 20px;
     border-radius: 10px;
-    box-shadow: 4px 4px 38px -10px #00000069;
-    padding: 30px;
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    padding      : 30px;
 }
 
-.campanhaAtleta table {
+.campanhaPatrocinador table {
     width: 100%;
 }
 
-.campanhaAtleta table thead,th {
-    background: #f17909;
-    color: #f0f0f0;
-    padding: 10px;
+.campanhaPatrocinador table thead,
+th {
+    background   : #f17909;
+    color        : #f0f0f0;
+    padding      : 10px;
     border-radius: 5px;
-    box-shadow: 4px 4px 15px -10px #00000069;
+    box-shadow   : 4px 4px 15px -10px #00000069;
 }
 
-.campanhaAtleta table tbody,tr,td {
-    font-size: 20px;
+.campanhaPatrocinador table tbody,
+tr,
+td {
+    font-size  : 20px;
     font-weight: 600;
-    padding: 12px;
-    margin: 5px;
-    text-align: center;
+    padding    : 12px;
+    margin     : 5px;
+    text-align : center;
 }
 
-.campanhaAtleta table tbody tr:nth-child(odd) {
-    box-shadow: 4px 4px 30px -10px #00000069;
+.campanhaPatrocinador table tbody tr:nth-child(odd) {
+    box-shadow   : 4px 4px 30px -10px #00000069;
     border-radius: 5px;
 }
 
 @media screen and (max-width: 780px) {
-   
-    .cardDashboardAtleta {
-        height: 105vh;
-        
-    }
 
     .titleDash {
         padding: 5px 20px;
-        height: 14%;
-        margin: 10px ;
+        margin : 10px;
     }
 
-    .titleDash h1{
+    .titleDash h1 {
         font-size: 30px;
     }
 
@@ -222,71 +211,74 @@
         font-size: 12px;
     }
 
-    .dadosAtleta { 
+    .dadosPatrocinador {
         flex-direction: column;
-        padding: 0;
-        margin: 0;
+        padding       : 0;
+        margin        : 0;
     }
 
-    .dadosAtleta .saldoAtleta {
-        margin: 0px 10px;
-        align-items: center;
+    .dadosPatrocinador .saldoPatrocinador {
+        margin         : 0px 10px;
+        align-items    : center;
         justify-content: center;
-        height: 30%;
-        width: 94%;
+        height         : 30%;
+        width          : 94%;
     }
 
-    .dadosAtleta .conversao {
-        margin: 0px 10px ;
-        padding: 8px 25px;
-        align-items: center;
+    .dadosPatrocinador .conversao {
+        margin         : 0px 10px;
+        padding        : 8px 25px;
+        align-items    : center;
         justify-content: center;
-        width: 94%;
+        width          : 94%;
     }
 
-    .dadosAtleta .saldoAtleta h1 {
+    .dadosPatrocinador .saldoPatrocinador h1 {
         font-size: 15px;
     }
 
-    .dadosAtleta .saldoAtletaSpark img {
-        width: 30px;
+    .dadosPatrocinador .saldoPatrocinadorSpark img {
+        width : 30px;
         height: 30px;
     }
 
-    .dadosAtleta .saldoAtletaSpark p {
+    .dadosPatrocinador .saldoPatrocinadorSpark p {
         font-size: 15px;
     }
 
-    .dadosAtleta .conversao h1 {
-        padding: 10px;
+    .dadosPatrocinador .conversao h1 {
+        padding  : 10px;
         font-size: 15px;
     }
 
-    .dadosAtleta button {
-        margin: 5px;
-        padding: 10px;
+    .dadosPatrocinador button {
+        margin   : 5px;
+        padding  : 10px;
         font-size: 12px;
-        width: 70%;
+        width    : 70%;
     }
 
-    .campanhaAtleta {
-       margin: 0px 0px 10px 10px;
-       padding: 10px 5px;
-       width: 94%;
-      
+    .campanhaPatrocinador {
+        margin : 0px 0px 10px 10px;
+        padding: 10px 5px;
+        width  : 94%;
+
     }
 
-    .campanhaAtleta table {
-        margin: 0px 0px;
+    .campanhaPatrocinador table {
+        margin : 0px 0px;
         padding: 0px;
     }
 
-    .campanhaAtleta table thead,th {
+    .campanhaPatrocinador table thead,
+    th {
         font-size: 5px;
-        padding: 3px;
+        padding  : 3px;
     }
 
-    .campanhaAtleta table tbody,tr,td {
+    .campanhaPatrocinador table tbody,
+    tr,
+    td {
         font-size: 5px;
     }
 

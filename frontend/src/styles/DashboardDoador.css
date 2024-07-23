@@ -1,24 +1,26 @@
 * {
-    margin    : 0;
-    padding   : 0;
-    box-sizing: border-box;
+    margin : 0;
+    padding: 0;
 }
 
-.backDashboardAtleta {
-    display       : flex;
-    flex-direction: column;
-    align-items   : center;
-    padding-bottom: 10em;
-}
-
-.cardDashboardAtleta {
+.backDashboard_Doador {
     display        : flex;
     flex-direction : column;
+    background     : url('../assets/background-abstract.png');
     align-items    : center;
-    justify-content: center;
-    border-radius  : 10px;
-    width          : 90%;
-    max-width      : 1200px;
+    justify-content: flex-start;
+    height         : 100vh;
+
+}
+
+.cardDashboardDoador {
+    display       : flex;
+    flex-direction: column;
+    border-radius : 10px;
+    background    : #f0f0f0;
+    width         : 90%;
+    box-shadow    : 4px 4px 38px -10px #00000069;
+    gap           : 20px;
 }
 
 .titleDash {
@@ -30,74 +32,62 @@
     padding      : 20px 50px;
 }
 
-.titleDash {
-    border-radius: 10px;
-    margin       : 20px;
-    text-align   : start;
-    box-shadow   : 4px 4px 38px -10px #00000069;
-    padding      : 20px 40px;
-}
-
 .titleDash h1 {
     font-weight: 700;
     color      : #f17909;
     font-size  : 30px;
 }
 
-.dadosAtleta {
+.titleDash p {
+    font-size     : 25px;
+    padding-bottom: 10px;
+    font-weight   : 500;
+}
+
+.dadosDoador {
     display       : flex;
     flex-direction: column;
     gap           : 10px;
+    height        : 65%;
 }
 
-.dadosAtleta .line-content {
-    display        : flex;
-    flex-direction : row;
-    justify-content: center;
-    margin-bottom  : 20px;
-}
-
-
-.dadosAtleta .saldoAtleta {
+.dadosDoador .saldoDoador {
     display        : flex;
     flex-direction : column;
-    align-items    : flex-start;
+    align-items    : center;
     justify-content: flex-start;
     padding        : 20px;
     border-radius  : 10px;
     box-shadow     : 4px 4px 38px -10px #00000069;
     height         : fit-content;
     min-width      : 20%;
-    width          : 20%;
-    margin-right   : 20px;
 }
 
-.saldoAtleta h1 {
-    text-align : left;
+.saldoDoador h1 {
     font-size  : 20px;
     font-weight: 700;
     color      : #f17909;
 }
 
-.saldoAtleta .saldoAtletaSpark {
+.saldoDoador .saldoDoadorSpark {
     display        : flex;
     flex-direction : row;
     width          : 100%;
     align-items    : center;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
-.saldoAtleta .saldoAtletaSpark img {
+.saldoDoador .saldoDoadorSpark img {
     width : 50px;
     height: 50px;
 }
 
-.saldoAtleta .saldoAtletaSpark p {
+.saldoDoador .saldoDoadorSpark p {
     font-size  : 20px;
     font-weight: 700;
 }
 
-.dadosAtleta .conversao {
+.dadosDoador .conversao {
     display        : flex;
     flex-direction : column;
     width          : 98%;
@@ -115,7 +105,6 @@
     font-weight  : 700;
     color        : #f17909;
     margin-bottom: 10px;
-
 }
 
 .conversao input {
@@ -161,67 +150,30 @@
 .conversao button {
     color        : #ffffff;
     padding      : 10px;
-    width        : 100%;
+    margin-left  : 35px;
+    width        : 20%;
     border       : none;
     border-radius: 5px;
-    font-weight  : 500;
+    font-weight  : 800;
     transition   : .2s;
     background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
     box-shadow   : 4px 4px 38px -10px #00000069;
     cursor       : pointer;
 }
 
-.criarCampanha {
-    display        : flex;
-    flex-direction : column;
-    width          : 98%;
-    align-items    : center;
-    justify-content: flex-start;
-    padding        : 20px;
-    box-shadow     : 4px 4px 38px -10px #00000069;
-    border-radius  : 10px;
-}
-
-.criarCampanha h1 {
-    font-size    : 20px;
-    font-weight  : 700;
-    color        : #f17909;
-    margin-bottom: 10px;
-}
-
-.criarCampanha input {
-    padding      : 10px 20px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border       : none;
+.campanhaDoador {
+    height       : 40%;
+    margin       : 20px;
+    border-radius: 10px;
     box-shadow   : 4px 4px 38px -10px #00000069;
+    padding      : 30px;
 }
 
-.criarCampanha label {
-    font-size    : 12px;
-    margin-bottom: 2px;
+.campanhaDoador table {
+    width: 100%;
 }
 
-.criarCampanha button {
-    color        : #ffffff;
-    padding      : 10px 20px;
-    border       : none;
-    border-radius: 5px;
-    font-weight  : 600;
-    transition   : .2s;
-    background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-    box-shadow   : 4px 4px 38px -10px #00000069;
-    cursor       : pointer;
-}
-
-
-
-table {
-    width          : 100%;
-    border-collapse: collapse;
-}
-
-.campanhaAtleta table thead,
+.campanhaDoador table thead,
 th {
     background   : #f17909;
     color        : #f0f0f0;
@@ -230,20 +182,31 @@ th {
     box-shadow   : 4px 4px 15px -10px #00000069;
 }
 
-.campanhaAtleta table tbody,
+.campanhaDoador table tbody,
 tr,
 td {
-    background-color: #f0f0f0;
-    font-size       : 20px;
-    padding         : 12px;
-    margin          : 5px;
-    text-align      : center;
+    font-size  : 20px;
+    font-weight: 600;
+    padding    : 12px;
+    margin     : 5px;
+    text-align : center;
+}
+
+.campanhaDoador table tbody tr:nth-child(odd) {
+    box-shadow   : 4px 4px 30px -10px #00000069;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 780px) {
 
+    .cardDashboardDoador {
+        align-items    : center;
+        justify-content: flex-start;
+    }
+
     .titleDash {
         padding: 5px 20px;
+        height : 14%;
         margin : 10px;
     }
 
@@ -255,69 +218,72 @@ td {
         font-size: 12px;
     }
 
-    .dadosAtleta {
-        display        : flex;
-        flex-direction : column;
+    .dadosDoador {
+        flex-direction: column;
+        padding       : 0;
+        margin        : 0;
+    }
+
+    .dadosDoador .saldoDoador {
+        margin         : 0px 10px;
         align-items    : center;
         justify-content: center;
-        gap            : 10px;
+        height         : 30%;
+        width          : 94%;
     }
 
-    .dadosAtleta .line-content {
-        display        : flex;
-        flex-direction : column;
+    .dadosDoador .conversao {
+        margin         : 0px 10px;
+        padding        : 8px 25px;
         align-items    : center;
         justify-content: center;
-        gap            : 10px;
+        width          : 94%;
     }
 
-    .dadosAtleta .saldoAtleta {
-        margin         : 0 auto;
-        align-items    : center;
-        justify-content: center;
-        min-width      : 50vw;
+    .dadosDoador .saldoDoador h1 {
+        font-size: 15px;
     }
 
-    .saldoAtleta .saldoAtletaSpark {
-        justify-content: center;
-    }
-
-    .dadosAtleta .saldoAtletaSpark img {
+    .dadosDoador .saldoDoadorSpark img {
         width : 30px;
         height: 30px;
     }
 
-    .dadosAtleta button {
-        margin: 10px;
-        width : 70%;
+    .dadosDoador .saldoDoadorSpark p {
+        font-size: 15px;
     }
 
-    .dadosAtleta .conversao {
-        margin: 0 auto;
+    .dadosDoador .conversao h1 {
+        padding  : 10px;
+        font-size: 15px;
     }
 
-    .criarCampanha input {
-        width        : 90%;
-        margin-bottom: 8px;
+    .dadosDoador button {
+        margin   : 5px;
+        padding  : 10px;
+        font-size: 12px;
+        width    : 70%;
     }
 
-    .criarCampanha label {
-        font-size    : 12px;
-        margin-bottom: 1px;
+    .campanhaDoador {
+        margin : 0px 0px 10px 10px;
+        padding: 10px 5px;
+        width  : 94%;
+
     }
 
-    .campanhaAtleta table {
+    .campanhaDoador table {
         margin : 0px 0px;
         padding: 0px;
     }
 
-    .campanhaAtleta table thead,
+    .campanhaDoador table thead,
     th {
         font-size: 5px;
         padding  : 3px;
     }
 
-    .campanhaAtleta table tbody,
+    .campanhaDoador table tbody,
     tr,
     td {
         font-size: 5px;
