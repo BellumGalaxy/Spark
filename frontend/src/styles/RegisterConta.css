@@ -7,56 +7,50 @@
   display        : flex;
   flex-direction : column;
   background     : url(../assets/background-abstract.png);
-  min-height     : 100vh;
   align-items    : center;
   justify-content: center;
+  padding        : 1em;
 }
 
 .contentRegister {
-  background-color: #f0f0f0;
-  width           : 85%;
-  height          : 90vh;
-  display         : flex;
-  flex-direction  : row;
-  align-items     : center;
-  padding         : 10px 10px 55px;
-  border-radius   : 8px;
-  box-shadow      : 4px 4px 38px -10px #00000069;
+  width         : 95%;
+  margin        : 2em auto;
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  border-radius : 8px;
 }
 
 .titleTop_register {
   display        : flex;
   flex-direction : column;
   background     : url(../assets/back_Form.jpg) center center / cover;
-  margin-top     : 55px;
   box-shadow     : 4px 4px 38px -10px #00000069;
   border-radius  : 10px;
-  height         : 90vh;
-  width          : 50%;
   text-align     : center;
   justify-content: center;
   font-size      : 25px;
   padding        : 20px;
+  gap            : .4em;
 }
 
 .titleTop_register h1 {
-  font-family  : 'Paris2024', sans-serif;
-  font-weight  : 900;
-  color        : #f17909;
-  margin-bottom: 0;
-
+  font-family: 'Paris2024', sans-serif;
+  font-weight: 900;
+  font-size  : 32px;
+  line-height: 1;
+  color      : #f17909;
 }
 
 .titleTop_register p {
   font-weight: 600;
   font-size  : 15px;
-  margin     : 0;
 }
 
 .tabs {
   display       : flex;
   flex-direction: column;
-  margin-top    : 40px;
+  width         : 100%;
 }
 
 .tab {
@@ -83,11 +77,33 @@
 }
 
 .contentTabs {
-  margin-top: 4em;
-  width     : 50%;
-  padding   : 20px;
+  padding  : 1em;
+  width    : 90%;
+  max-width: 800px;
 }
 
 .tab-content.active {
   display: block;
+}
+
+@media (min-width: 768px) {
+  .contentRegister {
+    width  : 100%;
+    padding: 2em;
+  }
+
+  .tabs {
+    flex-direction: row;
+    flex-wrap     : wrap;
+  }
+
+  .tab {
+    margin   : 10px;
+    flex     : 1;
+    min-width: 120px;
+  }
+
+  .contentTabs {
+    width: 60%;
+  }
 }

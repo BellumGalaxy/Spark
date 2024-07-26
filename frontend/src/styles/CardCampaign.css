@@ -1,70 +1,131 @@
 .campaign-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  color: #555555;
+  display         : flex;
+  flex-direction  : column;
+  align-items     : center;
+  justify-content : center;
+  border-radius   : 8px;
+  margin-bottom   : 20px;
+  overflow        : hidden;
+  color           : #555555;
   background-color: #fff;
-  box-shadow: 0px 2px 4px #0000001a;
+  box-shadow      : 0px 2px 4px #0000001a;
+  max-width       : 500px;
 }
 
 .campaign-card__image {
-  width: 100%;
-  height: 150px;
+  width     : 100%;
+  height    : 150px;
   object-fit: cover;
 }
 
 .campaign-card__content {
-  padding: 1.4em;
-  display: flex;
+  padding       : 1.4em;
+  display       : flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.8em;
+  align-items   : flex-start;
+  gap           : 0.8em;
 }
 
 .campaign-card__title {
-  color: #555;
-  font-size: 20px;
-  font-weight: medium;
+  color      : #555;
+  font-size  : 20px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.campaign-card__athlete-fav-wrap {
+  width          : 100%;
+  display        : flex;
+  flex-direction : row;
+  align-items    : center;
+  justify-content: space-between;
+}
+
+.campaign-card__athlete-fav-wrap svg {
+  color : #ff7f08;
+  cursor: pointer;
 }
 
 .campaign-card__athlete {
-  font-size: 14px;
+  font-size  : 14px;
   font-weight: bold;
-  color: #868686;
+  color      : #868686;
+}
+
+.campaign-card__time-left {
+  width         : 100%;
+  display       : flex;
+  flex-direction: row;
+  align-items   : center;
+  gap           : .4em;
+  padding       : 0;
+  margin-top    : -.4em;
+  margin-bottom : -.4em;
+}
+
+.campaign-card__time-left svg {
+  padding: 0;
+  margin : 0;
+}
+
+.campaign-card__time-left p {
+  color      : #6e6e6e;
+  font-size  : 14px;
+  line-height: 16px;
+  font-weight: 700;
 }
 
 .campaign-card__description {
-  font-size: 16px;
-  flex-grow: 1;
+  font-size  : 16px;
+  line-height: 24px;
+  flex-grow  : 1;
+}
+
+.campaign-card__values {
+  width          : 100%;
+  display        : flex;
+  flex-direction : row;
+  align-items    : center;
+  justify-content: space-between;
+  gap            : .2em;
+}
+
+
+.campaign-card__progress-bar-wrap {
+  width           : 100%;
+  background-color: #e0e0e0;
+  border-radius   : 3px;
+  overflow        : hidden;
+}
+
+.campaign-card__progress-bar {
+  height          : 10px;
+  background-color: #ff7f08;
 }
 
 .campaign-card__goal {
-  font-size: 16px;
-  font-weight: bold;
-  color: #555555;
+  font-size  : 16px;
+  font-weight: 700;
+  color      : #838383;
 }
 
 .buttons-wrap {
   display: flex;
-  flex: row;
-  gap: 0.4em;
-  width: 100%;
+  flex   : row;
+  gap    : 0.4em;
+  width  : 100%;
 }
 
 .campaign-card__donate-button {
-  padding: 1em 2em;
-  background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-  color: #fff;
-  border: none;
+  padding      : 1em 2em;
+  background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+  color        : #fff;
+  border       : none;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+  cursor       : pointer;
+  font-size    : 14px;
+  font-weight  : 600;
+  transition   : background-color 0.3s ease;
 }
 
 .campaign-card__donate-button:hover {
@@ -72,17 +133,21 @@
 }
 
 .campaign-card__details-button {
-  padding: 1em 2em;
-  background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-  color: #fff;
-  border: none;
+  padding      : 1em 2em;
+  background   : linear-gradient(0deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+  color        : #fff;
+  border       : none;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  text-align: center;
+  cursor       : pointer;
+  font-size    : 14px;
+  font-weight  : 600;
+  transition   : background-color 0.3s ease;
+  width        : 100%;
+  text-align   : center;
+}
+
+.campaign-card__details-button:hover {
+  background: linear-gradient(225deg, #ff7f08 8.12%, #ff7f08 92.21%);
 }
 
 @media (min-width: 1024px) {
@@ -91,7 +156,7 @@
   }
 
   .campaign-card__content {
-    height: 100%;
+    height         : 100%;
     justify-content: space-between;
   }
 

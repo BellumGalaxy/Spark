@@ -1,59 +1,49 @@
 .contentForm_Atleta {
-    display: flex;
+    display       : flex;
     flex-direction: column;
-    margin-top: 20px;
-    height: 90vh;
-<<<<<<< HEAD
-    padding: 10px 35px;
-=======
-    padding: 30px;
->>>>>>> frontendCayo
+    padding       : 10px 35px;
 }
 
 .contentForm_Atleta label {
-    font-size: 11px;
-    font-weight: 700;
+    font-size    : 11px;
+    font-weight  : 700;
     margin-bottom: 1px;
-<<<<<<< HEAD
-    color: #000000;
-=======
->>>>>>> frontendCayo
+    color        : #000000;
 }
 
 .contentForm_Atleta input {
-    padding: 13px;
+    padding      : 13px;
     margin-bottom: 10px;
-    border: none;
-    font-size: 12px;
+    border       : none;
+    font-size    : 12px;
     border-radius: 5px;
-    box-shadow: 4px 4px 38px -10px #00000069;
+    box-shadow   : 4px 4px 38px -10px #00000069;
 }
 
 .contentForm_Atleta button {
-    margin:15px 0px -8px;
-    color: #ffffff;
-    padding: 12px;
-    width: 100%;
-    border: none;
+    margin       : 15px 0px -8px;
+    color        : #ffffff;
+    padding      : 12px;
+    width        : 100%;
+    border       : none;
     border-radius: 5px;
-    font-weight: 800;
-    transition: .3s ease;
-    background: linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
-    box-shadow: 4px 4px 38px -10px #00000069;
-    cursor: pointer;
+    font-weight  : 800;
+    transition   : .3s ease;
+    background   : linear-gradient(225deg, #ff7f08 8.12%, #f8ae0e 92.21%);
+    box-shadow   : 4px 4px 38px -10px #00000069;
+    cursor       : pointer;
 }
 
 .contentForm_Atleta button:disabled {
     background: linear-gradient(225deg, #505050 8.12%, #7c7c7c 92.21%);
-    cursor: not-allowed;
-    opacity: 0.6;
+    cursor    : not-allowed;
+    opacity   : 0.6;
 }
 
 @media screen and (max-width: 780px) {
     .contentForm_Atleta {
-        display: flex;
+        display       : flex;
         flex-direction: column;
-        height: 100vh;
-        padding: 0px;
+        padding       : 2em 0;
     }
 }

@@ -188,7 +188,7 @@ const FormAtleta: React.FC = () => {
               console.error("Transaction error", error);
             }}
           >
-            Confirm Transaction
+            Registrar
           </TransactionButton>
         </form>
       </div>

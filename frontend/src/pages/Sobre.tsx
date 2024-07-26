@@ -1,9 +1,9 @@
 // src/pages/Sobre.tsx
-import React from 'react';
-import NavBar from '../components/NavBar';
-import '../styles/Sobre.css';
-import Bellum from '../components/Bellum';
-import LogoSpark from '../assets/logo-spark.png';
+import React from "react";
+import NavBar from "../components/NavBar";
+import "../styles/Sobre.css";
+import Bellum from "../components/Bellum";
+import LogoSpark from "../assets/logo-spark.png";
 
 const Sobre: React.FC = () => {
   return (
@@ -17,19 +17,19 @@ const Sobre: React.FC = () => {
             <h2>Visão</h2>
             <p>
               Nosso projeto visa conectar atletas talentosos com patrocinadores
-              que possam ajudá-los a alcançar seus objetivos e sonhos no esporte.
-              Acreditamos no poder do esporte para transformar vidas e queremos
-              ser parte dessa jornada.
+              que possam ajudá-los a alcançar seus objetivos e sonhos no
+              esporte. Acreditamos no poder do esporte para transformar vidas e
+              queremos ser parte dessa jornada.
             </p>
           </section>
           <section>
             <h2>Missão</h2>
             <p>
-              Nossa missão é fornecer uma plataforma acessível e eficaz para
-              que atletas possam divulgar suas campanhas de financiamento e
-              alcançar o apoio necessário. Facilitamos o processo de doações
-              para os patrocinadores, garantindo que suas contribuições sejam
-              usadas de maneira transparente e eficiente.
+              Nossa missão é fornecer uma plataforma acessível e eficaz para que
+              atletas possam divulgar suas campanhas de financiamento e alcançar
+              o apoio necessário. Facilitamos o processo de doações para os
+              patrocinadores, garantindo que suas contribuições sejam usadas de
+              maneira transparente e eficiente.
             </p>
           </section>
           <section>
